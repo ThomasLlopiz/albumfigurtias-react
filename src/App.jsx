@@ -2,6 +2,7 @@ import './App.css'
 import { useRef, useEffect } from 'react';
 import { imgMobile, videos } from './utiltis/img.json'
 import { Title } from './components/Title';
+import { Footer } from './components/Footer';
 function App() {
   const carouselRef = useRef(null);
   const nextRef = useRef(null);
@@ -220,33 +221,7 @@ function App() {
           {/* <!-- FOOTER --> */}
           <hr
             className="w-2/3 mx-auto top-0 h-[2px] min-w-[18rem] border-t-0 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent bg-center md:my-9" />
-          <footer className="text-white pt-16 pb-8">
-            <div className="container mx-auto text-center">
-              <img src="./ssdescudo.png" alt="Logo" className="mx-auto mb-6 w-24 h-24" />
-              <p className="text-lg text-text-white mt-1">SOCIEDAD SPORTIVA DEVOTO - <a
-                href="https://drive.google.com/file/d/1DvCUonGu-QEZvXqvNdLM4pdNODlU3zM2/view"
-                className="hover:scale-110 hover:text-green-500">NUESTRO REGLAMENTO</a></p>
-              <div className="flex justify-center space-x-6 my-8">
-                <a href="https://facebook.com" target="_blank" className="hover:scale-110 transition-transform duration-300">
-                  <i className="fab fa-facebook-square text-white text-3xl"></i>
-                </a>
-                <a href="https://instagram.com" target="_blank" className="hover:scale-110 transition-transform duration-300">
-                  <i className="fab fa-instagram text-white text-3xl"></i>
-                </a>
-                <a href="https://website.com" target="_blank" className="hover:scale-110 transition-transform duration-300">
-                  <i className="fas fa-globe text-white text-3xl"></i>
-                </a>
-              </div>
-              <div className="text-sm text-white mb-2">
-                <a href="/privacy-policy" className="hover:scale-110 hover:text-green-500">ALBUM LLENO</a> &mdash;
-                <a href="/terms-of-use" className="hover:scale-110 hover:text-green-500">PREMIOS</a> &mdash;
-                <a href="/contact" className="hover:scale-110 hover:text-green-500">CONTACTO</a>
-              </div>
-              <p className="text-xs text-white mt-4">&copy; 2024 SOCIEDAD SPORTIVA DEVOTO. TODOS LOS DERECHOS RESERVADOS.</p>
-              <p className="text-xs text-white mt-1">VISITA EL <a href="https://grupodevoto.com.ar"
-                className="hover:scale-110 hover:text-green-500">GRUPO COOPERATIVO DEVOTO</a></p>
-            </div>
-          </footer>
+          <Footer/>
 
           {/* <!-- GO TO HERO --> */}
           <a href="#"
