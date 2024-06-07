@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "myFont";
+  src: url("./font/Stronger.ttf");
+  font-weight: bold;
+  font-style: bold;
+}
+
+
+h1,
+h2 {
+    font-family: "myFont", sans-serif;
+    font-weight: bold;
+}

@@ -1,0 +1,74 @@
+{
+    "imgMobile": [
+        {
+            "id": 1,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 2,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 3,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 4,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 5,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 6,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 7,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 8,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 9,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 10,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 11,
+            "src": "/public/thominpc.png"
+        },
+        {
+            "id": 12,
+            "src": "/public/thominpc.png"
+        }
+    ],
+    "videos": [
+        {
+            "id": 1,
+            "titel": "Voley",
+            "src": "/public/vinicius.webm",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus beatae nostrum, non quibusdam sit qui. Temporibus sed voluptatibus, explicabo suscipit quos, porro tenetur qui minima nostrum quo eum?Necessitatibus, voluptatem."
+        },
+        {
+            "id": 2,
+            "titel": "Futbol",
+            "src": "/public/haland.mp4",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus beatae nostrum, non quibusdam sit qui. Temporibus sed voluptatibus, explicabo suscipit quos, porro tenetur qui minima nostrum quo eum?Necessitatibus, voluptatem."
+
+        },
+        {
+            "id": 3,
+            "titel": "Basquet",
+            "src": "/public/fulbo.mp4",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus beatae nostrum, non quibusdam sit qui. Temporibus sed voluptatibus, explicabo suscipit quos, porro tenetur qui minima nostrum quo eum?Necessitatibus, voluptatem."
+
+        }
+    ]
+}
