@@ -113,7 +113,7 @@ nav a:hover {
 
 .image-mask-banner {
   mask-image: linear-gradient(to bottom,
-      rgb(2, 92, 51) 35%,
+      rgb(2, 92, 51) 55%,
       transparent 100%);
 }
 
@@ -135,22 +135,6 @@ nav a:hover {
   max-width: 900px;
 }
 
-.title h1::before {
-  z-index: -10;
-  content: "";
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translateX(-50%) perspective(10px) rotateX(10deg) scale(1, 0.7);
-  height: 50%;
-  width: 100%;
-  max-width: 90px;
-  background: #41ff77;
-  filter: blur(1em);
-  opacity: 0.5;
-  transition: opacity 0.3s;
-  /* Agregamos transición */
-}
 
 .title:hover h1 {
   color: #fff;

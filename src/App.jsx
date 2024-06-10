@@ -68,35 +68,35 @@ function App() {
             <div className="hidden sm:flex max-w-screen-xl mx-auto">
               <div className="flex mt-20">
                 <div className="flex flex-col gap-1">
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1 mt-20">
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
                 </div>
               </div>
@@ -105,35 +105,35 @@ function App() {
 
               <div className="flex justify-center mt-20">
                 <div className="flex flex-col mt-20 gap-1">
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
-                  <div className="relative flex flex-col justify-center items-center">
-                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient"></div>
-                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask" src="./thominpc.png" alt="" />
+                  <div className="relative flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                    <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
+                    <img className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300" src="./thominpc.png" alt="" />
                   </div>
                 </div>
               </div>
@@ -158,7 +158,7 @@ function App() {
           </div>
 
           {/* <!-- DEPORTES --> */}
-          <div className="title text-white mt-24 flex justify-center align-center sm:mt-56">
+          <div id="Deportes" className="title text-white mt-24 flex justify-center align-center sm:mt-56">
             <h1 className="max-w-screen-md text-center text-5xl relative hover:text-white sm:text-9xl">DEPORTES</h1>
           </div>
           <div className="relative mx-3 justify-center items-center gap-10 lg:flex sm:mx-32 sm:gap-20 text-white">
@@ -172,11 +172,11 @@ function App() {
           </div>
 
           {/* <!-- MAPS --> */}
-          <div className="title text-white mt-24 flex justify-center align-center sm:mt-56">
+          <div id="Comprar" className="title text-white mt-24 flex justify-center align-center sm:mt-56">
             <h1 className="max-w-screen-md text-center text-5xl relative hover:text-white sm:text-9xl">PUNTOS DE VENTA</h1>
           </div>
           <div className="relative flex justify-center align-center">
-            <img className="w-full p-3 sm:w-4/6" src="./mapa.jpg" alt="" />
+            <img className="w-full p-3 sm:w-1/2" src="./mapa.jpg" alt="" />
           </div>
 
           {/* <!-- SPONSORS --> */}
