@@ -164,7 +164,7 @@ function App() {
           <div className="relative mx-3 justify-center items-center gap-10 lg:flex sm:mx-32 sm:gap-20 text-white">
             {videos.map((video) => (
               <div key={video.id} className="text-center">
-                <video className="mt-3 w-full" src={video.src} autoPlay loop></video>
+                <video className="mt-3 w-full " src={video.src} autoPlay loop></video>
                 <h3 className="text-2xl mt-3 uppercase font-bold">{video.titel}</h3>
                 <span className="text-sm sm:text-xl font-light">{video.text}</span>
               </div>
@@ -176,14 +176,14 @@ function App() {
             <h1 className="max-w-screen-md text-center text-5xl relative hover:text-white sm:text-9xl">PUNTOS DE VENTA</h1>
           </div>
           <div className="relative flex justify-center align-center">
-            <img className="w-full p-3 sm:w-1/2" src="./mapa.jpg" alt="" />
+            <img className="w-full sm:w-1/2 border-2 border-green-500 rounded-lg" src="./mapa.jpg" alt="" />
           </div>
 
           {/* <!-- SPONSORS --> */}
           <div className="title text-white mt-24 flex justify-center align-center sm:mt-56">
             <h1 className="max-w-screen-md text-center text-5xl relative hover:text-white sm:text-9xl">SPONSORS</h1>
           </div>
-          <div className="relative mb-32 sm:p-24">
+          <div className="relative mb-32">
             <div className="mx-auto max-w-7xl">
               <div
                 className="mx-auto grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-2 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-4 lg:gap-y-0">
