@@ -23,29 +23,32 @@ h2 {
 /* /BACKGORUND VERDE/ */
 @keyframes smoothBg {
   from {
-      background-position: 50% 50%, 50% 50%;
+    background-position: 50% 50%, 50% 50%;
   }
 
   to {
-      background-position: 300% 50%, 350% 50%;
+    background-position: 300% 50%, 350% 50%;
   }
 }
 
 .hero {
+  position: fixed;
   overflow: hidden;
   place-content: center;
   place-items: center;
+  height: calc(10vh - 100px);
+  /* Ajusta según la altura de tu footer */
   --stripes: repeating-linear-gradient(100deg,
-          var(--stripe-color) 3%,
-          transparent 10%,
-          transparent 12%,
-          var(--stripe-color) 16%);
+      var(--stripe-color) 3%,
+      transparent 10%,
+      transparent 12%,
+      var(--stripe-color) 16%);
   --rainbow: repeating-linear-gradient(100deg,
-          #053c15 10%,
-          #053c15 15%,
-          #053c15 20%,
-          #053c15 25%,
-          #053c15 30%);
+      #053c15 10%,
+      #053c15 15%,
+      #053c15 20%,
+      #053c15 25%,
+      #053c15 30%);
   background-image: var(--stripes), var(--rainbow);
   background-size: 300%, 200%;
   background-position: 50% 50%, 50% 50%;
@@ -53,14 +56,14 @@ h2 {
   mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
 
   &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: var(--stripes), var(--rainbow);
-      background-size: 200%, 100%;
-      animation: smoothBg 60s linear infinite;
-      background-attachment: fixed;
-      mix-blend-mode: difference;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--stripes), var(--rainbow);
+    background-size: 200%, 100%;
+    animation: smoothBg 60s linear infinite;
+    background-attachment: fixed;
+    mix-blend-mode: difference;
   }
 }
 
@@ -110,8 +113,8 @@ nav a:hover {
 
 .image-mask-banner {
   mask-image: linear-gradient(to bottom,
-          rgb(2, 92, 51) 85%,
-          transparent 100%);
+      rgb(2, 92, 51) 35%,
+      transparent 100%);
 }
 
 .background-gradient {
@@ -145,7 +148,8 @@ nav a:hover {
   background: #41ff77;
   filter: blur(1em);
   opacity: 0.5;
-  transition: opacity 0.3s; /* Agregamos transición */
+  transition: opacity 0.3s;
+  /* Agregamos transición */
 }
 
 .title:hover h1 {
@@ -156,6 +160,7 @@ nav a:hover {
 .title:hover h1::before {
   opacity: 1;
 }
+
 /* SPONSORS */
 .background-gradient-gray {
   background: linear-gradient(#ffffff1a 0%, #0000 100%);
