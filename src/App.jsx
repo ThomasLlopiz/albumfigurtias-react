@@ -150,9 +150,9 @@ function App() {
                 ))}
               </div>
               <div className="flex justify-center w-full mt-4">
-                <button ref={prevRef} id="prev" className="px-2 text-white w-24"><i className="fa-solid fa-left-long"></i></button>
+                <button ref={prevRef} id="prev" className="sombra hover:scale-150 px-2 text-white w-24"><i className="fa-solid fa-left-long"></i></button>
                 {/* <span className="text-white">&mdash;</span> */}
-                <button ref={nextRef} id="next" className="px-2 text-white w-24"><i className="fa-solid fa-right-long"></i></button>
+                <button ref={nextRef} id="next" className="sombra hover:scale-150 px-2 text-white w-24"><i className="fa-solid fa-right-long"></i></button>
               </div>
             </div>
           </div>
@@ -183,8 +183,8 @@ function App() {
           <div className="title text-white mt-24 flex justify-center align-center sm:mt-56">
             <h1 className="max-w-screen-md text-center text-5xl relative hover:text-white sm:text-9xl">SPONSORS</h1>
           </div>
-          <div className="relative mb-32 sm:py-24">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative mb-32 sm:p-24">
+            <div className="mx-auto max-w-7xl">
               <div
                 className="mx-auto grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-2 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-4 lg:gap-y-0">
                 <a target="_blank" href="https://qors.com.ar" className="p-4 col-span-1 max-h-24 w-full">
@@ -220,7 +220,7 @@ function App() {
 
           {/* <!-- GO TO HERO --> */}
           <a href="#"
-            className="top sticky self-end ml-2 mt-[calc(100vh+50px)] no-underline px-3 py-1 text-white text-2xl font-black bg-[#00cb2f] rounded-[30%] bottom-7 left-0">
+            className="top sticky self-end ml-2 mt-[calc(100vh+50px)] no-underline px-2 text-white text-2xl font-black bg-[#00cb2f] rounded-[30%] bottom-7 left-0">
             <i className="fa-solid fa-arrow-up"></i>
           </a>
         </main>
