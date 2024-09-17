@@ -6,7 +6,7 @@ export const Games = () => {
           BASQUET
         </button>
         <img
-          className="w-12/12 drop-shadow-[0_3px_3px_rgba(255,255,255,255.25)]"
+          className="w-4/4 drop-shadow-[0_2px_6px_rgba(255,255,255,255.25)]"
           src="./juegos/basquet.webp"
           alt=""
         />
@@ -16,7 +16,7 @@ export const Games = () => {
           FUTBOL
         </button>
         <img
-          className="w-3/4 drop-shadow-[0_3px_3px_rgba(255,255,255,255.25)]"
+          className="w-3/4 drop-shadow-[0_2px_6px_rgba(255,255,255,255.25)]"
           src="./juegos/futbol.webp"
           alt=""
         />
@@ -26,7 +26,7 @@ export const Games = () => {
           TENIS
         </button>
         <img
-          className="w-3/4 drop-shadow-[0_3px_3px_rgba(255,255,255,255.25)]"
+          className="w-3/4 drop-shadow-[0_2px_6px_rgba(255,255,255,255.25)]"
           src="./juegos/tennis.png"
           alt=""
         />
