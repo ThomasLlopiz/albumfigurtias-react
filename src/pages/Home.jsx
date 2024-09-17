@@ -47,8 +47,6 @@ export const Home = () => {
   return (
     <div className="min-h-screen color-white flex justify-center items-start bg-black font-black not-italic">
       <main className="wrapper">
-        <div className="hero w-full h-full flex justify-center align-center min-h-screen"></div>
-        {/* <Nav /> */}
         <Banner />
         <div className="relative">
           <AlbumDesktop
