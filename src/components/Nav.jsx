@@ -81,12 +81,12 @@ export const Nav = () => {
             </a>
           </li>
           <li>
-            <a
+            <Link
               className="relative px-2 py-1 text-white text-lg no-underline"
-              href=""
+              to="/novedades"
             >
               Novedades
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -8,7 +8,7 @@ export const Maps = () => {
         id="Comprar"
         className="title text-white mt-24 flex justify-center align-center sm:mt-56"
       >
-        <h1 className="max-w-screen-md text-center text-5xl relative hover:text-white sm:text-9xl">
+        <h1 className="max-w-screen-md text-center text-5xl relative hover:text-white sm:text-9xl neonText">
           PUNTOS DE VENTA
         </h1>
       </div>
