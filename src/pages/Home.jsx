@@ -1,18 +1,20 @@
 import "../App.css";
 import { useRef, useEffect, useState } from "react";
-import { Nav } from "../components/Nav";
-import { Footer } from "../components/Footer";
 import { Banner } from "../components/Banner";
 import { Deportes } from "../components/Deportes";
 import { Maps } from "../components/Maps";
-import imgData from "../utiltis/img.json";
 import { AlbumDesktop } from "../components/AlbumDesktop";
 import { AlbumMobile } from "../components/AlbumMobile";
+import imgData from "../utiltis/img.json";
 
 export const Home = () => {
   const carouselRef = useRef(null);
   const nextRef = useRef(null);
   const prevRef = useRef(null);
+
+  const [mainImage, setMainImage] = useState("./jugadores/5.png");
+  const images = imgData.images.map((image) => image.src);
+  const imgMobile = imgData.images;
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -36,14 +38,6 @@ export const Home = () => {
     };
   }, []);
 
-  const handleMouseEnter = (src) => {
-    setMainImage(src);
-  };
-
-  const [mainImage, setMainImage] = useState("./jugadores/5.png");
-  const images = imgData.images.map((image) => image.src);
-  const imgMobile = imgData.images;
-
   return (
     <div className="min-h-screen color-white flex justify-center items-start bg-black font-black not-italic">
       <main className="wrapper">
@@ -51,13 +45,13 @@ export const Home = () => {
         <div className="relative">
           <AlbumDesktop
             images={images}
-            handleMouseEnter={handleMouseEnter}
+            handleMouseEnter={setMainImage}
             mainImageSrc={mainImage}
           />
           <AlbumMobile
             imgMobile={imgMobile}
             mainImage={mainImage}
-            setMainImage={mainImage}
+            setMainImage={setMainImage}
             carouselRef={carouselRef}
             prevRef={prevRef}
             nextRef={nextRef}

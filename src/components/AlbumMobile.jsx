@@ -1,6 +1,3 @@
-// src/components/AlbumMobile.jsx
-import React from "react";
-
 export const AlbumMobile = ({
   imgMobile,
   mainImage,
@@ -23,6 +20,7 @@ export const AlbumMobile = ({
               key={image.id}
               className="flex-shrink-0 w-1/3"
               onMouseEnter={() => setMainImage(image.src)}
+              onClick={() => setMainImage(image.src)}
             >
               <img
                 src={image.src}
