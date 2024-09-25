@@ -69,7 +69,7 @@ export const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className="block">
+            <Link to="/" className="hidden md:block">
               <img src="./ssdescudo.png" alt="Logo" className="w-20" />
             </Link>
           </li>
