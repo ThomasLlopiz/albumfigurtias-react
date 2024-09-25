@@ -34,12 +34,15 @@ export const Nav = () => {
       ref={navRef}
       className="text-white mt-5 absolute w-full uppercase text-center z-50"
     >
-      <div className="flex justify-center items-center">
+      <div className="flex justify-around items-center">
+        <Link to="/" className="block sm:hidden">
+          <img src="./ssdescudo.png" alt="Logo" className="w-10" />
+        </Link>
         <button className="block sm:hidden" onClick={toggleMenu}>
           {isOpen ? (
             <X className="h-6 w-6 fill-current" />
           ) : (
-            <img src="./ssdescudo.png" alt="Logo" className="w-20 h-20" />
+            <i class="fa-solid fa-bars text-3xl"></i>
           )}
         </button>
         <ul
@@ -50,7 +53,8 @@ export const Nav = () => {
           <li>
             <a
               className="relative px-2 py-1 text-white text-lg no-underline"
-              href="#Comprar"
+              href="/"
+              onClick={closeMenu}
             >
               Comprar
             </a>
@@ -59,23 +63,16 @@ export const Nav = () => {
             <Link
               className="relative px-2 py-1 text-white text-lg no-underline"
               to="/juegos"
+              onClick={closeMenu}
             >
               Juegos
-            </Link>
-          </li>
-          <li className="hidden sm:block">
-            <Link to="/">
-              <img
-                src="./ssdescudo.png"
-                alt="Logo"
-                className="w-20 hover:scale-110 transition-transform duration-300"
-              />
             </Link>
           </li>
           <li>
             <a
               className="relative px-2 py-1 text-white text-lg no-underline"
-              href="#Deportes"
+              href="/"
+              onClick={closeMenu}
             >
               Deportes
             </a>
@@ -84,6 +81,7 @@ export const Nav = () => {
             <Link
               className="relative px-2 py-1 text-white text-lg no-underline"
               to="/novedades"
+              onClick={closeMenu}
             >
               Novedades
             </Link>
