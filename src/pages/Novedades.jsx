@@ -15,8 +15,8 @@ export const Novedades = () => {
   };
 
   return (
-    <div className="w-full mt-32 mb-10 flex flex-col items-center justify-center">
-      <div className="flex justify-between gap-32 relative w-full md:w-1/2 mx-auto">
+    <div className="w-full mt-40 mb-10 flex flex-col items-center justify-center">
+      <div className="flex justify-between gap-32 relative w-full md:w-3/4 mx-auto">
         <img
           className="w-[300px] h-[200px] md:w-[800px] mx-auto md:h-[600px] z-20"
           src={novedades[currentIndex].src}
