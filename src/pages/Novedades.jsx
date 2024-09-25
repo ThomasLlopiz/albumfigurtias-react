@@ -15,10 +15,10 @@ export const Novedades = () => {
   };
 
   return (
-    <div className="w-full mt-32 mb-32 flex flex-col items-center justify-center">
-      <div className="flex justify-between gap-32 relative w-1/2 mx-auto">
+    <div className="w-full mt-32 mb-10 flex flex-col items-center justify-center">
+      <div className="flex justify-between gap-32 relative w-full md:w-1/2 mx-auto">
         <img
-          className="w-[800px] mx-auto h-[600px] z-20"
+          className="w-[300px] h-[200px] md:w-[800px] mx-auto md:h-[600px] z-20"
           src={novedades[currentIndex].src}
           alt={novedades[currentIndex].titel}
         />
@@ -39,7 +39,7 @@ export const Novedades = () => {
         </div>
       </div>
 
-      <div className="relative z-20 shadow-lg shadow-black w-1/2 text-white mx-auto mt-4">
+      <div className="relative z-20 shadow-lg shadow-black w-11/12 md:w-1/2 text-white mx-auto mt-4">
         <h1 className="mx-auto text-6xl text-center">
           {novedades[currentIndex].titel}
         </h1>
