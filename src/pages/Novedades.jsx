@@ -26,15 +26,15 @@ export const Novedades = () => {
         <div className="absolute inset-0 flex items-center justify-between z-30">
           <button
             onClick={prevSlide}
-            className="bg-gray-700 text-white px-4 py-2 rounded"
+            className="bg-gray-700 text-white px-2 py-1 rounded"
           >
-            -
+            <i className="fa-solid fa-left-long"></i>
           </button>
           <button
             onClick={nextSlide}
-            className="bg-gray-700 text-white px-4 py-2 rounded"
+            className="bg-gray-700 text-white px-2 py-1 rounded"
           >
-            -
+            <i className="fa-solid fa-right-long"></i>
           </button>
         </div>
       </div>
