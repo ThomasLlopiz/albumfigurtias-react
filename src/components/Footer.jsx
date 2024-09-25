@@ -11,7 +11,7 @@ export const Footer = ( ) => {
                     </div>
 
                     <div className="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
-                        <a href="#"><img src="./ssdescudocolor.png" alt="Logo" className="w-32 h-32 hover:scale-110 transition-transform duration-300"/></a>
+                        <a href="#"><img src="./ssdescudocolor.png" alt="Logo" className="w-32 hover:scale-110 transition-transform duration-300"/></a>
                     </div>
 
                     <div className="w-full md:w-1/3 flex flex-col items-center">

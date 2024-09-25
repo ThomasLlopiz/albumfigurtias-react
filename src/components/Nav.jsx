@@ -68,7 +68,7 @@ export const Nav = () => {
               <img
                 src="./ssdescudo.png"
                 alt="Logo"
-                className="w-20 h-20 hover:scale-110 transition-transform duration-300"
+                className="w-20 hover:scale-110 transition-transform duration-300"
               />
             </Link>
           </li>
