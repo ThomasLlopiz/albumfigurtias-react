@@ -31,7 +31,7 @@ h2 {
   overflow: hidden;
   place-content: center;
   place-items: center;
-  height: calc(10vh - 100px);
+  height: calc(1vh - 10px);
   --stripes: repeating-linear-gradient(
     100deg,
     var(--stripe-color) 3%,

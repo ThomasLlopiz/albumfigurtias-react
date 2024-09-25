@@ -11,11 +11,11 @@ export const Deportes = () => {
           DEPORTES
         </h1>
       </div>
-      <div className="relative mx-auto justify-center items-center gap-10 text-white w-4/6 lg:flex sm:gap-20">
+      <div className="relative mx-auto justify-center items-center gap-10 text-white w-10/12 md:w-4/6 lg:flex sm:gap-20">
         {videos.map((video) => (
           <div key={video.id} className="text-center">
             <video
-              className="mt-3 w-full "
+              className="mt-3 w-full"
               src={video.src}
               autoPlay
               loop

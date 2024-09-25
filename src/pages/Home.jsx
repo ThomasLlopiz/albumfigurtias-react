@@ -39,7 +39,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen color-white flex justify-center items-start bg-black font-black not-italic">
+    <div className="olor-white flex justify-center items-start bg-black font-black not-italic">
       <main className="wrapper">
         <Banner />
         <div className="relative">
@@ -59,12 +59,6 @@ export const Home = () => {
         </div>
         <Deportes />
         <Maps />
-        <a
-          href="#"
-          className="top sticky self-end ml-2 mt-[calc(100vh+50px)] no-underline px-2 text-white text-2xl font-black bg-[#00cb2f] rounded-[30%] bottom-7 left-0"
-        >
-          <i className="fa-solid fa-arrow-up"></i>
-        </a>
       </main>
     </div>
   );
