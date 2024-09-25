@@ -10,7 +10,9 @@
   --bg: var(--stripe-color);
   --maincolor: var(--bg);
 }
-
+body{
+  background-color: black;
+}
 h1,
 h2 {
   font-family: "myFont", sans-serif;
