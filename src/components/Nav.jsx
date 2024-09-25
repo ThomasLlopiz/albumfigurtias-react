@@ -51,13 +51,13 @@ export const Nav = () => {
           } sm:flex justify-center items-center gap-10`}
         >
           <li>
-            <a
+            <Link
               className="relative px-2 py-1 text-white text-lg no-underline"
               href="/"
               onClick={closeMenu}
             >
               Comprar
-            </a>
+            </Link>
           </li>
           <li>
             <Link
@@ -69,13 +69,18 @@ export const Nav = () => {
             </Link>
           </li>
           <li>
-            <a
+            <Link to="/" className="block">
+              <img src="./ssdescudo.png" alt="Logo" className="w-20" />
+            </Link>
+          </li>
+          <li>
+            <Link
               className="relative px-2 py-1 text-white text-lg no-underline"
-              href="/"
+              to="#Deportes"
               onClick={closeMenu}
             >
               Deportes
-            </a>
+            </Link>
           </li>
           <li>
             <Link
