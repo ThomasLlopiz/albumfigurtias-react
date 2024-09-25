@@ -13,7 +13,7 @@ export const AlbumDesktop = ({ images, handleMouseEnter, mainImageSrc }) => {
             >
               <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
               <img
-                className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300"
+                className="z-50 w-3/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300"
                 src={src}
                 alt=""
               />
@@ -29,7 +29,7 @@ export const AlbumDesktop = ({ images, handleMouseEnter, mainImageSrc }) => {
             >
               <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
               <img
-                className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300"
+                className="z-50 w-3/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300"
                 src={src}
                 alt=""
               />
@@ -40,7 +40,7 @@ export const AlbumDesktop = ({ images, handleMouseEnter, mainImageSrc }) => {
 
       <img
         src={mainImageSrc}
-        className="relative w-5/12 h-4/6 image-mask-banner"
+        className="relative w-3/12 h-3/6 mt-40 mx-12 image-mask-banner"
         alt=""
       />
 
@@ -54,7 +54,7 @@ export const AlbumDesktop = ({ images, handleMouseEnter, mainImageSrc }) => {
             >
               <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
               <img
-                className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300"
+                className="z-50 w-3/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300"
                 src={src}
                 alt=""
               />
@@ -70,7 +70,7 @@ export const AlbumDesktop = ({ images, handleMouseEnter, mainImageSrc }) => {
             >
               <div className="absolute bottom-0 w-11/12 h-4/6 background-gradient-gray"></div>
               <img
-                className="z-50 w-4/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300"
+                className="z-50 w-3/6 h-6/6 object-cover image-mask hover:scale-105 transition-transform duration-300"
                 src={src}
                 alt=""
               />
