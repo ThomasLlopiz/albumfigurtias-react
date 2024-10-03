@@ -42,7 +42,7 @@ export const Nav = () => {
           {isOpen ? (
             <X className="h-6 w-6 fill-current" />
           ) : (
-            <i class="fa-solid fa-bars text-3xl"></i>
+            <i className="fa-solid fa-bars text-3xl"></i>
           )}
         </button>
         <ul
