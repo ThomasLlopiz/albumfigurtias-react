@@ -1,3 +1,4 @@
+import React from "react";
 export const Games = () => {
   return (
     <div className="text-white w-1/2 mx-auto h-96 mt-32 z-30 mb-96 lg:mb-0 gap-0 lg:flex justify-center items-center">
