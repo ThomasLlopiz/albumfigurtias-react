@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "../pages/Home";
-import { Games } from "../pages/Games"; // Asumiendo que tienes una página para Juegos
+import { Games } from "../pages/Games";
 import { Novedades } from "../pages/Novedades";
 
 export const AppRouter = () => {
