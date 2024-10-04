@@ -53,7 +53,7 @@ export const Nav = () => {
           <li>
             <Link
               className="relative px-2 py-1 text-white text-lg no-underline"
-              href="/"
+              to="/"
               onClick={closeMenu}
             >
               Comprar
@@ -76,7 +76,7 @@ export const Nav = () => {
           <li>
             <Link
               className="relative px-2 py-1 text-white text-lg no-underline"
-              to="#Deportes"
+              to="/#Deportes"
               onClick={closeMenu}
             >
               Deportes
