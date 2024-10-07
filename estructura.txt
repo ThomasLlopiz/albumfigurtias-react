@@ -1,0 +1,17 @@
+Src
+    components
+        Nav.js
+        Banner.js
+        Footer.js
+    pages
+        Home.js
+        Juegos.js
+        Novedades.js
+    Router
+        AppRouter.jsx
+    App.jsx
+    main.jsx
+package-lock.json
+package.json
+vite.config.js
+
