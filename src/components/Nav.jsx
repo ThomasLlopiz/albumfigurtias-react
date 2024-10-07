@@ -36,7 +36,7 @@ export const Nav = () => {
     >
       <div className="flex justify-around items-center">
         <Link to="/" className="block sm:hidden">
-          <img src="./ssdescudo.png" alt="Logo" className="w-10" />
+          <img src="./imagenes/general/ssdescudo.png" alt="Logo" className="w-10" />
         </Link>
         <button className="block sm:hidden" onClick={toggleMenu}>
           {isOpen ? (
@@ -70,7 +70,7 @@ export const Nav = () => {
           </li>
           <li>
             <Link to="/" className="hidden md:block">
-              <img src="./ssdescudo.png" alt="Logo" className="w-20" />
+              <img src="./imagenes/general/ssdescudo.png" alt="Logo" className="w-20" />
             </Link>
           </li>
           <li>

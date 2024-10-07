@@ -16,7 +16,7 @@ export const Juegos = () => {
           <a href="./juegofutbol/index.html">
             <img
               class="w-full lg:w-auto hover:scale-105 transition-transform duration-300"
-              src="./juegosImagenes/futbol.jpg"
+              src="./imagenes/juegosImagenes/futbol.jpg"
               alt="Futbol"
             />
           </a>
@@ -29,7 +29,7 @@ export const Juegos = () => {
           <a href="./juegobasket/index.html">
             <img
               class="w-full lg:w-auto hover:scale-105 transition-transform duration-300"
-              src="./juegosImagenes/basquet.jpg"
+              src="./imagenes/juegosImagenes/basquet.jpg"
               alt="Basket"
             />
           </a>
@@ -42,7 +42,7 @@ export const Juegos = () => {
           <a href="./juegotenis/index.html">
             <img
               class="w-full lg:w-auto hover:scale-105 transition-transform duration-300"
-              src="./juegosImagenes/tennis.jpg"
+              src="./imagenes/juegosImagenes/tennis.jpg"
               alt="Tenis"
             />
           </a>

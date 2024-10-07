@@ -24,7 +24,7 @@ export const Footer = () => {
           <div className="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
             <a href="#">
               <img
-                src="./ssdescudocolor.png"
+                src="./imagenes/general/ssdescudocolor.png"
                 alt="Logo"
                 className="w-32 hover:scale-110 transition-transform duration-300"
               />
