@@ -12,7 +12,7 @@ export const Home = () => {
   const nextRef = useRef(null);
   const prevRef = useRef(null);
 
-  const [mainImage, setMainImage] = useState("./jugadores/5.png");
+  const [mainImage, setMainImage] = useState("./imagenes/jugadores/5.png");
   const images = imgData.images.map((image) => image.src);
   const imgMobile = imgData.images;
 

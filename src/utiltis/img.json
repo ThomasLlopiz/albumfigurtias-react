@@ -1,37 +1,37 @@
 {
   "images": [
-    { "id": 1, "src": "./jugadores/1.png" },
-    { "id": 2, "src": "./jugadores/2.png" },
-    { "id": 3, "src": "./jugadores/3.png" },
-    { "id": 4, "src": "./jugadores/4.png" },
-    { "id": 5, "src": "./jugadores/5.png" },
-    { "id": 6, "src": "./jugadores/6.png" },
-    { "id": 7, "src": "./jugadores/7.png" },
-    { "id": 8, "src": "./jugadores/8.png" },
-    { "id": 9, "src": "./jugadores/9.png" },
-    { "id": 10, "src": "./jugadores/10.png" },
-    { "id": 11, "src": "./jugadores/11.png" },
-    { "id": 12, "src": "./jugadores/12.png" },
-    { "id": 13, "src": "./jugadores/13.png" },
-    { "id": 14, "src": "./jugadores/14.png" }
+    { "id": 1, "src": "./imagenes/jugadores/1.png" },
+    { "id": 2, "src": "./imagenes/jugadores/2.png" },
+    { "id": 3, "src": "./imagenes/jugadores/3.png" },
+    { "id": 4, "src": "./imagenes/jugadores/4.png" },
+    { "id": 5, "src": "./imagenes/jugadores/5.png" },
+    { "id": 6, "src": "./imagenes/jugadores/6.png" },
+    { "id": 7, "src": "./imagenes/jugadores/7.png" },
+    { "id": 8, "src": "./imagenes/jugadores/8.png" },
+    { "id": 9, "src": "./imagenes/jugadores/9.png" },
+    { "id": 10, "src": "./imagenes/jugadores/10.png" },
+    { "id": 11, "src": "./imagenes/jugadores/11.png" },
+    { "id": 12, "src": "./imagenes/jugadores/12.png" },
+    { "id": 13, "src": "./imagenes/jugadores/13.png" },
+    { "id": 14, "src": "./imagenes/jugadores/14.png" }
   ],
   "videos": [
     {
       "id": 1,
       "titel": "Voley",
-      "src": "/basquet.mp4",
+      "src": "./imagenes/basquet.mp4",
       "text": "El baloncesto en los Juegos Olímpicos de París 2024 se realizará en el Estadio Pierre-Mauroy de Villeneuve-d'Ascq y la Arena Bercy de París, del 27de julio al 11 de agosto de 2024.​ Los partidos de baloncesto 3×3 se efectuarán en la plaza de la Concordia."
     },
     {
       "id": 2,
       "titel": "Futbol",
-      "src": "/basquet.mp4",
+      "src": "./imagenes/basquet.mp4",
       "text": "El baloncesto en los Juegos Olímpicos de París 2024 se realizará en el Estadio Pierre-Mauroy de Villeneuve-d'Ascq y la Arena Bercy de París, del 27de julio al 11 de agosto de 2024.​ Los partidos de baloncesto 3×3 se efectuarán en la plaza de la Concordia."
     },
     {
       "id": 3,
       "titel": "Basquet",
-      "src": "/basquet.mp4",
+      "src": "./imagenes/general/basquet.mp4",
       "text": "El baloncesto en los Juegos Olímpicos de París 2024 se realizará en el Estadio Pierre-Mauroy de Villeneuve-d'Ascq y la Arena Bercy de París, del 27de julio al 11 de agosto de 2024.​ Los partidos de baloncesto 3×3 se efectuarán en la plaza de la Concordia."
     }
   ],
@@ -39,19 +39,19 @@
     {
       "id": 1,
       "titel": "Voley",
-      "src": "./heroimage.png",
+      "src": "./imagenes/general/heroimage.png",
       "text": "El baloncesto en los Juegos Olímpicos de París 2024 se realizará en el Estadio Pierre-Mauroy de Villeneuve-d'Ascq y la Arena Bercy de París, del 27de julio al 11 de agosto de 2024.​ Los partidos de baloncesto 3×3 se efectuarán en la plaza de la Concordia."
     },
     {
       "id": 2,
       "titel": "Voley",
-      "src": "./albummobile.png",
+      "src": "./imagenes/general/albummobile.png",
       "text": "El baloncesto en los Juegos Olímpicos de París 2024 se realizará en el Estadio Pierre-Mauroy de Villeneuve-d'Ascq y la Arena Bercy de París, del 27de julio al 11 de agosto de 2024.​ Los partidos de baloncesto 3×3 se efectuarán en la plaza de la Concordia."
     },
     {
       "id": 3,
       "titel": "Voley",
-      "src": "./album.png",
+      "src": "./imagenes/general/album.png",
       "text": "El baloncesto en los Juegos Olímpicos de París 2024 se realizará en el Estadio Pierre-Mauroy de Villeneuve-d'Ascq y la Arena Bercy de París, del 27de julio al 11 de agosto de 2024.​ Los partidos de baloncesto 3×3 se efectuarán en la plaza de la Concordia."
     }
   ]
