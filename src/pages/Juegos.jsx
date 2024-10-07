@@ -1,37 +1,53 @@
 import React from "react";
 export const Juegos = () => {
   return (
-    <div className="text-white w-1/2 mx-auto h-96 mt-32 z-30 mb-96 lg:mb-0 gap-0 lg:flex justify-center items-center">
-      <div className="flex flex-col items-center">
-        <button className="mb-16 w-[150px] bg-white h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#009b49] before:to-[rgb(105,184,141)] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-black">
-          BASQUET
-        </button>
-        <img
-          className="w-4/4 drop-shadow-[0_2px_6px_rgba(255,255,255,255.25)]"
-          src="./juegos/basquet.webp"
-          alt=""
-        />
-      </div>
-      <div className="flex flex-col items-center">
-        <button className="mb-12 w-[150px] bg-white h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#009b49] before:to-[rgb(105,184,141)] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-black">
-          FUTBOL
-        </button>
-        <img
-          className="w-3/4 drop-shadow-[0_2px_6px_rgba(255,255,255,255.25)]"
-          src="./juegos/futbol.webp"
-          alt=""
-        />
-      </div>
-      <div className="flex flex-col items-center">
-        <button className="mb-16 w-[150px] bg-white h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#009b49] before:to-[rgb(105,184,141)] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-black">
-          TENIS
-        </button>
-        <img
-          className="w-5/12 md:w-3/4 drop-shadow-[0_2px_6px_rgba(255,255,255,255.25)]"
-          src="./juegos/tennis.png"
-          alt=""
-        />
-      </div>
+    <div className="mx-auto z-20">
+      <section class="text-center mt-32">
+        <div class="de text-white flex justify-center align-center">
+          <h1 class="text-5xl relative sm:text-9xl">JUGA CON LA VERDE</h1>
+        </div>
+      </section>
+
+      <section class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-center items-center gap-10 mt-16 px-4">
+        <div class="text-center w-full lg:w-1/3">
+          <div class="de text-white flex justify-center align-center">
+            <h1 class="text-3xl relative sm:text-7xl mt-12">FUTBOL</h1>
+          </div>
+          <a href="./juegofutbol/index.html">
+            <img
+              class="w-full lg:w-auto hover:scale-105 transition-transform duration-300"
+              src="./juegosImagenes/futbol.jpg"
+              alt="Futbol"
+            />
+          </a>
+        </div>
+
+        <div class="text-center w-full lg:w-1/3">
+          <div class="de text-white flex justify-center align-center">
+            <h1 class="text-3xl relative sm:text-7xl mt-12">BASKET</h1>
+          </div>
+          <a href="./juegobasket/index.html">
+            <img
+              class="w-full lg:w-auto hover:scale-105 transition-transform duration-300"
+              src="./juegosImagenes/basquet.jpg"
+              alt="Basket"
+            />
+          </a>
+        </div>
+
+        <div class="text-center w-full lg:w-1/3">
+          <div class="de text-white flex justify-center align-center">
+            <h1 class="text-3xl relative sm:text-7xl mt-12">TENIS</h1>
+          </div>
+          <a href="./juegotenis/index.html">
+            <img
+              class="w-full lg:w-auto hover:scale-105 transition-transform duration-300"
+              src="./juegosImagenes/tennis.jpg"
+              alt="Tenis"
+            />
+          </a>
+        </div>
+      </section>
     </div>
   );
 };
