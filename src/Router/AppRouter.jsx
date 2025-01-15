@@ -3,6 +3,8 @@ import { Home } from "../pages/Home";
 import { Juegos } from "../pages/Juegos";
 import { Novedades } from "../pages/Novedades";
 import { Album } from "../pages/Album";
+import { Tienda } from "../pages/Tienda";
+import { Inscripcion } from "../pages/Inscripcion";
 
 export const AppRouter = () => {
   return (
@@ -11,6 +13,8 @@ export const AppRouter = () => {
       <Route path="/juegos" element={<Juegos />} />
       <Route path="/album" element={<Album />} />
       <Route path="/novedades" element={<Novedades />} />
+      <Route path="/tienda" element={<Tienda />} />
+      <Route path="/inscripcion" element={<Inscripcion />} />
       <Route path="*" element={<Home />} />
     </Routes>
   );
