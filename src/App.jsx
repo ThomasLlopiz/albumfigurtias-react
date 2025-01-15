@@ -7,7 +7,7 @@ const App = () => {
     <div>
       <div className="w-full h-full flex justify-center align-center"></div>
       <Nav />
-      <div className="flex flex-col justify-center items-start bg-black not-italic">
+      <div className="flex flex-col justify-center items-start bg-white not-italic">
         <AppRouter />
         <hr className="relative w-2/3 mx-auto top-0 h-[2px] min-w-[18rem] border-t-0 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent bg-center md:my-9" />
         <Footer />

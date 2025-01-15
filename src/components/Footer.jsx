@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
-    <footer className="relative text-white pt-16 pb-8 mx-auto w-full">
-      <div className="mx-auto">
+    <footer className="absolute top-0 left-0 right-0 text-white pt-48 pb-8">
+      <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-center items-center">
           <div className="w-full md:w-1/3 mb-8 md:mb-0 flex flex-col items-center ">
             <p className="text-lg mt-1 text-center md:text-left">
@@ -24,7 +24,7 @@ export const Footer = () => {
           <div className="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
             <a href="#">
               <img
-                src="./imagenes/general/ssdescudocolor.png"
+                src="./imagenes/club/ssdescudo.png"
                 alt="Logo"
                 className="w-32 hover:scale-110 transition-transform duration-300"
               />
@@ -34,14 +34,14 @@ export const Footer = () => {
           <div className="w-full md:w-1/3 flex flex-col items-center">
             <div className="flex space-x-6 my-8">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/FansSociedadSportivaDevoto"
                 target="_blank"
                 className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
               >
                 <i className="fab fa-facebook-square text-white text-3xl hover:text-green-500"></i>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/ssdevoto/"
                 target="_blank"
                 className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
               >
@@ -52,27 +52,36 @@ export const Footer = () => {
                 target="_blank"
                 className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
               >
-                <i className="fas fa-globe text-white text-3xl hover:text-green-500"></i>
+                <i className="fab fa-youtube text-white text-3xl hover:text-green-500"></i>
               </a>
             </div>
             <div className="text-sm text-white mb-2 flex flex-col items-center">
-              <a href="" className="text-lg hover:text-green-500">
+              <a
+                href="https://wa.me/3564501086"
+                className="text-lg hover:text-green-500"
+              >
                 ALBUM LLENO
               </a>
-              <a href="" className="text-lg hover:text-green-500">
+              <a
+                href=".index.html#premios"
+                className="text-lg hover:text-green-500"
+              >
                 PREMIOS
               </a>
-              <a href="" className="text-lg hover:text-green-500">
+              <a
+                href="https://wa.me/3564501086"
+                className="text-lg hover:text-green-500"
+              >
                 CONTACTO
               </a>
             </div>
           </div>
         </div>
         <div className="text-center mt-20">
-          <p className="text-xs">
+          <p className="text-md">
             &copy; 2024 SOCIEDAD SPORTIVA DEVOTO. TODOS LOS DERECHOS RESERVADOS.
           </p>
-          <p className="text-xs mt-1">
+          <p className="text-md mt-1">
             VISITA EL{" "}
             <a
               href="https://grupodevoto.com.ar"

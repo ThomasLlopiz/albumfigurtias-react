@@ -1,96 +1,52 @@
-import { useState, useEffect, useRef } from "react";
-import { X } from "react-feather";
-import { Link } from "react-router-dom";
-
 export const Nav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const navRef = useRef();
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (navRef.current && !navRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
-
   return (
-    <nav
-      ref={navRef}
-      className="text-white mt-5 absolute w-full uppercase text-center z-50"
-    >
-      <div className="flex justify-around items-center">
-        <Link to="/" className="block sm:hidden">
-          <img src="./imagenes/general/ssdescudo.png" alt="Logo" className="w-10" />
-        </Link>
-        <button className="block sm:hidden" onClick={toggleMenu}>
-          {isOpen ? (
-            <X className="h-6 w-6 fill-current" />
-          ) : (
-            <i className="fa-solid fa-bars text-3xl"></i>
-          )}
-        </button>
-        <ul
-          className={`${
-            isOpen ? "block" : "hidden"
-          } sm:flex justify-center items-center gap-10`}
-        >
-          <li>
-            <Link
-              className="relative px-2 py-1 text-white text-lg no-underline"
-              to="/"
-              onClick={closeMenu}
-            >
-              Comprar
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="relative px-2 py-1 text-white text-lg no-underline"
-              to="/juegos"
-              onClick={closeMenu}
-            >
-              Juegos
-            </Link>
-          </li>
-          <li>
-            <Link to="/" className="hidden md:block">
-              <img src="./imagenes/general/ssdescudo.png" alt="Logo" className="w-20" />
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="relative px-2 py-1 text-white text-lg no-underline"
-              to="/#Deportes"
-              onClick={closeMenu}
-            >
-              Deportes
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="relative px-2 py-1 text-white text-lg no-underline"
-              to="/novedades"
-              onClick={closeMenu}
-            >
-              Novedades
-            </Link>
-          </li>
-        </ul>
+    <nav className="absolute top-0 left-0 right-0 w-full flex items-center justify-between px-6 py-4 text-white mx-auto max-w-7xl">
+      <div className="flex space-x-12">
+        <div className="relative group">
+          <a href="#" className="font-bold hover:underline flex items-center">
+            EL EQUIPO
+            <i className="fas fa-chevron-down ml-1"></i>
+          </a>
+          <div className="absolute left-0 hidden mt-2 bg-white text-black rounded shadow-lg group-hover:block">
+            <a href="#" className="block px-4 py-2 hover:bg-gray-200">
+              Submenú 1
+            </a>
+            <a href="#" className="block px-4 py-2 hover:bg-gray-200">
+              Submenú 2
+            </a>
+          </div>
+        </div>
+        <div className="relative group">
+          <a href="#" className="font-bold hover:underline flex items-center">
+            EL CLUB
+            <i className="fas fa-chevron-down ml-1"></i>
+          </a>
+          <div className="absolute left-0 hidden mt-2 bg-white text-black rounded shadow-lg group-hover:block">
+            <a href="#" className="block px-4 py-2 hover:bg-gray-200">
+              Submenú 1
+            </a>
+            <a href="#" className="block px-4 py-2 hover:bg-gray-200">
+              Submenú 2
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <img
+          src="./imagenes/club/ssdescudo.png"
+          alt="Escudo Sociedad Sportiva Devoto"
+          className="h-20"
+        />
+      </div>
+
+      <div className="flex space-x-12">
+        <a href="#" className="font-bold hover:underline">
+          INSCRIBIRME
+        </a>
+        <a href="#" className="font-bold hover:underline">
+          TIENDA
+        </a>
       </div>
     </nav>
   );

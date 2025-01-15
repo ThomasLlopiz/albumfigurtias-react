@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        clifford: "#da373d",
+        clifford: "#fff",
       },
       textShadow: {
         'custom': '0px 0px 10px #00cb2f, 0px 0px 20px #00cb2f',
