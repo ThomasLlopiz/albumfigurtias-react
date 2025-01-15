@@ -1,4 +1,3 @@
-import React from "react";
 
 export const AlbumDesktop = ({ images, handleMouseEnter, mainImageSrc }) => {
   return (

@@ -1,4 +1,3 @@
-import React from "react";
 export const Juegos = () => {
   return (
     <div className="mx-auto z-20">

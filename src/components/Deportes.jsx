@@ -1,4 +1,3 @@
-import React from "react";
 import { videos } from "../utiltis/img.json";
 export const Deportes = () => {
   return (

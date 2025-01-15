@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css";
+import "../Album.css";
 export const Title = () => {
   return (
     <div className="title text-white mt-24 flex justify-center align-center sm:mt-56">

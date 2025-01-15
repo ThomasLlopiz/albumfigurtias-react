@@ -1,4 +1,3 @@
-import React from "react";
 import { AppRouter } from "./Router/AppRouter";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
@@ -6,7 +5,7 @@ import { Footer } from "./components/Footer";
 const App = () => {
   return (
     <div>
-      <div className="hero w-full h-full flex justify-center align-center min-h-screen"></div>
+      <div className="w-full h-full flex justify-center align-center"></div>
       <Nav />
       <div className="flex flex-col justify-center items-start bg-black not-italic">
         <AppRouter />
