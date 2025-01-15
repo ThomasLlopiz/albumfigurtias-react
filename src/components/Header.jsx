@@ -1,9 +1,28 @@
+import { useState, useEffect } from "react";
+
 export const Header = () => {
+  const [typedText, setTypedText] = useState("");
+  const text = "SSOCIEDAD SPORTIVA DEVOTO";
+
+  useEffect(() => {
+    let i = 0;
+    const intervalId = setInterval(() => {
+      if (i < text.length) {
+        setTypedText((prev) => prev + text.charAt(i));
+        i++;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 100);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <header>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center z-99">
         <h1 id="typewriter" className="text-4xl md:text-7xl font-bold relative">
-          <span id="typed-text"></span>
+          <span>{typedText}</span>
           <span id="caret" className="animate-blink">
             |
           </span>
@@ -74,4 +93,3 @@ export const Header = () => {
     </header>
   );
 };
-

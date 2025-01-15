@@ -7,12 +7,10 @@ const App = () => {
     <div>
       <Nav />
       <AppRouter />
-      <div className="bottom-0 left-0 right-0 mx-auto w-full">
-        <Footer />
-      </div>
+      <Footer />
       {/* <a
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="ml-2 mt-[calc(100vh)] sticky no-underline px-2 py-1 text-white text-2xl bg-[#00cb2f] rounded-[30%] bottom-10 left-0"
+        className="ml-2 mt-[calc(100vh)] sticky no-underline px-2 py-1 text-white text-2xl bg-[#00cb2f] rounded-[30%] bottom-10 left-0 z-50"
       >
         <i className="fa-solid fa-arrow-up"></i>
       </a> */}
