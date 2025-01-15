@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { X } from "react-feather";
 import { Link } from "react-router-dom";
-import "../App.css";
 
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
