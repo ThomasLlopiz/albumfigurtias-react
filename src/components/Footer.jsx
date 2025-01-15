@@ -1,9 +1,9 @@
 export const Footer = () => {
   return (
-    <footer className="absolute top-0 left-0 right-0 text-white pt-48 pb-8">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-center items-center">
-          <div className="w-full md:w-1/3 mb-8 md:mb-0 flex flex-col items-center ">
+    <div className="flex justify-center items-center">
+      <footer className="z-50 absolute pt-32">
+        <div className="flex flex-col md:flex-row md:gap-96 justify-between items-center">
+          <div className="w-full mb-8 md:mb-0 flex flex-col items-center ">
             <p className="text-lg mt-1 text-center md:text-left">
               SOCIEDAD SPORTIVA DEVOTO
             </p>
@@ -91,7 +91,13 @@ export const Footer = () => {
             </a>
           </p>
         </div>
-      </div>
-    </footer>
+      </footer>
+
+      <img
+        src="./imagenes/club/footer.jpg"
+        alt="Banner"
+        className="w-full h-auto object-cover bottom-0 left-0 right-0 z-10"
+      />
+    </div>
   );
 };
