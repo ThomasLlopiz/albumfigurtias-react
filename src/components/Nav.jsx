@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 export const Nav = () => {
   return (
-    <nav className="absolute top-0 left-0 right-0 w-full flex items-center justify-between px-6 py-4 text-white mx-auto max-w-7xl">
+    <nav className="absolute z-50 top-0 left-0 right-0 w-full flex items-center justify-between px-6 py-4 text-white mx-auto max-w-7xl">
       <div className="flex space-x-12">
         <div className="relative group">
           <a href="#" className="font-bold hover:underline flex items-center">

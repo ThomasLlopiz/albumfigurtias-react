@@ -1,9 +1,15 @@
+import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <div className="flex justify-center items-center">
+      <img
+        src="./imagenes/club/footer.jpg"
+        alt="Banner"
+        className="w-full h-auto z-10"
+      />
       <footer className="z-50 absolute pt-32">
         <div className="flex flex-col md:flex-row md:gap-96 justify-between items-center">
-          <div className="w-full mb-8 md:mb-0 flex flex-col items-center ">
+          <div className="w-full md:mb-0 flex flex-col items-center">
             <p className="text-lg mt-1 text-center md:text-left">
               SOCIEDAD SPORTIVA DEVOTO
             </p>
@@ -13,15 +19,15 @@ export const Footer = () => {
             >
               NUESTRO REGLAMENTO
             </a>
-            <a
-              href=""
-              className="text-lg hover:text-green-500 transition-transform duration-300 text-center md:text-left"
+            <Link
+              to={{ pathname: "/tienda" }}
+              className="px-6 py-2 border-2 border-white text-white rounded-full text-md font-bold hover:bg-white hover:text-green-900 transition"
             >
-              PREDIO SSD
-            </a>
+              TIENDA VERDE
+            </Link>
           </div>
 
-          <div className="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
+          <div className="w-full md:w-1/3 flex justify-center md:mb-0">
             <a href="#">
               <img
                 src="./imagenes/club/ssdescudo.png"
@@ -92,12 +98,6 @@ export const Footer = () => {
           </p>
         </div>
       </footer>
-
-      <img
-        src="./imagenes/club/footer.jpg"
-        alt="Banner"
-        className="w-full h-auto object-cover bottom-0 left-0 right-0 z-10"
-      />
     </div>
   );
 };

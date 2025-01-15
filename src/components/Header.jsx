@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 export const Header = () => {
   const [typedText, setTypedText] = useState("");
   const text = "SSOCIEDAD SPORTIVA DEVOTO";
@@ -38,12 +38,12 @@ export const Header = () => {
           >
             ASOCIARME A SSD
           </a>
-          <a
-            href="#"
+          <Link
+            to={{ pathname: "/tienda" }}
             className="px-6 py-2 border-2 border-white text-white rounded-full text-md font-bold hover:bg-white hover:text-green-900 transition"
           >
             TIENDA VERDE
-          </a>
+          </Link>
         </div>
       </div>
       <img

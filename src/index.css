@@ -5,11 +5,9 @@
 body {
   background-color: white;
   color: white;
+  font-family: "Georama";
 }
 
-body {
-  font-family: "Georama", serif;
-}
 
 .bg-green-800 {
   background-color: #005128;

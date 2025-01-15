@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
 }
 
 :root {
@@ -13,11 +12,7 @@
 body {
   background-color: black;
 }
-h1,
-h2 {
-  font-family: "myFont", sans-serif;
-  font-weight: bold;
-}
+
 /* /BACKGORUND VERDE/ */
 @keyframes smoothBg {
   from {
@@ -65,45 +60,6 @@ h2 {
     background-attachment: fixed;
     mix-blend-mode: difference;
   }
-}
-
-/* NAV */
-nav a::before,
-nav a::after {
-  content: "";
-  height: 14px;
-  width: 14px;
-  position: absolute;
-  transition: all 0.35s ease;
-  opacity: 0;
-}
-
-nav a::before {
-  content: "";
-  right: 0;
-  top: 0;
-  border-top: 3px solid #00cb2f;
-  border-right: 3px solid #00cb2f;
-  transform: translate(-100%, 50%);
-}
-
-nav a:after {
-  content: "";
-  left: 0;
-  bottom: 0;
-  border-bottom: 3px solid #00cb2f;
-  border-left: 3px solid #00cb2f;
-  transform: translate(100%, -50%);
-}
-
-nav a:hover:before,
-nav a:hover:after {
-  transform: translate(0, 0);
-  opacity: 1;
-}
-
-nav a:hover {
-  color: #00cb2f;
 }
 
 /* FIGURITAS */
@@ -183,7 +139,7 @@ nav a:hover {
 
 h1,
 h2 {
-  font-family: "myFont", sans-serif;
+  /* font-family: "myFont", sans-serif; */
   font-weight: bold;
 }
 .neonText {
