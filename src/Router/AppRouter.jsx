@@ -5,6 +5,7 @@ import { Novedades } from "../pages/Novedades";
 import { Album } from "../pages/Album";
 import { Tienda } from "../pages/Tienda";
 import { Inscripcion } from "../pages/Inscripcion";
+import { Asitencia } from "../pages/Asitencia";
 
 export const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ export const AppRouter = () => {
       <Route path="/novedades" element={<Novedades />} />
       <Route path="/tienda" element={<Tienda />} />
       <Route path="/inscripcion" element={<Inscripcion />} />
+      <Route path="/asistencia" element={<Asitencia />} />
       <Route path="*" element={<Home />} />
     </Routes>
   );

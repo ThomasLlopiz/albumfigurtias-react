@@ -5,7 +5,7 @@ export const Footer = () => {
       <img
         src="./imagenes/club/footer.jpg"
         alt="Banner"
-        className="w-full h-auto z-10"
+        className="w-full z-10"
       />
       <footer className="z-50 pt-32 absolute">
         <div className="flex flex-col md:flex-row md:gap-96 justify-between items-center">

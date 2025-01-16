@@ -1,0 +1,12 @@
+{
+  "asistencia": [
+    {"id": 1, "nombre": "Thomas Llopiz", "estado": "sin procesar"},
+    {"id": 2, "nombre": "Thomas Llopiz", "estado": "sin procesar"},
+    {"id": 3, "nombre": "Thomas Llopiz", "estado": "sin procesar"},
+    {"id": 4, "nombre": "Thomas Llopiz", "estado": "sin procesar"},
+    {"id": 5, "nombre": "Thomas Llopiz", "estado": "sin procesar"},
+    {"id": 6, "nombre": "Thomas Llopiz", "estado": "sin procesar"},
+    {"id": 7, "nombre": "Thomas Llopiz", "estado": "sin procesar"}
+
+]
+}
