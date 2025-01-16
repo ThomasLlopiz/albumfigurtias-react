@@ -23,30 +23,48 @@ export const Nav = () => {
       <nav className="absolute z-50 top-0 left-0 right-0 w-full flex items-center justify-between px-6 py-4 text-white mx-auto max-w-7xl">
         <div className="flex space-x-12">
           <div className="relative group">
-            <a href="#" className="font-bold hover:underline flex items-center">
+            <a
+              href="#"
+              className="font-bold hover:underline flex items-center justify-center"
+            >
               EL EQUIPO
-              <i className="fas fa-chevron-down ml-1"></i>
+              <i className="fas fa-chevron-down ml-1 mb-1"></i>
             </a>
             <div className="absolute left-0 hidden mt-2 bg-white text-black rounded shadow-lg group-hover:block">
-              <Link to="#" className="block px-4 py-2 hover:bg-gray-200">
-                Submenú 1
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Fútbol
               </Link>
-              <Link to="#" className="block px-4 py-2 hover:bg-gray-200">
-                Submenú 2
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Básquet
+              </Link>
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Vóley
+              </Link>
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Tenis
+              </Link>
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Pádel
               </Link>
             </div>
           </div>
           <div className="relative group">
             <a href="#" className="font-bold hover:underline flex items-center">
               EL CLUB
-              <i className="fas fa-chevron-down ml-1"></i>
+              <i className="fas fa-chevron-down ml-1 mb-1"></i>
             </a>
             <div className="absolute left-0 hidden mt-2 bg-white text-black rounded shadow-lg group-hover:block">
-              <Link to="#" className="block px-4 py-2 hover:bg-gray-200">
-                Submenú 1
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Historia
               </Link>
-              <Link to="#" className="block px-4 py-2 hover:bg-gray-200">
-                Submenú 2
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Comision directiva
+              </Link>
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Estatuto
+              </Link>
+              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
+                Reglamento
               </Link>
             </div>
           </div>
@@ -59,7 +77,7 @@ export const Nav = () => {
           />
         </Link>
 
-        <div className="flex space-x-12">
+        <div className="flex space-x-12 font-semibold hover:underline">
           <Link to="/inscripcion">INSCRIBIRME</Link>
           <Link to="/tienda">TIENDA</Link>
         </div>
