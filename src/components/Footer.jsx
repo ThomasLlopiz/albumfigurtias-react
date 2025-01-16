@@ -7,7 +7,7 @@ export const Footer = () => {
         alt="Banner"
         className="w-full h-auto z-10"
       />
-      <footer className="z-50 absolute pt-32">
+      <footer className="z-50 pt-32 absolute">
         <div className="flex flex-col md:flex-row md:gap-96 justify-between items-center">
           <div className="w-full md:mb-0 flex flex-col items-center">
             <p className="text-lg mt-1 text-center md:text-left">

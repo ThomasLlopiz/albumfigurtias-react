@@ -8,7 +8,7 @@ import { Whatsapp } from "../components/Whatsapp";
 export const Home = () => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Noticias />
       <div className="max-w-7xl mx-auto px-4">
         <img
