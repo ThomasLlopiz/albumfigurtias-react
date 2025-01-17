@@ -7,7 +7,7 @@ const App = () => {
     <div>
       <Nav />
       <AppRouter />
-      <div className="bottom-0 relative">
+      <div className="bottom-0">
         <Footer />
       </div>
       {/* <a
