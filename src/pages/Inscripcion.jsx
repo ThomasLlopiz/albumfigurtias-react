@@ -64,7 +64,7 @@ export const Inscripcion = () => {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" "
                 value={edad}
-                onChange={handleEdadChange} // Actualiza la edad
+                onChange={handleEdadChange}
                 required
               />
               <label
@@ -92,7 +92,6 @@ export const Inscripcion = () => {
             </div>
           </div>
 
-          {/* Solo mostrar el campo de "Responsable del menor" si la edad ha sido ingresada y es menor a 18 */}
           {edad !== "" && edad < 18 && (
             <div className="relative z-0 w-full mb-5 group">
               <input
@@ -102,7 +101,7 @@ export const Inscripcion = () => {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" "
                 value={responsable}
-                onChange={(e) => setResponsable(e.target.value)} // Actualiza el responsable
+                onChange={(e) => setResponsable(e.target.value)}
                 required
               />
               <label
@@ -155,9 +154,10 @@ export const Inscripcion = () => {
                 id="floating_sport"
                 className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 value={deporte}
+                onChange={(e) => setDeporte(e.target.value)}
                 required
               >
-                <option value="seleccion" disabled selected hidden>
+                <option value="seleccion" disabled hidden>
                   Seleccione un deporte
                 </option>
                 <option value="basquet">Basquet</option>
