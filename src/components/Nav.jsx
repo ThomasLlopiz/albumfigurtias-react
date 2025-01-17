@@ -77,9 +77,13 @@ export const Nav = () => {
           />
         </Link>
 
-        <div className="flex space-x-12 font-semibold hover:underline">
-          <Link to="/inscripcion">INSCRIBIRME</Link>
-          <Link to="/tienda">TIENDA</Link>
+        <div className="flex space-x-12 font-semibold">
+          <Link to="/inscripcion" className="hover:underline">
+            INSCRIBIRME
+          </Link>
+          <Link to="/tienda" className="hover:underline">
+            TIENDA
+          </Link>
         </div>
       </nav>
       <header>

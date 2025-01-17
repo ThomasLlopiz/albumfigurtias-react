@@ -154,9 +154,10 @@ export const Inscripcion = () => {
                 name="floating_sport"
                 id="floating_sport"
                 className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                value={deporte}
                 required
               >
-                <option value="" disabled selected hidden>
+                <option value="seleccion" disabled selected hidden>
                   Seleccione un deporte
                 </option>
                 <option value="basquet">Basquet</option>

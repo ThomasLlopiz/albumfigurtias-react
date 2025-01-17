@@ -6,6 +6,7 @@ import { Album } from "../pages/Album";
 import { Tienda } from "../pages/Tienda";
 import { Inscripcion } from "../pages/Inscripcion";
 import { Asitencia } from "../pages/Asitencia";
+import { Curriculum } from "../pages/Curriculum";
 
 export const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ export const AppRouter = () => {
       <Route path="/tienda" element={<Tienda />} />
       <Route path="/inscripcion" element={<Inscripcion />} />
       <Route path="/asistencia" element={<Asitencia />} />
+      <Route path="/curriculum" element={<Curriculum />} />
       <Route path="*" element={<Home />} />
     </Routes>
   );

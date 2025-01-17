@@ -1,9 +1,29 @@
-import React from "react";
+import { useState } from "react";
 
 export const Curriculum = () => {
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+
+    if (selectedFile && selectedFile.type !== "application/pdf") {
+      alert("El archivo debe ser un PDF.");
+      setFile(null);
+      return;
+    }
+
+    if (selectedFile && selectedFile.size > 200 * 1024) {
+      alert("El archivo no puede ser mayor de 200KB.");
+      setFile(null);
+      return;
+    }
+
+    setFile(selectedFile);
+  };
+
   return (
     <div className="mt-20 mb-20 flex flex-col items-center text-black">
-      <h1 className="text-xl font-semibold">INSCRIPCION</h1>
+      <h1 className="text-xl font-semibold">CURRICULUM</h1>
       <div className="flex justify-around gap-20 w-1/2">
         <form className="mx-auto mt-10 w-1/2">
           <div className="grid md:grid-cols-2 md:gap-6">
@@ -44,24 +64,6 @@ export const Curriculum = () => {
           <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full mb-5 group">
               <input
-                type="number"
-                name="floating_edad"
-                id="floating_edad"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-                placeholder=" "
-                value={edad}
-                onChange={handleEdadChange} // Actualiza la edad
-                required
-              />
-              <label
-                htmlFor="floating_edad"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Edad
-              </label>
-            </div>
-            <div className="relative z-0 w-full mb-5 group">
-              <input
                 type="text"
                 name="direccion"
                 id="floating_direccionn"
@@ -76,6 +78,38 @@ export const Curriculum = () => {
                 Direccion
               </label>
             </div>
+            <div className="relative z-0 w-full mb-5 group">
+              <input
+                type="date"
+                name="floating_birthdate"
+                id="floating_birthdate"
+                className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                required
+              />
+              <label
+                htmlFor="floating_birthdate"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Fecha de nacimiento
+              </label>
+            </div>
+          </div>
+
+          <div className="relative z-0 w-full mb-5 group">
+            <input
+              type="gmail"
+              name="floating_email"
+              id="floating_email"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="floating_email"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Correo electronico
+            </label>
           </div>
 
           <div className="relative z-0 w-full mb-5 group">
@@ -92,47 +126,26 @@ export const Curriculum = () => {
               htmlFor="floating_phone"
               className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              Telefono (3564 - 598173)
+              Telefono
             </label>
           </div>
 
-          <div className="grid md:grid-cols-2 md:gap-6">
-            <div className="relative z-0 w-full mb-5 group">
-              <input
-                type="date"
-                name="floating_birthdate"
-                id="floating_birthdate"
-                className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-                required
-              />
-              <label
-                htmlFor="floating_birthdate"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Fecha de nacimiento
-              </label>
-            </div>
-
-            <div className="relative z-0 w-full mb-5 group">
-              <select
-                name="floating_sport"
-                id="floating_sport"
-                className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-                required
-              >
-                <option value="" disabled selected hidden>
-                  Seleccione un deporte
-                </option>
-                <option value="basquet">Basquet</option>
-                <option value="voley">Voley</option>
-                <option value="futbol">Fútbol</option>
-                <option value="tenis">Tenis</option>
-              </select>
-              <label
-                htmlFor="floating_sport"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              ></label>
-            </div>
+          <div className="relative z-0 w-full mb-5 group">
+            <input
+              type="file"
+              name="floating_file"
+              id="floating_file"
+              className="block mb-4 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+              placeholder=" "
+              onChange={handleFileChange}
+              accept=".pdf"
+            />
+            <label
+              htmlFor="floating_file"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Subir archivo PDF (máximo 200KB)
+            </label>
           </div>
 
           <button
@@ -142,16 +155,6 @@ export const Curriculum = () => {
             ENVIAR
           </button>
         </form>
-        <div className="w-1/2 mt-20 mx-auto flex flex-col justify-between">
-          <p className="text-lg">
-            La inscripcion a cualquier deporte estara efectivizada luego de
-            entregar la ficha, complearla, firmarla y entregarla en secretaría o
-            al profesor correspondiente.
-          </p>
-          <button className="w-full bg-green-800 p-2 rounded-lg text-white hover:bg-green-500">
-            DESCARGAR FICHA
-          </button>
-        </div>
       </div>
     </div>
   );
