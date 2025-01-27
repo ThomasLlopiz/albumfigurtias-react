@@ -1,11 +1,20 @@
-import React, { useState } from "react";
-import asistenciaData from "../utiltis/asistencia.json";
+import React, { useEffect, useState } from "react";
 
 export const Asitencia = () => {
-  // Cargar las asistencias en el estado
-  const [asistencias, setAsistencias] = useState(asistenciaData.asistencia);
+  const [asistencias, setAsistencias] = useState([]);
+  
+  useEffect(() => {
+    fetch("http://localhost:8000/api/alumnos")
+      .then((response) => response.json())
+      .then((data) => {
+        setAsistencias(data);
+      });
+  }, []);
 
-  // Función para manejar la acción cuando se hace clic en "x" (inasistencia)
+  useEffect(() => {
+    console.log(asistencias);
+  }, [asistencias]);
+
   const marcarInasistencia = (id) => {
     setAsistencias((prevAsistencias) =>
       prevAsistencias.map((asistencia) =>
@@ -16,7 +25,6 @@ export const Asitencia = () => {
     );
   };
 
-  // Función para manejar la acción cuando se hace clic en "O" (asistió)
   const marcarAsistio = (id) => {
     setAsistencias((prevAsistencias) =>
       prevAsistencias.map((asistencia) =>
@@ -25,9 +33,8 @@ export const Asitencia = () => {
     );
   };
 
-  // Filtrar las asistencias para mostrar solo las que están "sin procesar"
   const asistenciasSinProcesar = asistencias.filter(
-    (asistencia) => asistencia.estado === "sin procesar"
+    (asistencia) => asistencia.estado === 1
   );
 
   return (
