@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Curriculum = () => {
   return (
     <section
@@ -13,9 +15,9 @@ export const Curriculum = () => {
       <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-between px-32 z-10">
         <div className="text-white text-center">
           <h2 className="text-4xl font-bold mb-4">FORMA PARTE DEL CLUB</h2>
-          <a className="text-xl border border-white rounded-lg p-2 mt-4 uppercase mx-auto">
+          <Link to="/inscripcion" aria-label="ssd-curriculum" className="text-xl border border-white rounded-lg p-2 mt-4 uppercase mx-auto">
             Subir mi Curriculum Vitae
-          </a>
+          </Link>
         </div>
 
         <div className="w-1/3">

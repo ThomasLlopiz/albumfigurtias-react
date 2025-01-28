@@ -16,6 +16,7 @@ export const Footer = () => {
             <a
               href="https://drive.google.com/file/d/1DvCUonGu-QEZvXqvNdLM4pdNODlU3zM2/view"
               className="text-lg hover:text-green-500 transition-transform duration-300 text-center md:text-left"
+              aria-label="ssd-reglamento"
             >
               NUESTRO REGLAMENTO
             </a>
@@ -28,7 +29,7 @@ export const Footer = () => {
           </div>
 
           <div className="w-full md:w-1/3 flex justify-center md:mb-0">
-            <a href="#">
+            <a href="#" aria-label="ssd-logo">
               <img
                 src="./imagenes/club/ssdescudo.png"
                 alt="Logo"
@@ -40,6 +41,7 @@ export const Footer = () => {
           <div className="w-full md:w-1/3 flex flex-col items-center">
             <div className="flex space-x-6 my-8">
               <a
+                aria-label="ssd-facebook"
                 href="https://www.facebook.com/FansSociedadSportivaDevoto"
                 target="_blank"
                 className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
@@ -47,6 +49,7 @@ export const Footer = () => {
                 <i className="fab fa-facebook-square text-white text-3xl hover:text-green-500"></i>
               </a>
               <a
+                aria-label="ssd-instagram"
                 href="https://www.instagram.com/ssdevoto/"
                 target="_blank"
                 className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
@@ -54,6 +57,7 @@ export const Footer = () => {
                 <i className="fab fa-instagram text-white text-3xl hover:text-green-500"></i>
               </a>
               <a
+                aria-label="ssd-youtube"
                 href="https://www.youtube.com/@SociedadSportivaDevoto"
                 target="_blank"
                 className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
@@ -63,6 +67,7 @@ export const Footer = () => {
             </div>
             <div className="text-sm text-white mb-2 flex flex-col items-center">
               <a
+                aria-label="ssd-whatsapp"
                 href="https://wa.me/3564501086"
                 className="text-lg hover:text-green-500"
               >
@@ -71,10 +76,12 @@ export const Footer = () => {
               <a
                 href=".index.html#premios"
                 className="text-lg hover:text-green-500"
+                aria-label="ssd-premios"
               >
                 PREMIOS
               </a>
               <a
+                aria-label="ssd-contacto"
                 href="https://wa.me/3564501086"
                 className="text-lg hover:text-green-500"
               >
@@ -90,6 +97,7 @@ export const Footer = () => {
           <p className="text-md mt-1">
             VISITA EL{" "}
             <a
+              aria-label="ssd-grupodevoto"
               href="https://grupodevoto.com.ar"
               className="hover:text-green-500"
             >
