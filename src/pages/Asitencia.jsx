@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Asitencia = () => {
   const [asistencias, setAsistencias] = useState([]);
-  
+
   useEffect(() => {
-    fetch("http://localhost:8000/api/alumnos")
+    fetch("http://localhost:8000/api/inscripciones")
       .then((response) => response.json())
       .then((data) => {
         setAsistencias(data);
@@ -34,7 +34,7 @@ export const Asitencia = () => {
   };
 
   const asistenciasSinProcesar = asistencias.filter(
-    (asistencia) => asistencia.estado === 1
+    (asistencia) => asistencia.planilla === 0
   );
 
   return (
@@ -43,11 +43,11 @@ export const Asitencia = () => {
       {asistenciasSinProcesar.map((asistencia, index) => (
         <div
           key={index}
-          className="flex justify-center items-center gap-2 border-2 border-gray-400 w-full md:w-1/6 rounded-lg mx-auto mb-1"
+          className="flex justify-between items-center gap-2 border-2 border-gray-400 w-full md:w-72 rounded-lg mx-auto mb-1"
         >
           {/* Botón para marcar como inasistencia */}
           <button
-            className="bg-red-700 px-2 py-1 rounded-lg text-white font-extrabold"
+            className="bg-red-700 px-2 py-1 rounded-lg text-white font-extrabold ml-1"
             onClick={() => marcarInasistencia(asistencia.id)}
           >
             x
@@ -55,12 +55,12 @@ export const Asitencia = () => {
 
           {/* Nombre de la persona */}
           <p className="text-white text-md font-semibold bg-blue-700 px-5 py-1 rounded-lg mt-1 mb-1">
-            {asistencia.nombre}
+            {asistencia.nombre} {asistencia.apellido}
           </p>
 
           {/* Botón para marcar como asistió */}
           <button
-            className="bg-green-700 px-2 py-1 rounded-lg text-white font-extrabold"
+            className="bg-green-700 px-2 py-1 rounded-lg text-white font-extrabold mr-1"
             onClick={() => marcarAsistio(asistencia.id)}
           >
             O
