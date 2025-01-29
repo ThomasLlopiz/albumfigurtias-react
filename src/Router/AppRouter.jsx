@@ -7,19 +7,21 @@ import { Tienda } from "../pages/Tienda";
 import { Inscripcion } from "../pages/Inscripcion";
 import { Asitencia } from "../pages/Asitencia";
 import { Curriculum } from "../pages/Curriculum";
+import { Admin } from "../pages/Admin";
 
 export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="*" element={<Home />} />
       <Route path="/juegos" element={<Juegos />} />
       <Route path="/album" element={<Album />} />
       <Route path="/novedades" element={<Novedades />} />
       <Route path="/tienda" element={<Tienda />} />
       <Route path="/inscripcion" element={<Inscripcion />} />
-      <Route path="/asistencia" element={<Asitencia />} />
+      <Route path="/asistencias" element={<Asitencia />} />
       <Route path="/curriculum" element={<Curriculum />} />
-      <Route path="*" element={<Home />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 };
