@@ -1,17 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Sesion = () => {
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
+  const [rol, setRol] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const login = async (e) => {
     e.preventDefault();
 
-    if (!usuario || !contrasena) {
-      setError("Por favor, ingresa tu usuario y contraseña.");
-      return;
-    }
+
 
     try {
       const response = await fetch("http://localhost:8000/api/auth/login", {
@@ -22,20 +22,18 @@ export const Sesion = () => {
         body: JSON.stringify({
           usuario: usuario,
           contrasena: contrasena,
+          rol: rol,
         }),
       });
-
-      if (!response.ok) {
-        throw new Error("Error en el servidor");
-      }
-
       const data = await response.json();
 
-      if (data.access_token) {
+      if (response.ok) {
         localStorage.setItem("token", data.access_token);
-        console.log("Inicio de sesión exitoso");
+        localStorage.setItem("expires_at", data.expires_at);
+        localStorage.setItem("rol", data.rol);
+        navigate("/admin");
       } else {
-        setError(data.message || "Hubo un problema con el inicio de sesión.");
+        throw new Error("Error en el servidor");
       }
     } catch (error) {
       setError("Error al conectar con el servidor.");
