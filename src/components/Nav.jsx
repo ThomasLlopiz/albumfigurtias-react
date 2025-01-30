@@ -78,7 +78,7 @@ export const Nav = () => {
         </Link>
 
         <div className="flex space-x-12 font-semibold">
-          <Link to="/inscripcion" className="hover:underline">
+          <Link to="/inscripciones" className="hover:underline">
             INSCRIBIRME
           </Link>
           <Link to="/tienda" className="hover:underline">
