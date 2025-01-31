@@ -47,7 +47,7 @@ export const Admin = () => {
           to="/deportes"
           className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
         >
-          Asistencias
+          Deportes
         </Link>
       </div>
     </div>
