@@ -15,9 +15,6 @@ export const Asistencia = () => {
       .then((response) => response.json())
       .then((data) => {
         const inscripcionesFiltradas = data.filter((inscripcion) => {
-          console.log(inscripcion.disciplina === deporte);
-          console.log(inscripcion.disciplina + "-" + deporte);
-
           return (
             inscripcion.disciplina === deporte &&
             verificarCategoria(inscripcion.fecha_nacimiento, categoria)
@@ -69,7 +66,7 @@ export const Asistencia = () => {
   };
 
   return (
-    <div className="text-black text-center">
+    <div className="text-black text-center mt-32">
       <h1 className="text-4xl font-bold">Asistencia</h1>
       {asistencias.map((asistencia) => (
         <div
