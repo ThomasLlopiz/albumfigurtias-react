@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Admin = () => {
   return (
     <div className="text-black flex flex-col gap-2 mt-32 mb-32 max-w-xl mx-auto">
-      <div className="flex justify-between items-center gap-4">
+      <div className="flex justify-start items-center gap-4">
         <Link
           to="/cuotas"
           className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
@@ -17,10 +17,10 @@ export const Admin = () => {
           Curriculums
         </Link>
         <Link
-          to="/profesores"
-          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
+          to="/crearDeportes"
+          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center text-center"
         >
-          Profesores
+          Crear Deportes
         </Link>
         <Link
           to="/alquileres"
@@ -30,7 +30,7 @@ export const Admin = () => {
         </Link>
       </div>
 
-      <div className="flex justify-between items-center gap-4">
+      <div className="flex justify-start items-center gap-4">
         <Link
           to="/alumnos"
           className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
@@ -44,7 +44,7 @@ export const Admin = () => {
           Fechas
         </Link>
         <Link
-          to="/asistencias"
+          to="/deportes"
           className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
         >
           Asistencias
