@@ -3,14 +3,18 @@ import { useLocation } from "react-router-dom";
 
 export const Asistencia = () => {
   const location = useLocation();
-  const [asistencias, setAsistencias] = useState([]);
+  const [inscriptos, setInscriptos] = useState([]);
+  const [inscriptosGuardados, setInscriptosGuardados] = useState([]);
 
   const searchParams = new URLSearchParams(location.search);
   const deporte = searchParams.get("deporte");
   const categoria = searchParams.get("categoria");
 
   useEffect(() => {
-    console.log(deporte, categoria);
+    const inscripcionesGuardadas =
+      JSON.parse(localStorage.getItem("inscriptos")) || [];
+    setInscriptosGuardados(inscripcionesGuardadas);
+
     fetch("http://localhost:8000/api/inscripciones")
       .then((response) => response.json())
       .then((data) => {
@@ -20,9 +24,23 @@ export const Asistencia = () => {
             verificarCategoria(inscripcion.fecha_nacimiento, categoria)
           );
         });
-        setAsistencias(inscripcionesFiltradas);
+
+        const inscripcionesAmostrar = inscripcionesFiltradas.filter(
+          (inscripcion) =>
+            !inscripcionesGuardadas.some(
+              (guardada) => guardada.id === inscripcion.id
+            )
+        );
+
+        setInscriptos(inscripcionesAmostrar);
       });
   }, [deporte, categoria]);
+
+  useEffect(() => {
+    if (inscriptosGuardados.length > 0) {
+      localStorage.setItem("inscriptos", JSON.stringify(inscriptosGuardados));
+    }
+  }, [inscriptosGuardados]);
 
   const verificarCategoria = (fechaNacimiento, categoria) => {
     const edad = calcularEdad(fechaNacimiento);
@@ -47,35 +65,41 @@ export const Asistencia = () => {
     return edad;
   };
 
-  const marcarInasistencia = (id) => {
-    setAsistencias((prevAsistencias) =>
-      prevAsistencias.map((asistencia) =>
-        asistencia.id === id
-          ? { ...asistencia, estado: "inasistencia" }
-          : asistencia
-      )
+  const marcarInasistencia = (inscripcion) => {
+    const nuevaListaInscriptos = [
+      ...inscriptosGuardados,
+      { ...inscripcion, estado: "inasistencia" },
+    ];
+    setInscriptosGuardados(nuevaListaInscriptos);
+
+    setInscriptos((prevInscriptos) =>
+      prevInscriptos.filter((asistencia) => asistencia.id !== inscripcion.id)
     );
   };
 
-  const marcarAsistio = (id) => {
-    setAsistencias((prevAsistencias) =>
-      prevAsistencias.map((asistencia) =>
-        asistencia.id === id ? { ...asistencia, estado: "asistió" } : asistencia
-      )
+  const marcarAsistio = (inscripcion) => {
+    const nuevaListaInscriptos = [
+      ...inscriptosGuardados,
+      { ...inscripcion, estado: "asistió" },
+    ];
+    setInscriptosGuardados(nuevaListaInscriptos);
+
+    setInscriptos((prevInscriptos) =>
+      prevInscriptos.filter((asistencia) => asistencia.id !== inscripcion.id)
     );
   };
 
   return (
     <div className="text-black text-center mt-32">
       <h1 className="text-4xl font-bold">Asistencia</h1>
-      {asistencias.map((asistencia) => (
+      {inscriptos.map((asistencia) => (
         <div
           key={asistencia.id}
           className="flex justify-between items-center gap-2 border-2 border-gray-400 w-full md:w-72 rounded-lg mx-auto mb-1"
         >
           <button
             className="bg-red-700 px-2 py-1 rounded-lg text-white font-extrabold ml-1"
-            onClick={() => marcarInasistencia(asistencia.id)}
+            onClick={() => marcarInasistencia(asistencia)}
           >
             x
           </button>
@@ -84,7 +108,7 @@ export const Asistencia = () => {
           </p>
           <button
             className="bg-green-700 px-2 py-1 rounded-lg text-white font-extrabold mr-1"
-            onClick={() => marcarAsistio(asistencia.id)}
+            onClick={() => marcarAsistio(asistencia)}
           >
             O
           </button>
