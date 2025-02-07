@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFutbol, faBasketballBall, faVolleyballBall, faBaseballBall } from "@fortawesome/free-solid-svg-icons";
 
 export const Deportes = () => {
   const [deportes, setDeportes] = useState([]);
@@ -20,17 +22,47 @@ export const Deportes = () => {
     );
   };
 
+  const getIconForDeporte = (deporte) => {
+    switch (deporte) {
+      case "Fútbol":
+        return faFutbol;
+      case "Básquet":
+        return faBasketballBall;
+      case "Vóley":
+        return faVolleyballBall;
+      case "Tenis":
+        return faBaseballBall;
+      default:
+        return faFutbol;
+    }
+  };
+
   return (
-    <div className="text-black text-center mt-32">
-      {deportes.map((deporte) => (
+    <div className="text-black text-center py-32">
+      <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
+        Selecciona tu Deporte
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 px-4 max-w-7xl mx-auto">
+        {deportes.map((deporte) => (
+          <div
+            key={deporte.id}
+            className="flex flex-col items-center  p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform cursor-pointer"
+            onClick={() => handleDeporteClick(deporte)}
+          >
+            <FontAwesomeIcon icon={getIconForDeporte(deporte.deporte)} className="text-5xl mb-4 text-green-700" />
+            <h3 className="text-xl font-semibold text-green-700">{deporte.deporte}</h3>
+            <p className="text-gray-600">{deporte.categoria} - {deporte.genero}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-8 text-center">
         <button
-          key={deporte.id}
-          className="border-2 border-gray-400 w-full md:w-72 rounded-lg mx-auto mb-1 p-2 hover:bg-green-900 hover:text-white"
-          onClick={() => handleDeporteClick(deporte)}
+          onClick={() => navigate("/admin")}
+          className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
         >
-          {deporte.deporte} - {deporte.genero} - {deporte.categoria}
+          Volver
         </button>
-      ))}
+      </div>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom"; // Importa useNavigate
 
 export const Asistencia = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // Inicializa useNavigate
   const [inscriptos, setInscriptos] = useState([]);
   const [inscriptosGuardados, setInscriptosGuardados] = useState([]);
 
@@ -90,30 +91,47 @@ export const Asistencia = () => {
   };
 
   return (
-    <div className="text-black text-center mt-32">
-      <h1 className="text-4xl font-bold">Asistencia</h1>
-      {inscriptos.map((asistencia) => (
-        <div
-          key={asistencia.id}
-          className="flex justify-between items-center gap-2 border-2 border-gray-400 w-full md:w-72 rounded-lg mx-auto mb-1"
+    <div className="bg-gray-100 min-h-screen text-black py-16">
+      <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
+        Asistencia {deporte} - {categoria}
+      </h1>
+      <div className="flex flex-col items-center gap-4">
+        {inscriptos.map((asistencia) => (
+          <div
+            key={asistencia.id}
+            className="sm:w-1/3 w-96 bg-white rounded-xl shadow-md p-6 flex justify-between items-center gap-4 hover:shadow-xl transition-all duration-300"
+          >
+            <div className="flex flex-col items-center text-center">
+              <p className="text-md font-semibold text-gray-800">
+                {asistencia.nombre} {asistencia.apellido}
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <button
+                className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-lg font-bold transition duration-200"
+                onClick={() => marcarInasistencia(asistencia)}
+              >
+                Ausente
+              </button>
+              <button
+                className="bg-green-500 hover:bg-green-600 text-white py-1 px-4 rounded-lg font-bold transition duration-200"
+                onClick={() => marcarAsistio(asistencia)}
+              >
+                Presente
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8 text-center">
+        <button
+          onClick={() => navigate("/deportes")}
+          className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
         >
-          <button
-            className="bg-red-700 px-2 py-1 rounded-lg text-white font-extrabold ml-1"
-            onClick={() => marcarInasistencia(asistencia)}
-          >
-            x
-          </button>
-          <p className="text-white text-md font-semibold bg-blue-700 px-5 py-1 rounded-lg mt-1 mb-1">
-            {asistencia.nombre} {asistencia.apellido}
-          </p>
-          <button
-            className="bg-green-700 px-2 py-1 rounded-lg text-white font-extrabold mr-1"
-            onClick={() => marcarAsistio(asistencia)}
-          >
-            O
-          </button>
-        </div>
-      ))}
+          Volver
+        </button>
+      </div>
     </div>
   );
 };

@@ -17,19 +17,6 @@ export const Home = () => {
         <meta property="og:image" content="./imagenes/club/publicidad1.jpg" />
         <meta property="og:url" content="https://www.socidadsportivadevoto.com.ar/" />
       </Helmet>
-
-      <Noticias />
-      <div className="max-w-7xl mx-auto px-4">
-        <img
-          className="rounded-lg"
-          src="./imagenes/club/publicidad1.jpg"
-          alt="Publicidad del sitio"
-        />
-      </div>
-      <Tienda />
-      <Curriculum />
-      <Sponsors />
-      <Whatsapp />
     </div>
   );
 };

@@ -1,166 +1,91 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 export const Nav = () => {
-  const [typedText, setTypedText] = useState("");
-  const text = "SSOCIEDAD SPORTIVA DEVOTO";
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isEquipoDropdownOpen, setIsEquipoDropdownOpen] = useState(false);
+    const [isClubDropdownOpen, setIsClubDropdownOpen] = useState(false);
+    const [logo, setLogo] = useState('imagenes/general/ssdescudocolor.png');
+    const [logoAlt, setLogoAlt] = useState('Escudo Sociedad Sportiva Devoto');
 
-  useEffect(() => {
-    let i = 0;
-    const intervalId = setInterval(() => {
-      if (i < text.length) {
-        setTypedText((prev) => prev + text.charAt(i));
-        i++;
-      } else {
-        clearInterval(intervalId);
-      }
-    }, 100);
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
-    return () => clearInterval(intervalId);
-  }, []);
+    const toggleEquipoDropdown = (e) => {
+        e.preventDefault();
+        setIsEquipoDropdownOpen(!isEquipoDropdownOpen);
+        setIsClubDropdownOpen(false);
+    };
 
-  return (
-    <div>
-      <nav className="absolute z-50 top-0 left-0 right-0 w-full flex items-center justify-between px-6 py-4 text-white mx-auto max-w-7xl">
-        <div className="flex space-x-12">
-          <div className="relative group">
-            <a
-              href="#"
-              className="font-bold hover:underline flex items-center justify-center"
-            >
-              EL EQUIPO
-              <i className="fas fa-chevron-down ml-1 mb-1"></i>
-            </a>
-            <div className="absolute left-0 hidden mt-2 bg-white text-black rounded shadow-lg group-hover:block">
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Fútbol
-              </Link>
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Básquet
-              </Link>
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Vóley
-              </Link>
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Tenis
-              </Link>
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Pádel
-              </Link>
+    const toggleClubDropdown = (e) => {
+        e.preventDefault();
+        setIsClubDropdownOpen(!isClubDropdownOpen);
+        setIsEquipoDropdownOpen(false);
+    };
+
+    const closeAllDropdowns = () => {
+        setIsEquipoDropdownOpen(false);
+        setIsClubDropdownOpen(false);
+    };
+
+    return (
+        <nav className="fixed top-0 left-0 right-0 w-full flex items-center justify-between px-6 md:px-32 sm:64 text-white mx-auto z-50 sm:py-0 py-2"
+            style={{ backgroundColor: 'rgba(0, 165, 79, 0.8)' }}>
+            <div>
+                <Link to="/">
+                    <img src={logo} alt={logoAlt}
+                        className={`h-24 absolute -bottom-16 sm:-bottom-9 ${logoAlt === 'Sportiva Devoto' ? 'logo-text' : ''}`} />
+                </Link>
             </div>
-          </div>
-          <div className="relative group">
-            <a href="#" className="font-bold hover:underline flex items-center">
-              EL CLUB
-              <i className="fas fa-chevron-down ml-1 mb-1"></i>
-            </a>
-            <div className="absolute left-0 hidden mt-2 bg-white text-black rounded shadow-lg group-hover:block">
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Historia
-              </Link>
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Comision directiva
-              </Link>
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Estatuto
-              </Link>
-              <Link to="#" className="block px-6 py-2 hover:bg-gray-200">
-                Reglamento
-              </Link>
+
+            <div id="logo" className="block md:hidden">
+                <button id="hamburger" className="text-white focus:outline-none" aria-label="Abrir menú" onClick={toggleMenu}>
+                    <i className="fas fa-bars text-2xl"></i>
+                </button>
             </div>
-          </div>
-        </div>
-        <Link to="/">
-          <img
-            src="./imagenes/club/ssdescudo.png"
-            alt="Escudo Sociedad Sportiva Devoto"
-            className="h-20"
-          />
-        </Link>
 
-        <div className="flex space-x-12 font-semibold">
-          <Link to="/inscripciones" className="hover:underline">
-            INSCRIBIRME
-          </Link>
-          <Link to="/tienda" className="hover:underline">
-            TIENDA
-          </Link>
-        </div>
-      </nav>
-      <header>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center z-99">
-          <h1
-            id="typewriter"
-            className="text-4xl md:text-7xl font-bold relative"
-          >
-            <span>{typedText}</span>
-            <span id="caret" className="animate-blink">
-              |
-            </span>
-          </h1>
-          <p className="text-lg md:text-2xl mt-4">
-            Forma parte del Club más grande de la zona
-          </p>
+            <div id="menu"
+                className={`py-5 ${isMenuOpen ? 'block' : 'hidden'} md:flex flex-col md:flex-row md:items-center md:space-x-12 space-y-4 md:space-y-0 mt-6 md:mt-0 w-full md:w-auto text-center`}>
+                <div className="relative">
+                    <Link to="#" id="equipoDropdown" className="font-bold hover:underline flex items-center justify-center" onClick={toggleEquipoDropdown}>
+                        DEPORTES
+                        <i className={`fas fa-chevron-down ml-1 ${isEquipoDropdownOpen ? 'rotate-180' : ''}`}></i>
+                    </Link>
+                    <div id="equipoMenu"
+                        className={`absolute ${isEquipoDropdownOpen ? 'block' : 'hidden'} mt-2 bg-white text-black rounded shadow-lg z-40 left-1/2 transform -translate-x-1/2`}>
+                        <Link to="./futbol" className="block px-4 py-2 hover:bg-gray-200">Fútbol</Link>
+                        <Link to="./basquet" className="block px-4 py-2 hover:bg-gray-200">Básquet</Link>
+                        <Link to="./voley" className="block px-4 py-2 hover:bg-gray-200">Vóley</Link>
+                        <Link to="./tenis" className="block px-4 py-2 hover:bg-gray-200">Tenis</Link>
+                        <Link to="./amateurs" className="block px-4 py-2 hover:bg-gray-200">Torneos Amateurs</Link>
+                        <Link to="./gim_adultos" className="block px-4 py-2 hover:bg-gray-200">Gim Adultos</Link>
+                    </div>
+                </div>
 
-          <div className="flex space-x-4 mt-6">
-            <a
-              href="#"
-              className="px-6 py-2 border-2 border-white text-white rounded-full text-md font-bold hover:bg-white hover:text-green-900 transition"
-            >
-              ASOCIARME A SSD
-            </a>
-            <Link
-              to={{ pathname: "/tienda" }}
-              className="px-6 py-2 border-2 border-white text-white rounded-full text-md font-bold hover:bg-white hover:text-green-900 transition"
-            >
-              TIENDA VERDE
-            </Link>
-          </div>
-        </div>
-        <img
-          src="./imagenes/club/banner.jpg"
-          alt="Banner"
-          className="w-full h-auto"
-        />
-        <div className="bg-white py-8">
-          <div className="flex justify-center space-x-32">
-            <a
-              href="#"
-              className="flex flex-col items-center text-green-800 hover:text-green-600"
-            >
-              <i className="fas fa-user-plus text-3xl"></i>
-              <span className="mt-3 text-sm font-semibold">DATE DE ALTA</span>
-            </a>
-            <a
-              href="#"
-              className="flex flex-col items-center text-green-800 hover:text-green-600"
-            >
-              <i className="fas fa-id-card text-3xl"></i>
-              <span className="mt-3 text-sm font-semibold">HACETE SOCIO</span>
-            </a>
-            <a
-              href="#"
-              className="flex flex-col items-center text-green-800 hover:text-green-600"
-            >
-              <i className="fas fa-credit-card text-3xl"></i>
-              <span className="mt-3 text-sm font-semibold">PAGÁ TU CUOTA</span>
-            </a>
-            <a
-              href="#"
-              className="flex flex-col items-center text-green-800 hover:text-green-600"
-            >
-              <i className="fas fa-qrcode text-3xl"></i>
-              <span className="mt-3 text-sm font-semibold">AUTOGESTIÓN</span>
-            </a>
-            <a
-              href="#"
-              className="flex flex-col items-center text-green-800 hover:text-green-600"
-            >
-              <i className="fas fa-route text-3xl"></i>
-              <span className="mt-3 text-sm font-semibold">TOUR VIRTUAL</span>
-            </a>
-          </div>
-        </div>
-      </header>
-    </div>
-  );
+                <div className="relative">
+                    <Link to="#" id="clubDropdown" className="font-bold hover:underline flex items-center justify-center" onClick={toggleClubDropdown}>
+                        INSTITUCIONAL
+                        <i className={`fas fa-chevron-down ml-1 ${isClubDropdownOpen ? 'rotate-180' : ''}`}></i>
+                    </Link>
+                    <div id="clubMenu"
+                        className={`absolute ${isClubDropdownOpen ? 'block' : 'hidden'} mt-2 bg-white text-black rounded shadow-lg z-40 left-1/2 transform -translate-x-1/2`}>
+                        <Link to="./historia" className="block px-4 py-2 hover:bg-gray-200">Historia</Link>
+                        <Link to="./comision_directiva" className="block px-4 py-2 hover:bg-gray-200">Comisión Directiva</Link>
+                        <a target="_blank" href="./pdf/EstatutoSSD.pdf" className="block px-4 py-2 hover:bg-gray-200">Estatuto</a>
+                        <a target="_blank" href="https://drive.google.com/file/d/1DvCUonGu-QEZvXqvNdLM4pdNODlU3zM2/view"
+                            className="block px-4 py-2 hover:bg-gray-200">Reglamento</a>
+                    </div>
+                </div>
+
+                <div>
+                    <Link to="./inscribirme" className="font-bold hover:underline" aria-label="Ir a la página de inscripción">INSCRIBIRME</Link>
+                </div>
+
+                <div>
+                    <Link to="./tour_virtual" className="font-bold hover:underline">EL CLUB</Link>
+                </div>
+            </div>
+        </nav>
+    );
 };

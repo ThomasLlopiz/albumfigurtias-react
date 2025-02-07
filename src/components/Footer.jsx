@@ -1,109 +1,51 @@
-import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
-    <div className="flex justify-center items-center">
-      <img
-        src="./imagenes/club/footer.jpg"
-        alt="Banner"
-        className="w-full z-10"
-      />
-      <footer className="z-50 pt-32 absolute">
-        <div className="flex flex-col md:flex-row md:gap-96 justify-between items-center">
-          <div className="w-full md:mb-0 flex flex-col items-center">
-            <p className="text-lg mt-1 text-center md:text-left">
-              SOCIEDAD SPORTIVA DEVOTO
-            </p>
-            <a
-              href="https://drive.google.com/file/d/1DvCUonGu-QEZvXqvNdLM4pdNODlU3zM2/view"
-              className="text-lg hover:text-green-500 transition-transform duration-300 text-center md:text-left"
-              aria-label="ssd-reglamento"
-            >
-              NUESTRO REGLAMENTO
-            </a>
-            <Link
-              to={{ pathname: "/tienda" }}
-              className="px-6 py-2 border-2 border-white text-white rounded-full text-md font-bold hover:bg-white hover:text-green-900 transition"
-            >
-              TIENDA VERDE
-            </Link>
-          </div>
-
-          <div className="w-full md:w-1/3 flex justify-center md:mb-0">
-            <a href="#" aria-label="ssd-logo">
-              <img
-                src="./imagenes/club/ssdescudo.png"
-                alt="Logo"
-                className="w-32 hover:scale-110 transition-transform duration-300"
-              />
-            </a>
-          </div>
-
-          <div className="w-full md:w-1/3 flex flex-col items-center">
-            <div className="flex space-x-6 my-8">
-              <a
-                aria-label="ssd-facebook"
-                href="https://www.facebook.com/FansSociedadSportivaDevoto"
-                target="_blank"
-                className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
-              >
-                <i className="fab fa-facebook-square text-white text-3xl hover:text-green-500"></i>
-              </a>
-              <a
-                aria-label="ssd-instagram"
-                href="https://www.instagram.com/ssdevoto/"
-                target="_blank"
-                className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
-              >
-                <i className="fab fa-instagram text-white text-3xl hover:text-green-500"></i>
-              </a>
-              <a
-                aria-label="ssd-youtube"
-                href="https://www.youtube.com/@SociedadSportivaDevoto"
-                target="_blank"
-                className="text-center border border-green-500 hover:text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300"
-              >
-                <i className="fab fa-youtube text-white text-3xl hover:text-green-500"></i>
-              </a>
+    <div className="">
+      <footer className="bg-green-800 top-0 left-0 right-0 text-white pt-24 pb-8">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-center items-center">
+            <div className="w-full md:w-1/3 mb-8 md:mb-0 flex flex-col items-center ">
+              <p className="text-lg mt-1 text-center md:text-left">SOCIEDAD SPORTIVA DEVOTO</p>
+              <a href="https://drive.google.com/file/d/1DvCUonGu-QEZvXqvNdLM4pdNODlU3zM2/view"
+                aria-label="Ver reglamento"
+                className="text-lg hover:underline transition-transform duration-300 text-center md:text-left">NUESTRO
+                REGLAMENTO</a>
+              <a href="./tour_virtual.php" aria-label="Tour Virtual"
+                className="text-lg hover:underline transition-transform duration-300 text-center md:text-left">PREDIO
+                SSD</a>
             </div>
-            <div className="text-sm text-white mb-2 flex flex-col items-center">
-              <a
-                aria-label="ssd-whatsapp"
-                href="https://wa.me/3564501086"
-                className="text-lg hover:text-green-500"
-              >
-                ALBUM LLENO
-              </a>
-              <a
-                href=".index.html#premios"
-                className="text-lg hover:text-green-500"
-                aria-label="ssd-premios"
-              >
-                PREMIOS
-              </a>
-              <a
-                aria-label="ssd-contacto"
-                href="https://wa.me/3564501086"
-                className="text-lg hover:text-green-500"
-              >
-                CONTACTO
-              </a>
+
+            <div className="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
+              <a href="./"><img src="imagenes/general/ssdescudocolor.png" alt="Logo" aria-label="Inicio"
+                className="w-32 hover:scale-110 transition-transform duration-300"/></a>
+            </div>
+
+            <div className="w-full md:w-1/3 flex flex-col items-center">
+              <div className="flex space-x-6 my-8">
+                <a aria-label="Facebook" href="https://www.facebook.com/FansSociedadSportivaDevoto" target="_blank"
+                  className="text-center border border-white text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300">
+                  <i className="fab fa-facebook-square text-white text-3xl"></i>
+                </a>
+                <a aria-label="Instagram" href="https://www.instagram.com/ssdevoto/" target="_blank"
+                  className="text-center border border-white text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300">
+                  <i className="fab fa-instagram text-white text-3xl"></i>
+                </a>
+                <a aria-label="Youtube" href="https://www.youtube.com/@SociedadSportivaDevoto" target="_blank"
+                  className="text-center border border-white text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300">
+                  <i className="fab fa-youtube text-white text-3xl"></i>
+                </a>
+                <a aria-label="Whatsapp" href="https://wa.me/3564501086" target="_blank"
+                  className="text-center border border-white text-white rounded-full w-14 h-14 flex items-center justify-center transition-transform duration-300">
+                  <i className="fa-solid fa-phone text-white text-3xl"></i>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="text-center mt-20">
-          <p className="text-md">
-            &copy; 2024 SOCIEDAD SPORTIVA DEVOTO. TODOS LOS DERECHOS RESERVADOS.
-          </p>
-          <p className="text-md mt-1">
-            VISITA EL{" "}
-            <a
-              aria-label="ssd-grupodevoto"
-              href="https://grupodevoto.com.ar"
-              className="hover:text-green-500"
-            >
-              GRUPO COOPERATIVO DEVOTO
-            </a>
-          </p>
+          <div className="text-center mt-20">
+            <p className="text-md">&copy; 2024 SOCIEDAD SPORTIVA DEVOTO. TODOS LOS DERECHOS RESERVADOS.</p>
+            <p className="text-md mt-1">VISITA EL <a href="https://grupodevoto.com.ar" className="hover:underline">GRUPO
+              COOPERATIVO DEVOTO</a></p>
+          </div>
         </div>
       </footer>
     </div>

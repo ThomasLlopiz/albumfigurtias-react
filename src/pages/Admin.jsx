@@ -1,54 +1,40 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMoneyBillWave,
+  faFileAlt,
+  faFutbol,
+  faBuilding,
+  faUserGraduate,
+  faCalendarAlt,
+  faDumbbell,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const Admin = () => {
-  return (
-    <div className="text-black flex flex-col gap-2 mt-32 mb-32 max-w-xl mx-auto">
-      <div className="flex justify-start items-center gap-4">
-        <Link
-          to="/cuotas"
-          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
-        >
-          Cuotas
-        </Link>
-        <Link
-          to="/curriculums"
-          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
-        >
-          Curriculums
-        </Link>
-        <Link
-          to="/crearDeportes"
-          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center text-center"
-        >
-          Crear Deportes
-        </Link>
-        <Link
-          to="/alquileres"
-          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
-        >
-          Alquileres
-        </Link>
-      </div>
+  const menuItems = [
+    { to: "/cuotas", icon: faMoneyBillWave, text: "Cuotas" },
+    { to: "/curriculums", icon: faFileAlt, text: "Curriculums" },
+    { to: "/crearDeportes", icon: faFutbol, text: "Crear Deportes" },
+    { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
+    { to: "/alumnos", icon: faUserGraduate, text: "Alumnos" },
+    { to: "/fechas", icon: faCalendarAlt, text: "Fechas" },
+    { to: "/deportes", icon: faDumbbell, text: "Deportes" },
+  ];
 
-      <div className="flex justify-start items-center gap-4">
-        <Link
-          to="/alumnos"
-          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
-        >
-          Alumnos
-        </Link>
-        <Link
-          to="/fechas"
-          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
-        >
-          Fechas
-        </Link>
-        <Link
-          to="/deportes"
-          className="h-24 w-24 border-2 border-green-800 flex items-center justify-center"
-        >
-          Deportes
-        </Link>
+  return (
+    <div className="py-12 text-black my-32 max-w-7xl mx-auto px-4">
+      {/* Centrar el grid en todo el contenedor */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center items-center">
+        {menuItems.map(({ to, icon, text }) => (
+          <Link
+            key={to}
+            to={to}
+            className="flex flex-col items-center justify-center mx-auto bg-green-700 text-white w-48 h-48 rounded-2xl shadow-lg hover:bg-green-800"
+          >
+            <FontAwesomeIcon icon={icon} className="text-4xl" />
+            <span className="mt-2 text-lg font-semibold text-center">{text}</span>
+          </Link>
+        ))}
       </div>
     </div>
   );
