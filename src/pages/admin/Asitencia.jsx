@@ -160,25 +160,26 @@ export const Asistencia = () => {
       <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
         Asistencia {deporte} - {categoria}
       </h1>
-      <div className="mb-8 text-center flex justify-between px-2">
-        <button
-          onClick={() => navigate("/deportes")}
-          className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
-        >
-          Volver
-        </button>
-        <button
-          onClick={() => reiniciarAsistencia()}
-          className="bg-gray-600 hover:bg-gray-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
-        >
-          Reiniciar asistencia
-        </button>
-      </div>
-
       {/* Mostrar mensaje de carga */}
       {loading && <div className="text-center text-green-700">Cargando...</div>}
 
       <div className="flex flex-col items-center gap-4">
+
+        <div className="flex justify-center gap-6 mb-8">
+          <button
+            onClick={() => navigate("/deportes")}
+            className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
+          >
+            Volver
+          </button>
+          <button
+            onClick={reiniciarAsistencia}
+            className="bg-gray-600 hover:bg-gray-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
+          >
+            Reiniciar asistencia
+          </button>
+        </div>
+
         {inscriptos.map((asistencia) => (
           <div
             key={asistencia.id}
