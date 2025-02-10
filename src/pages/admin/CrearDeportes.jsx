@@ -4,9 +4,9 @@ import { useLocation, useNavigate } from "react-router-dom"; // Importa useNavig
 
 export const CrearDeportes = () => {
   const [deportes] = useState([
-    "Fútbol",
-    "Vóley",
-    "Básquet",
+    "Futbol",
+    "Voley",
+    "Basquet",
     "Handball",
     "Atletismo",
   ]);
