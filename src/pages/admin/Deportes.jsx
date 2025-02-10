@@ -18,9 +18,10 @@ export const Deportes = () => {
 
   const handleDeporteClick = (deporte) => {
     navigate(
-      `/asistencias?deporte=${deporte.deporte}&categoria=${deporte.categoria}`
+      `/asistencias?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}`
     );
   };
+
 
   const getIconForDeporte = (deporte) => {
     switch (deporte) {
