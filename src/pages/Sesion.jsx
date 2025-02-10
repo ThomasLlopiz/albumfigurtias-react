@@ -4,14 +4,11 @@ import { useNavigate } from "react-router-dom";
 export const Sesion = () => {
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
-  const [rol, setRol] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const login = async (e) => {
     e.preventDefault();
-
-
 
     try {
       const response = await fetch("http://localhost:8000/api/auth/login", {
@@ -20,11 +17,11 @@ export const Sesion = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          usuario: usuario,
-          contrasena: contrasena,
-          rol: rol,
+          usuario,
+          contrasena,
         }),
       });
+
       const data = await response.json();
 
       if (response.ok) {
@@ -42,38 +39,36 @@ export const Sesion = () => {
   };
 
   return (
-    <div className="mt-32 mb-32 mx-auto text-black">
-      <div className="flex flex-col items-center justify-center gap-2 mx-auto w-56">
-        <h1 className="text-4xl font-bold">Sesión</h1>
+    <div className="flex justify-center items-center pt-40 pb-32 bg-gray-100">
+      <div className="bg-white p-8 shadow-lg rounded-lg w-80">
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Iniciar Sesión</h1>
 
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
-        <div>
+        <form onSubmit={login} className="flex flex-col gap-4">
           <input
-            className="border-2 border-gray-700 rounded-md px-4 py-1 w-full"
+            className="border border-gray-300 rounded-lg text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
             type="text"
-            placeholder="usuario"
+            placeholder="Usuario"
             value={usuario}
             onChange={(e) => setUsuario(e.target.value)}
           />
-        </div>
 
-        <div>
           <input
-            className="border-2 border-gray-700 rounded-md px-4 py-1"
+            className="border text-black border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
             type="password"
-            placeholder="contraseña"
+            placeholder="Contraseña"
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
           />
-        </div>
 
-        <button
-          className="bg-green-700 py-1 rounded-lg text-white w-full"
-          onClick={login}
-        >
-          Iniciar sesión
-        </button>
+          <button
+            type="submit"
+            className="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition-all duration-300"
+          >
+            Iniciar sesión
+          </button>
+        </form>
       </div>
     </div>
   );
