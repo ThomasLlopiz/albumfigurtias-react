@@ -6,12 +6,12 @@ export const Asistencia = () => {
   const navigate = useNavigate();
   const [inscriptos, setInscriptos] = useState([]);
   const [inscriptosGuardados, setInscriptosGuardados] = useState([]);
-  const [loading, setLoading] = useState(false); // Estado de carga
-
+  const [loading, setLoading] = useState(false);
   const searchParams = new URLSearchParams(location.search);
   const deporte = searchParams.get("deporte");
   const categoria = searchParams.get("categoria");
   const idDeporte = searchParams.get("idDeporte");
+  const formattedDate = new Date().toISOString().slice(0, 19).replace("T", " ");
 
   const fetchInscriptos = () => {
     setLoading(true);
@@ -82,33 +82,39 @@ export const Asistencia = () => {
       { ...inscripcion, estado: "inasistencia" },
     ];
     setInscriptosGuardados(nuevaListaInscriptos);
-
-    // Solo guardamos en el localStorage una vez después de hacer todos los cambios
     localStorage.setItem("inscriptos", JSON.stringify(nuevaListaInscriptos));
 
     setInscriptos((prevInscriptos) =>
       prevInscriptos.filter((asistencia) => asistencia.id !== inscripcion.id)
     );
-
-    // Llamada POST para registrar la inasistencia en el backend
+    const requestData = {
+      id_alumno: inscripcion.id,
+      id_deporte: idDeporte,
+      fecha: formattedDate,
+      estado: true,
+    };
     fetch("http://localhost:8000/api/asistencias", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        id_alumno: inscripcion.id,
-        id_deporte: idDeporte,
-        fecha: new Date().toISOString(),
-        estado: false,
-      }),
+      body: JSON.stringify(requestData),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status >= 200 && response.status < 300) {
+          return response.json();
+        } else {
+          return response.text().then((text) => {
+            throw new Error(`Error ${response.status}: ${text}`);
+          });
+        }
+      })
       .then((data) => {
-        console.log("Inasistencia registrada en el backend:", data);
+        console.log("Asistencia registrada en el backend:", data);
+
       })
       .catch((error) => {
-        console.error("Error al registrar la inasistencia en el backend:", error);
+        console.error("Error al registrar la asistencia en el backend:", error);
       });
   };
 
@@ -118,33 +124,40 @@ export const Asistencia = () => {
       { ...inscripcion, estado: "asistió" },
     ];
     setInscriptosGuardados(nuevaListaInscriptos);
-
-    // Guardamos el estado de inscriptos en el localStorage después de actualizarlo
     localStorage.setItem("inscriptos", JSON.stringify(nuevaListaInscriptos));
 
     setInscriptos((prevInscriptos) =>
       prevInscriptos.filter((asistencia) => asistencia.id !== inscripcion.id)
     );
-
-    // Llamada POST para registrar la asistencia en el backend
+    const requestData = {
+      id_alumno: inscripcion.id,
+      id_deporte: idDeporte,
+      fecha: formattedDate,
+      estado: true,
+    };
     fetch("http://localhost:8000/api/asistencias", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        id_alumno: inscripcion.id,
-        id_deporte: inscripcion.id_deporte,
-        fecha: new Date().toISOString(),
-        estado: true,
-      }),
+      body: JSON.stringify(requestData),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status >= 200 && response.status < 300) {
+          return response.json();
+        } else {
+          return response.text().then((text) => {
+            throw new Error(`Error ${response.status}: ${text}`);
+          });
+        }
+      })
       .then((data) => {
         console.log("Asistencia registrada en el backend:", data);
+        console.log("Datos enviados al backend:", requestData);
       })
       .catch((error) => {
         console.error("Error al registrar la asistencia en el backend:", error);
+        console.log("Datos enviados al backend:", requestData);
       });
   };
 
