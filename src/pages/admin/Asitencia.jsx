@@ -11,6 +11,7 @@ export const Asistencia = () => {
   const deporte = searchParams.get("deporte");
   const categoria = searchParams.get("categoria");
   const idDeporte = searchParams.get("idDeporte");
+  const genero = searchParams.get("genero");
   const formattedDate = new Date().toISOString().slice(0, 19).replace("T", " ");
 
   const fetchInscriptos = () => {
@@ -21,21 +22,20 @@ export const Asistencia = () => {
         const inscripcionesFiltradas = data.filter((inscripcion) => {
           return (
             inscripcion.disciplina === deporte &&
-            verificarCategoria(inscripcion.fecha_nacimiento, categoria)
+            verificarCategoria(inscripcion.fecha_nacimiento, categoria) &&
+            inscripcion.genero === genero
           );
         });
 
         const inscripcionesAmostrar = inscripcionesFiltradas.filter(
           (inscripcion) =>
-            !inscriptosGuardados.some(
-              (guardada) => guardada.id === inscripcion.id
-            )
+            !inscriptosGuardados.some((guardada) => guardada.id === inscripcion.id)
         );
 
         setInscriptos(inscripcionesAmostrar);
       })
       .finally(() => {
-        setLoading(false); // Desactivar el estado de carga después de obtener los datos
+        setLoading(false);
       });
   };
 
