@@ -6,7 +6,6 @@ export const Usuarios = () => {
     const [rol, setRol] = useState('');
     const [usuarios, setUsuarios] = useState([]);
 
-    // Obtener los usuarios al cargar el componente
     const fetchUsuarios = async () => {
         const response = await fetch('http://localhost:8000/api/usuarios');
         const data = await response.json();
@@ -37,15 +36,14 @@ export const Usuarios = () => {
             }),
         });
 
-        const text = await response.text(); // Obtener la respuesta como texto
-        console.log(text); // Ver la respuesta completa del servidor
+        const text = await response.text();
+        console.log(text);
 
         try {
-            // Intentar parsear el texto como JSON
             const data = JSON.parse(text);
             if (response.ok) {
                 alert('Usuario creado con éxito');
-                fetchUsuarios(); // Volver a obtener la lista de usuarios
+                fetchUsuarios();
                 setUsuario('');
                 setContrasena('');
                 setRol('');
@@ -61,24 +59,24 @@ export const Usuarios = () => {
 
 
     return (
-        <div className="mt-32 mb-32 text-black flex flex-col items-center gap-4">
-            <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+        <div className="mt-40 mb-32 text-black flex flex-wrap md:gap-12 mx-auto justify-center items-center">
+            <form onSubmit={handleSubmit} className='flex flex-col gap-4 w-4/6 md:w-1/6'>
                 <input
-                    className='w-40 border-2 py-2 rounded-lg font-semibold border-black pl-2'
+                    className='w-full border-2 py-2 rounded-lg font-semibold border-black pl-2'
                     type="text"
                     placeholder="Usuario"
                     value={usuario}
                     onChange={(e) => setUsuario(e.target.value)}
                 />
                 <input
-                    className='w-40 border-2 py-2 rounded-lg font-semibold border-black pl-2'
+                    className='w-full border-2 py-2 rounded-lg font-semibold border-black pl-2'
                     type="password"
                     placeholder="Contraseña"
                     value={contrasena}
                     onChange={(e) => setContrasena(e.target.value)}
                 />
                 <select
-                    className="w-40 border-2 py-2 rounded-lg font-semibold border-black pl-2"
+                    className="w-full border-2 py-2 rounded-lg font-semibold border-black pl-2"
                     value={rol}
                     onChange={(e) => setRol(e.target.value)}
                 >
@@ -92,21 +90,20 @@ export const Usuarios = () => {
                     type="submit">Crear Usuario</button>
             </form>
 
-            <div className="mt-8">
-                <h2 className="text-xl font-semibold">Usuarios creados</h2>
+            <div className="text-left">
                 {usuarios.length > 0 ? (
-                    <table className="mt-4 border-collapse w-full">
+                    <table className="mt-4 border-collapse w-full text-left">
                         <thead>
                             <tr>
-                                <th className="border-b-2 py-2 text-left px-4">Nombre de Usuario</th>
-                                <th className="border-b-2 py-2 text-left px-4">Rol</th>
+                                <th className="border-b-2 py-2 text-left px-5">Nombre de Usuario</th>
+                                <th className="border-b-2 py-2 text-left px-5">Rol</th>
                             </tr>
                         </thead>
                         <tbody>
                             {usuarios.map((user, index) => (
                                 <tr key={index}>
-                                    <td className="border-b py-2 px-4">{user.usuario}</td>
-                                    <td className="border-b py-2 px-4">{user.rol}</td>
+                                    <td className="border-b py-2 text-left px-5">{user.usuario}</td>
+                                    <td className="border-b py-2 text-left px-5">{user.rol}</td>
                                 </tr>
                             ))}
                         </tbody>
