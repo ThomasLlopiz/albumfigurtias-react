@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // Importa useNavigate
-
+import { useNavigate } from "react-router-dom";
 
 export const CrearDeportes = () => {
   const [deportes] = useState([
@@ -10,7 +9,7 @@ export const CrearDeportes = () => {
     "Handball",
     "Atletismo",
   ]);
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const navigate = useNavigate();
   const [categorias] = useState([
     "Sub 12",
     "Sub 13",
