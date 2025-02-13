@@ -18,7 +18,7 @@ export const Deportes = () => {
 
   const handleDeporteClick = (deporte) => {
     navigate(
-      `/asistencias?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}`
+      `/asistencias?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}&genero=${deporte.genero}`
     );
   };
 
