@@ -8,6 +8,7 @@ import {
   faUserGraduate,
   faCalendarAlt,
   faDumbbell,
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Admin = () => {
@@ -15,6 +16,7 @@ export const Admin = () => {
     { to: "/cuotas", icon: faMoneyBillWave, text: "Cuotas" },
     { to: "/curriculums", icon: faFileAlt, text: "Curriculums" },
     { to: "/crearDeportes", icon: faFutbol, text: "Crear Deportes" },
+    { to: "/usuarios", icon: faUser, text: "Usuarios" },
     { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
     { to: "/alumnos", icon: faUserGraduate, text: "Alumnos" },
     { to: "/fechas", icon: faCalendarAlt, text: "Fechas" },
@@ -23,8 +25,7 @@ export const Admin = () => {
 
   return (
     <div className="py-12 text-black my-32 max-w-7xl mx-auto px-4">
-      {/* Centrar el grid en todo el contenedor */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-center items-center">
         {menuItems.map(({ to, icon, text }) => (
           <Link
             key={to}
