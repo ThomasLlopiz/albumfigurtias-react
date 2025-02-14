@@ -25,7 +25,7 @@ export const AppRouter = () => {
       <Route path="/tienda"  element={<Tienda />} />
       <Route path="/inscripciones" element={<Inscripcion />} />
       <Route path="/sesion" element={<Sesion />} />
-      <Route path="/asistencias" element={<PrivateRouteForAdminOnly element={<Asistencia />} />} />
+      <Route path="/asistencias" element={<PrivateRoute element={<Asistencia />} />} />
       <Route path="/usuarios" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
       <Route path="/curriculums" element={<PrivateRouteForAdminOnly element={<Curriculum />} />} />
       <Route path="/crearDeportes" element={<PrivateRouteForAdminOnly element={<CrearDeportes />} />} />
