@@ -23,8 +23,9 @@ export const Sesion = () => {
       });
 
       const data = await response.json();
-
+      console.log(data);
       if (response.ok) {
+        localStorage.setItem("id", data.id);
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("expires_at", data.expires_at);
         localStorage.setItem("rol", data.rol);
