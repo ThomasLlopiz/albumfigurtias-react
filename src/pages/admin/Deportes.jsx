@@ -21,7 +21,7 @@ export const Deportes = () => {
     const idsPermitidos = deporte.id_usuarios.split(",");
     if (idsPermitidos.includes(id.toString())) {
       navigate(
-        `/asistencias?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}&genero=${deporte.genero}`
+        `/asistencia?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}&genero=${deporte.genero}`
       );
     }
   };
