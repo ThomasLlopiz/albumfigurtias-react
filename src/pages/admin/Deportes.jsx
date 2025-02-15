@@ -13,7 +13,6 @@ export const Deportes = () => {
       .then((res) => res.json())
       .then((data) => {
         setDeportes(data);
-        console.log("Deportes obtenidos:", data);
       })
       .catch((error) => console.error("Error al obtener los deportes:", error));
   }, []);
@@ -21,12 +20,9 @@ export const Deportes = () => {
   const handleDeporteClick = (deporte) => {
     const idsPermitidos = deporte.id_usuarios.split(",");
     if (idsPermitidos.includes(id.toString())) {
-      console.log(`Acceso permitido al deporte ${deporte.deporte} para el usuario con id ${id_usuario}`);
       navigate(
         `/asistencias?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}&genero=${deporte.genero}`
       );
-    } else {
-      console.log(`Acceso denegado al deporte ${deporte.deporte}. El id_usuario no está en la lista.`);
     }
   };
 
