@@ -6,22 +6,29 @@ import { faFutbol, faBasketballBall, faVolleyballBall, faBaseballBall } from "@f
 export const Deportes = () => {
   const [deportes, setDeportes] = useState([]);
   const navigate = useNavigate();
+  const id = localStorage.getItem("id");
 
   useEffect(() => {
     fetch("http://localhost:8000/api/deportes")
       .then((res) => res.json())
       .then((data) => {
         setDeportes(data);
+        console.log("Deportes obtenidos:", data);
       })
       .catch((error) => console.error("Error al obtener los deportes:", error));
   }, []);
 
   const handleDeporteClick = (deporte) => {
-    navigate(
-      `/asistencias?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}&genero=${deporte.genero}`
-    );
+    const idsPermitidos = deporte.id_usuarios.split(",");
+    if (idsPermitidos.includes(id.toString())) {
+      console.log(`Acceso permitido al deporte ${deporte.deporte} para el usuario con id ${id_usuario}`);
+      navigate(
+        `/asistencias?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}&genero=${deporte.genero}`
+      );
+    } else {
+      console.log(`Acceso denegado al deporte ${deporte.deporte}. El id_usuario no está en la lista.`);
+    }
   };
-
 
   const getIconForDeporte = (deporte) => {
     switch (deporte) {
