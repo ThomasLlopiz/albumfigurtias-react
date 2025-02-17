@@ -68,8 +68,18 @@ export const Asistencias = () => {
         const grouped = {};
 
         asistencias.forEach((asistencia) => {
+            if (!asistencia.fecha) {
+                console.error("Fecha no encontrada para asistencia:", asistencia);
+                return;
+            }
+
             const date = new Date(asistencia.fecha);
-            const monthYear = `${formatMonth(date.getMonth())}/${date.getFullYear()}`;
+            if (isNaN(date)) {
+                console.error("Fecha no válida:", asistencia.fecha);
+                return;
+            }
+
+            const monthYear = `${date.getFullYear()}-${formatMonth(date.getMonth())}`;
             const alumnoId = asistencia.id_alumno;
             const deporteId = asistencia.id_deporte;
 
@@ -86,6 +96,7 @@ export const Asistencias = () => {
 
             grouped[monthYear][alumnoId].count++;
         });
+
         setGroupedData(grouped);
     };
 
@@ -95,48 +106,43 @@ export const Asistencias = () => {
             [e.target.name]: e.target.value,
         });
     };
-    const applyFilters = (filteredData) => {
 
+    const applyFilters = (filteredData) => {
         if (!filters.nombre && !filters.deporte && !filters.categoria && !filters.mes) {
             console.log("Mostrando todos los datos porque no hay filtros.");
             return filteredData;
         }
 
         return filteredData.filter((item) => {
+            console.log("Item completo:", item);
             const alumno = item.alumno;
             const deporte = item.deporte;
-            console.log("Alumno:", alumno);
-            console.log("Deporte:", deporte);
-
             if (!alumno || !deporte) {
                 console.log("No se encontró alumno o deporte para este item", item);
                 return false;
             }
 
-            const date = new Date(item.fecha);
-            const monthYear = `${formatMonth(date.getMonth())}/${date.getFullYear()}`;
+            if (!item.monthYear) {
+                console.error("monthYear no encontrado para el item:", item);
+                return false;
+            }
+
             const alumnoNombreCompleto = `${alumno.nombre} ${alumno.apellido}`.toLowerCase();
             const deporteNombre = deporte.deporte.toLowerCase();
             const deporteCategoria = deporte.categoria.toLowerCase();
 
-            console.log("Comparando alumnoNombreCompleto:", alumnoNombreCompleto, "con filtro de nombre:", filters.nombre);
-            console.log("Comparando deporteNombre:", deporteNombre, "con filtro de deporte:", filters.deporte);
-            console.log("Comparando deporteCategoria:", deporteCategoria, "con filtro de categoria:", filters.categoria);
-            console.log("Comparando mes:", monthYear, "con filtro de mes:", filters.mes);
+            console.log("Comparando mes:", item.monthYear, "con filtro de mes:", filters.mes);
 
             const matchesNombre = filters.nombre
                 ? alumnoNombreCompleto.includes(filters.nombre.toLowerCase())
                 : true;
-
             const matchesDeporte = filters.deporte
                 ? deporteNombre.includes(filters.deporte.toLowerCase())
                 : true;
-
             const matchesCategoria = filters.categoria
                 ? deporteCategoria.includes(filters.categoria.toLowerCase())
                 : true;
-
-            const matchesMes = filters.mes ? monthYear === filters.mes : true;
+            const matchesMes = filters.mes ? item.monthYear === filters.mes : true;
 
             return matchesNombre && matchesDeporte && matchesCategoria && matchesMes;
         });
@@ -149,7 +155,6 @@ export const Asistencias = () => {
     return (
         <div className="text-black text-center py-32">
             <h1 className="text-2xl font-semibold mb-8">Asistencias por Alumno</h1>
-
             {/* Filtros */}
             <div className="mb-4">
                 <input
