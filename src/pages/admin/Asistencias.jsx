@@ -155,51 +155,66 @@ export const Asistencias = () => {
     return (
         <div className="text-black text-center py-32">
             <h1 className="text-2xl font-semibold mb-8">Asistencias por Alumno</h1>
-            {/* Filtros */}
-            <div className="mb-4">
-                <input
-                    type="text"
-                    name="nombre"
-                    value={filters.nombre}
-                    onChange={handleFilterChange}
-                    placeholder="Filtrar por nombre"
-                    className="px-4 py-2 border border-gray-300 rounded-lg mb-2"
-                />
-                <input
-                    type="text"
-                    name="deporte"
-                    value={filters.deporte}
-                    onChange={handleFilterChange}
-                    placeholder="Filtrar por deporte"
-                    className="px-4 py-2 border border-gray-300 rounded-lg mb-2"
-                />
-                <input
-                    type="text"
-                    name="categoria"
-                    value={filters.categoria}
-                    onChange={handleFilterChange}
-                    placeholder="Filtrar por categoría"
-                    className="px-4 py-2 border border-gray-300 rounded-lg mb-2"
-                />
-                <input
-                    type="month"
-                    name="mes"
-                    value={filters.mes}
-                    onChange={handleFilterChange}
-                    className="px-4 py-2 border border-gray-300 rounded-lg mb-2"
-                />
+
+            <div className="flex flex-col w-full mb-4 md:grid md:grid-cols-4 md:gap-4 lg:w-3/4 md:mx-auto">
+                {/* Filtro por nombre */}
+                <div className="">
+                    <input
+                        type="text"
+                        name="nombre"
+                        value={filters.nombre}
+                        onChange={handleFilterChange}
+                        placeholder="Filtrar por nombre"
+                        className="px-4 py-2 border border-gray-300 rounded-lg mb-2 w-full"
+                    />
+                </div>
+
+                {/* Filtro por deporte */}
+                <div className="">
+                    <input
+                        type="text"
+                        name="deporte"
+                        value={filters.deporte}
+                        onChange={handleFilterChange}
+                        placeholder="Filtrar por deporte"
+                        className="px-4 py-2 border border-gray-300 rounded-lg mb-2 w-full"
+                    />
+                </div>
+
+                {/* Filtro por categoría */}
+                <div className="">
+                    <input
+                        type="text"
+                        name="categoria"
+                        value={filters.categoria}
+                        onChange={handleFilterChange}
+                        placeholder="Filtrar por categoría"
+                        className="px-4 py-2 border border-gray-300 rounded-lg mb-2 w-full"
+                    />
+                </div>
+
+                {/* Filtro por mes */}
+                <div className="">
+                    <input
+                        type="month"
+                        name="mes"
+                        value={filters.mes}
+                        onChange={handleFilterChange}
+                        className="px-4 py-2 border border-gray-300 rounded-lg mb-2 w-full"
+                    />
+                </div>
             </div>
 
             {Object.keys(groupedData).map((monthYear) => (
                 <div key={monthYear} className="mb-8">
-                    <table className="mx-auto w-1/2">
+                    <table className="mx-auto w-full lg:w-3/4">
                         <thead className="border-b-2">
                             <tr>
-                                <th className="py-2 px-5 text-left">Mes</th>
-                                <th className="py-2 px-5 text-left">Alumno</th>
-                                <th className="py-2 px-5 text-left">Deporte</th>
-                                <th className="py-2 px-5 text-left">Categoría</th>
-                                <th className="py-2 px-5 text-left">Asistencias</th>
+                                <th className="py-2 pl-2 md:px-5 text-left">Alumno</th>
+                                <th className="py-2 pl-2 md:px-5 text-left">Deporte</th>
+                                <th className="py-2 pl-2 md:px-5 text-left">Categoría</th>
+                                <th className="py-2 pl-2 md:px-5 text-left">Asistencias</th>
+                                <th className="py-2 pl-2 md:px-5 text-left">Mes</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -220,11 +235,11 @@ export const Asistencias = () => {
                                 })
                             ).map(({ alumnoId, alumno, asistencia, deporte, monthYear }) => (
                                 <tr key={alumnoId} className="hover:bg-gray-100 border-b-2 text-left">
-                                    <td className="px-4 py-2">{monthYear}</td>
-                                    <td className="px-4 py-2">{alumno ? `${alumno.nombre} ${alumno.apellido}` : 'Cargando...'}</td>
-                                    <td className="px-4 py-2">{deporte ? deporte.deporte : 'Cargando...'}</td>
-                                    <td className="px-4 py-2">{deporte ? deporte.categoria : 'Cargando...'}</td>
-                                    <td className="px-4 py-2">{asistencia}</td>
+                                    <td className="pr-5 py-2">{alumno ? `${alumno.nombre} ${alumno.apellido}` : 'Cargando...'}</td>
+                                    <td className="pr-5 py-2">{deporte ? deporte.deporte : 'Cargando...'}</td>
+                                    <td className="pr-5 py-2">{deporte ? deporte.categoria : 'Cargando...'}</td>
+                                    <td className="pr-5 py-2">{asistencia}</td>
+                                    <td className="pr-5 py-2">{monthYear}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -233,4 +248,5 @@ export const Asistencias = () => {
             ))}
         </div>
     );
+
 };
