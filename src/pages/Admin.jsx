@@ -8,7 +8,8 @@ import {
   faUserGraduate,
   faCalendarAlt,
   faDumbbell,
-  faUser
+  faUser,
+  faCheckCircle 
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Admin = () => {
@@ -18,9 +19,10 @@ export const Admin = () => {
     { to: "/crearDeportes", icon: faFutbol, text: "Crear Deportes" },
     { to: "/usuarios", icon: faUser, text: "Usuarios" },
     { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
-    { to: "/alumnos", icon: faUserGraduate, text: "Alumnos" },
+    // { to: "/alumnos", icon: faUserGraduate, text: "Alumnos" },
     { to: "/fechas", icon: faCalendarAlt, text: "Fechas" },
     { to: "/deportes", icon: faDumbbell, text: "Deportes" },
+    { to: "/asistencias", icon: faCheckCircle , text: "Asistencias" },
   ];
 
   return (
