@@ -26,13 +26,13 @@ export const Admin = () => {
   ];
 
   return (
-    <div className="py-12 text-black my-32 max-w-7xl mx-auto px-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-center items-center">
+    <div className="text-black px-0 my-32 max-w-7xl mx-auto lg:px-4 lg:py-12">
+      <div className="grid grid-cols-2 w-full mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-center items-center">
         {menuItems.map(({ to, icon, text }) => (
           <Link
             key={to}
             to={to}
-            className="flex flex-col items-center justify-center mx-auto bg-green-700 text-white w-48 h-48 rounded-2xl shadow-lg hover:bg-green-800"
+            className="flex flex-col items-center justify-center mx-auto bg-green-700 text-white w-44 h-44 lg:w-48 lg:h-48 rounded-2xl shadow-lg hover:bg-green-800"
           >
             <FontAwesomeIcon icon={icon} className="text-4xl" />
             <span className="mt-2 text-lg font-semibold text-center">{text}</span>

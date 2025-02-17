@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export const Asistencias = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [alumnosData, setAlumnosData] = useState({});
     const [groupedData, setGroupedData] = useState({});
@@ -155,7 +157,12 @@ export const Asistencias = () => {
     return (
         <div className="text-black text-center py-32">
             <h1 className="text-2xl font-semibold mb-8">Asistencias por Alumno</h1>
-
+            <button
+                onClick={() => navigate("/admin")}
+                className="bg-green-600 hover:bg-green-800 text-white py-2 mb-3 px-6 rounded-lg font-bold transition duration-200"
+            >
+                Volver
+            </button>
             <div className="flex flex-col w-full mb-4 md:grid md:grid-cols-4 md:gap-4 lg:w-3/4 md:mx-auto">
                 {/* Filtro por nombre */}
                 <div className="">
