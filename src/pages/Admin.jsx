@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMoneyBillWave,
@@ -9,21 +9,30 @@ import {
   faCalendarAlt,
   faDumbbell,
   faUser,
-  faCheckCircle 
+  faCheckCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Admin = () => {
+  const navigate = useNavigate();
   const menuItems = [
     { to: "/cuotas", icon: faMoneyBillWave, text: "Cuotas" },
     { to: "/curriculums", icon: faFileAlt, text: "Curriculums" },
     { to: "/crearDeportes", icon: faFutbol, text: "Crear Deportes" },
     { to: "/usuarios", icon: faUser, text: "Usuarios" },
-    { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
     // { to: "/alumnos", icon: faUserGraduate, text: "Alumnos" },
+    { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
     { to: "/fechas", icon: faCalendarAlt, text: "Fechas" },
     { to: "/deportes", icon: faDumbbell, text: "Deportes" },
-    { to: "/asistencias", icon: faCheckCircle , text: "Asistencias" },
+    { to: "/asistencias", icon: faCheckCircle, text: "Asistencias" },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem("id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("expires_at");
+    localStorage.removeItem("rol");
+    navigate("/sesion");
+  };
 
   return (
     <div className="text-black px-0 my-32 max-w-7xl mx-auto lg:px-4 lg:py-12">
@@ -38,6 +47,14 @@ export const Admin = () => {
             <span className="mt-2 text-lg font-semibold text-center">{text}</span>
           </Link>
         ))}
+      </div>
+      <div className="mt-8 flex justify-center">
+        <button
+          onClick={handleLogout}
+          className="bg-red-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-red-700"
+        >
+          Desloguearse
+        </button>
       </div>
     </div>
   );
