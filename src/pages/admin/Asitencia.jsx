@@ -44,8 +44,9 @@ export const Asistencia = () => {
     const inscriptosGuardados =
       JSON.parse(localStorage.getItem("inscriptos")) || [];
     setInscriptosGuardados(inscriptosGuardados);
-
-    fetchInscriptos();
+    if (inscriptosGuardados.length === 0) {
+      fetchInscriptos();
+    }
   }, [deporte, categoria]);
 
   useEffect(() => {
