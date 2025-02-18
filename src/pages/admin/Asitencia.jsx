@@ -91,7 +91,7 @@ export const Asistencia = () => {
       id_alumno: inscripcion.id,
       id_deporte: idDeporte,
       fecha: formattedDate,
-      estado: true,
+      estado: false,
     };
     fetch("http://localhost:8000/api/asistencias", {
       method: "POST",
