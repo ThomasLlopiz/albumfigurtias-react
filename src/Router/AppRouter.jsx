@@ -28,7 +28,10 @@ export const AppRouter = () => {
       <Route path="/sesion" element={<Sesion />} />
       <Route path="/asistencia" element={<PrivateRoute element={<Asistencia />} />} />
       <Route path="/usuarios" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
+      <Route path="/cuotas" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
+      <Route path="/alquileres" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
       <Route path="/curriculums" element={<PrivateRouteForAdminOnly element={<Curriculum />} />} />
+      <Route path="/fechas" element={<PrivateRouteForAdminOnly element={<Curriculum />} />} />
       <Route path="/crearDeportes" element={<PrivateRouteForAdminOnly element={<CrearDeportes />} />} />
       <Route path="/admin" element={<PrivateRoute element={<Admin />} />} />
       <Route path="/deportes" element={<PrivateRoute element={<Deportes />} />} />
