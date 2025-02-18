@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const Asistencia = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const prevInscriptosGuardados = useRef();
   const [inscriptos, setInscriptos] = useState([]);
   const [inscriptosGuardados, setInscriptosGuardados] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -109,10 +110,6 @@ export const Asistencia = () => {
           });
         }
       })
-      .then((data) => {
-        console.log("Asistencia registrada en el backend:", data);
-
-      })
       .catch((error) => {
         console.error("Error al registrar la asistencia en el backend:", error);
       });
@@ -151,22 +148,21 @@ export const Asistencia = () => {
           });
         }
       })
-      .then((data) => {
-        console.log("Asistencia registrada en el backend:", data);
-        console.log("Datos enviados al backend:", requestData);
-      })
       .catch((error) => {
         console.error("Error al registrar la asistencia en el backend:", error);
-        console.log("Datos enviados al backend:", requestData);
       });
   };
 
   const reiniciarAsistencia = () => {
     localStorage.removeItem("inscriptos");
     setInscriptosGuardados([]);
-    setInscriptos([]);
-    fetchInscriptos();
   };
+  useEffect(() => {
+    if (prevInscriptosGuardados.current?.length > 0 && inscriptosGuardados.length === 0) {
+      fetchInscriptos();
+    }
+    prevInscriptosGuardados.current = inscriptosGuardados;
+  }, [inscriptosGuardados]);
 
   return (
     <div className="bg-gray-100 min-h-screen text-black py-16">
