@@ -15,7 +15,7 @@ export const Asistencias = () => {
     });
 
     const asistencias = () => {
-        fetch("http://localhost:8000/api/asistencias")
+        fetch("http://localhost:8000/api/asistencias/activas")
             .then((response) => response.json())
             .then((data) => {
                 setData(data);
