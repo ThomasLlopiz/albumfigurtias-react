@@ -156,13 +156,16 @@ export const Asistencias = () => {
 
     return (
         <div className="text-black text-center py-32">
-            <h1 className="text-2xl font-semibold mb-8">Asistencias por Alumno</h1>
-            <button
-                onClick={() => navigate("/admin")}
-                className="bg-green-600 hover:bg-green-800 text-white py-2 mb-3 px-6 rounded-lg font-bold transition duration-200"
-            >
-                Volver
-            </button>
+            <div className='flex items-center justify-around'>
+                <h1 className="text-2xl font-semibold mb-8">Asistencias por Alumno</h1>
+                <button
+                    onClick={() => navigate("/admin")}
+                    className="bg-green-600 hover:bg-green-800 text-white py-2 mb-3 px-6 rounded-lg font-bold transition duration-200"
+                >
+                    Volver
+                </button>
+            </div>
+
             <div className="flex flex-col w-full mb-4 md:grid md:grid-cols-4 md:gap-4 lg:w-3/4 md:mx-auto">
                 {/* Filtro por nombre */}
                 <div className="">
@@ -217,11 +220,11 @@ export const Asistencias = () => {
                     <table className="mx-auto w-full lg:w-3/4">
                         <thead className="border-b-2">
                             <tr>
-                                <th className="py-2 pl-2 md:px-5 text-left">Alumno</th>
-                                <th className="py-2 pl-2 md:px-5 text-left">Deporte</th>
-                                <th className="py-2 pl-2 md:px-5 text-left">Categoría</th>
-                                <th className="py-2 pl-2 md:px-5 text-left">Asistencias</th>
-                                <th className="py-2 pl-2 md:px-5 text-left">Mes</th>
+                                <th className="py-2 md:px-5 text-left">Alumno</th>
+                                <th className="py-2 md:px-5 text-left">Deporte</th>
+                                <th className="py-2 md:px-5 text-left">Categoría</th>
+                                <th className="py-2 md:px-5 text-left">Asistencias</th>
+                                <th className="py-2 md:px-5 text-left">Mes</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -242,11 +245,11 @@ export const Asistencias = () => {
                                 })
                             ).map(({ alumnoId, alumno, asistencia, deporte, monthYear }) => (
                                 <tr key={alumnoId} className="hover:bg-gray-100 border-b-2 text-left">
-                                    <td className="pr-5 py-2">{alumno ? `${alumno.nombre} ${alumno.apellido}` : 'Cargando...'}</td>
-                                    <td className="pr-5 py-2">{deporte ? deporte.deporte : 'Cargando...'}</td>
-                                    <td className="pr-5 py-2">{deporte ? deporte.categoria : 'Cargando...'}</td>
-                                    <td className="pr-5 py-2">{asistencia}</td>
-                                    <td className="pr-5 py-2">{monthYear}</td>
+                                    <td className="pr-5 lg:pl-5 py-2">{alumno ? `${alumno.nombre} ${alumno.apellido}` : 'Cargando...'}</td>
+                                    <td className="pr-5 lg:pl-5 py-2">{deporte ? deporte.deporte : 'Cargando...'}</td>
+                                    <td className="pr-5 lg:pl-5 py-2">{deporte ? deporte.categoria : 'Cargando...'}</td>
+                                    <td className="pr-5 lg:pl-5 py-2">{asistencia}</td>
+                                    <td className="pr-5 lg:pl-5 py-2">{monthYear}</td>
                                 </tr>
                             ))}
                         </tbody>

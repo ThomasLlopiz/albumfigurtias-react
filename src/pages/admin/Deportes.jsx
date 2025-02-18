@@ -43,9 +43,20 @@ export const Deportes = () => {
 
   return (
     <div className="text-black text-center py-32">
-      <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
-        Selecciona tu Deporte
-      </h1>
+      <div className="flex items-center justify-around">
+        <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
+          Selecciona tu Deporte
+        </h1>
+        <div className="mt-8 text-center">
+          <button
+            onClick={() => navigate("/admin")}
+            className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
+          >
+            Volver
+          </button>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 px-4 max-w-7xl mx-auto">
         {deportes.map((deporte) => (
           <div
@@ -59,14 +70,7 @@ export const Deportes = () => {
           </div>
         ))}
       </div>
-      <div className="mt-8 text-center">
-        <button
-          onClick={() => navigate("/admin")}
-          className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
-        >
-          Volver
-        </button>
-      </div>
+
     </div>
   );
 };

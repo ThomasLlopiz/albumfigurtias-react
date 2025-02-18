@@ -113,6 +113,17 @@ export const Usuarios = () => {
 
     return (
         <div className="mt-40 mb-32 text-black flex flex-col items-center justify-center gap-3">
+            <div>
+                <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
+                    Usuarios
+                </h1>
+                <button
+                    onClick={() => navigate("/admin")}
+                    className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
+                >
+                    Volver
+                </button>
+            </div>
             <div className="flex md:gap-12 mx-auto justify-center items-center">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-4/6 md:w-4/6">
                     {mensajeAccion && (
@@ -236,12 +247,6 @@ export const Usuarios = () => {
                 )}
             </div>
 
-            <button
-                onClick={() => navigate("/admin")}
-                className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
-            >
-                Volver
-            </button>
         </div>
     );
 };
