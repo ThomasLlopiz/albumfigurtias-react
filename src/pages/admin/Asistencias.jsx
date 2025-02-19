@@ -13,9 +13,10 @@ export const Asistencias = () => {
         categoria: '',
         mes: '',
     });
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const asistencias = () => {
-        fetch("http://localhost:8000/api/asistencias/activas")
+        fetch(`${apiUrl}/api/asistencias/activas`)
             .then((response) => response.json())
             .then((data) => {
                 setData(data);
@@ -32,7 +33,7 @@ export const Asistencias = () => {
         const alumnoIds = [...new Set(asistencias.map((asistencia) => asistencia.id_alumno))];
         Promise.all(
             alumnoIds.map((id) =>
-                fetch(`http://localhost:8000/api/inscripciones/${id}`)
+                fetch(`${apiUrl}/api/inscripciones/${id}`)
                     .then((response) => response.json())
                     .then((alumno) => {
                         setAlumnosData((prev) => ({
@@ -49,7 +50,7 @@ export const Asistencias = () => {
         const deporteIds = [...new Set(asistencias.map((asistencia) => asistencia.id_deporte))];
         Promise.all(
             deporteIds.map((id) =>
-                fetch(`http://localhost:8000/api/deportes/${id}`)
+                fetch(`${apiUrl}/api/deportes/${id}`)
                     .then((response) => response.json())
                     .then((deporte) => {
                         setDeportesData((prev) => ({

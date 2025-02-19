@@ -7,9 +7,10 @@ export const Deportes = () => {
   const [deportes, setDeportes] = useState([]);
   const navigate = useNavigate();
   const id = localStorage.getItem("id");
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/deportes")
+    fetch(`${apiUrl}/api/deportes`)
       .then((res) => res.json())
       .then((data) => {
         setDeportes(data);

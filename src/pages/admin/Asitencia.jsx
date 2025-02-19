@@ -14,10 +14,11 @@ export const Asistencia = () => {
   const idDeporte = searchParams.get("idDeporte");
   const genero = searchParams.get("genero");
   const formattedDate = new Date().toISOString().slice(0, 19).replace("T", " ");
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const fetchInscriptos = () => {
     setLoading(true);
-    fetch("http://localhost:8000/api/inscripciones")
+    fetch(`${apiUrl}/api/inscripciones`)
       .then((response) => response.json())
       .then((data) => {
         const inscripcionesFiltradas = data.filter((inscripcion) => {
@@ -95,7 +96,7 @@ export const Asistencia = () => {
       fecha: formattedDate,
       estado: false,
     };
-    fetch("http://localhost:8000/api/asistencias", {
+    fetch(`${apiUrl}/api/asistencias`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +134,7 @@ export const Asistencia = () => {
       fecha: formattedDate,
       estado: true,
     };
-    fetch("http://localhost:8000/api/asistencias", {
+    fetch(`${apiUrl}/api/asistencias`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

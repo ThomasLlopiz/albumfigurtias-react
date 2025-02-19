@@ -13,9 +13,10 @@ export const CrearDeportes = () => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
   const [generoSeleccionado, setGeneroSeleccionado] = useState("");
   const [profesoresSeleccionados, setProfesoresSeleccionados] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/usuarios?rol=profesor")
+    fetch(`${apiUrl}/api/usuarios?rol=profesor`)
       .then((res) => res.json())
       .then((data) => {
         const profesoresFiltrados = data.filter((usuario) => usuario.rol === 'profesor');
@@ -44,7 +45,7 @@ export const CrearDeportes = () => {
     console.log("Datos a guardar:", nuevoDeporte);
 
     try {
-      const response = await fetch("http://localhost:8000/api/deportes", {
+      const response = await fetch(`${apiUrl}/api/deportes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

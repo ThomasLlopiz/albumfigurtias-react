@@ -13,10 +13,11 @@ export const Usuarios = () => {
     const [usuarioAEliminar, setUsuarioAEliminar] = useState(null);
     const [mensajeConfirmacion, setMensajeConfirmacion] = useState("");
     const [usuarioEditando, setUsuarioEditando] = useState(null);
-    const [mensajeAccion, setMensajeAccion] = useState(""); // Estado para el mensaje de acción
+    const [mensajeAccion, setMensajeAccion] = useState("");
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const fetchUsuarios = async () => {
-        const response = await fetch("http://localhost:8000/api/usuarios");
+        const response = await fetch(`${apiUrl}/api/usuarios`);
         const data = await response.json();
 
         if (response.ok) {
@@ -38,7 +39,7 @@ export const Usuarios = () => {
             return;
         }
 
-        const response = await fetch("http://localhost:8000/api/usuarios", {
+        const response = await fetch(`${apiUrl}/api/usuarios`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -70,7 +71,7 @@ export const Usuarios = () => {
     };
 
     const eliminarUsuario = async (id) => {
-        const response = await fetch(`http://localhost:8000/api/usuarios/${id}`, {
+        const response = await fetch(`${apiUrl}/api/usuarios/${id}`, {
             method: "DELETE",
         });
 
