@@ -13,7 +13,7 @@ export const Asistencias = () => {
         categoria: '',
         mes: '',
     });
-    const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
     const asistencias = () => {
         fetch(`${apiUrl}/api/asistencias/activas`)

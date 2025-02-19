@@ -6,7 +6,7 @@ export const Sesion = () => {
   const [contrasena, setContrasena] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const login = async (e) => {
     e.preventDefault();
@@ -23,22 +23,26 @@ export const Sesion = () => {
         }),
       });
 
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
       const data = await response.json();
-      console.log(data);
-      if (response.ok) {
+      if (data) {
         localStorage.setItem("id", data.id);
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("expires_at", data.expires_at);
         localStorage.setItem("rol", data.rol);
         navigate("/admin");
       } else {
-        throw new Error("Error en el servidor");
+        throw new Error("No data received.");
       }
     } catch (error) {
-      setError("Error al conectar con el servidor.");
+      setError(error.message);
       console.error("Error:", error);
     }
   };
+
 
   return (
     <div className="flex justify-center items-center pt-40 pb-32 bg-gray-100">

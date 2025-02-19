@@ -14,7 +14,7 @@ export const Usuarios = () => {
     const [mensajeConfirmacion, setMensajeConfirmacion] = useState("");
     const [usuarioEditando, setUsuarioEditando] = useState(null);
     const [mensajeAccion, setMensajeAccion] = useState("");
-    const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
     const fetchUsuarios = async () => {
         const response = await fetch(`${apiUrl}/api/usuarios`);

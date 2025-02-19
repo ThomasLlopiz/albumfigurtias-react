@@ -7,7 +7,7 @@ export const Deportes = () => {
   const [deportes, setDeportes] = useState([]);
   const navigate = useNavigate();
   const id = localStorage.getItem("id");
-  const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetch(`${apiUrl}/api/deportes`)
