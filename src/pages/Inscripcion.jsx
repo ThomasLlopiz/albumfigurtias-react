@@ -17,7 +17,6 @@ export const Inscripcion = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     if (type === 'checkbox') {
       if (name === 'disciplina') {
         if (checked) {
@@ -69,7 +68,6 @@ export const Inscripcion = () => {
         }
 
         const newInscripcion = await response.json();
-        console.log(`Inscripción para ${disciplina} creada:`, newInscripcion);
       }
     } catch (error) {
       console.error('Error:', error);
