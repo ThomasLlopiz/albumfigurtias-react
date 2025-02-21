@@ -204,7 +204,7 @@ export const Inscripcion = () => {
                   onChange={handleChange}
                   className="form-checkbox"
                 />
-                <span className="ml-2">Basquet</span>
+                <span className="ml-1 mr-3">Basquet</span>
               </label>
               <label className="inline-flex items-center">
                 <input
@@ -215,7 +215,7 @@ export const Inscripcion = () => {
                   onChange={handleChange}
                   className="form-checkbox"
                 />
-                <span className="ml-2">Futbol</span>
+                <span className="ml-1 mr-3">Futbol</span>
               </label>
               <label className="inline-flex items-center">
                 <input
@@ -226,7 +226,7 @@ export const Inscripcion = () => {
                   onChange={handleChange}
                   className="form-checkbox"
                 />
-                <span className="ml-2">Tenis</span>
+                <span className="ml-1 mr-3">Tenis</span>
               </label>
               <label className="inline-flex items-center">
                 <input
@@ -237,7 +237,7 @@ export const Inscripcion = () => {
                   onChange={handleChange}
                   className="form-checkbox"
                 />
-                <span className="ml-2">Voley</span>
+                <span className="ml-1 mr-3">Voley</span>
               </label>
             </div>
           </div>

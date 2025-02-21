@@ -14,6 +14,7 @@ import { PrivateRoute, PrivateRouteForAdminOnly } from "../hooks/PrivateRoute";
 import { CrearDeportes } from "../pages/admin/CrearDeportes";
 import { Deportes } from "../pages/admin/Deportes";
 import { Asistencias } from "../pages/admin/Asistencias";
+import { Inscriptos } from "../pages/admin/Inscriptos";
 
 export const AppRouter = () => {
   return (
@@ -33,6 +34,7 @@ export const AppRouter = () => {
       <Route path="/curriculums" element={<PrivateRouteForAdminOnly element={<Curriculum />} />} />
       <Route path="/fechas" element={<PrivateRouteForAdminOnly element={<Curriculum />} />} />
       <Route path="/crearDeportes" element={<PrivateRouteForAdminOnly element={<CrearDeportes />} />} />
+      <Route path="/inscriptos" element={<PrivateRouteForAdminOnly element={<Inscriptos />} />} />
       <Route path="/admin" element={<PrivateRoute element={<Admin />} />} />
       <Route path="/deportes" element={<PrivateRoute element={<Deportes />} />} />
       <Route path="/asistencias" element={<PrivateRoute element={<Asistencias />} />} />

@@ -20,6 +20,7 @@ export const Admin = () => {
     // { to: "/alumnos", icon: faUserGraduate, text: "Alumnos" },
     // { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
     // { to: "/fechas", icon: faCalendarAlt, text: "Fechas" },
+    { to: "/inscriptos", icon: faUser, text: "Inscriptos" },
     { to: "/crearDeportes", icon: faFutbol, text: "Crear Deportes" },
     { to: "/usuarios", icon: faUser, text: "Crear Usuarios" },
   ];
