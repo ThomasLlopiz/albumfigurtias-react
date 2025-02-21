@@ -44,6 +44,7 @@ export const Inscripcion = () => {
 
     const dataToSend = {
       ...formData,
+      responsable: formData.responsable || '',
     };
 
     try {
