@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import '../index.css';
 
-const InstagramPosts = () => {
+export const InstagramPosts = () => {
     const [posts, setPosts] = useState([]);
     const token = "IGAAOEaKX61gZABZAE9fTEIyajFRVkZALV0R6NXRYYl9DS1ltR05VT1BjTnRWTHFhMndaQ21wNXNiMUU1TnlTTmxwZAmtQdGFDRktmVG5IWjgzU081b3lERGtCeHRVb0NhRkJqRG9TYjAwZAk5pM0RKbmlkMXFHVjBsZATdxYW1KVDR1SQZDZD";
 
@@ -41,7 +41,7 @@ const InstagramPosts = () => {
     }, []);
 
     return (
-        <section className="max-w-7xl mx-auto px-4 pb-8 mt-32 bg-white">
+        <section className="max-w-7xl mx-auto px-4 pb-8 bg-white">
             <h2 className="text-4xl font-bold text-center text-green-800 mb-8">NOTICIAS</h2>
             <ResponsiveMasonry columnsCountBreakPoints={{ '350': 1, '750': 2, '1000': 4 }}>
                 <Masonry>
@@ -101,4 +101,3 @@ const InstagramPosts = () => {
     );
 };
 
-export default InstagramPosts;
