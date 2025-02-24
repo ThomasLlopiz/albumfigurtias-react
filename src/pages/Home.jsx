@@ -4,10 +4,11 @@ import { Noticias } from "../components/Noticias";
 import { Sponsors } from "../components/Sponsors";
 import { Tienda } from "../components/Tienda";
 import { Whatsapp } from "../components/Whatsapp";
+import InstagramPosts from "../components/InstagramPosts";
 
 export const Home = () => {
   return (
-    <div>
+    <div className="bg-white">
       <Helmet>
         <title>SSD | Socidad Sportiva Devoto</title>
         <meta name="description" content="Bienvenido a nuestro sitio web, donde podrás encontrar noticias, tienda, y más." />
@@ -17,6 +18,7 @@ export const Home = () => {
         <meta property="og:image" content="./imagenes/club/publicidad1.jpg" />
         <meta property="og:url" content="https://www.socidadsportivadevoto.com.ar/" />
       </Helmet>
+      <InstagramPosts />
     </div>
   );
 };
