@@ -14,7 +14,7 @@ export const Asistencia = () => {
   const idDeporte = searchParams.get("idDeporte");
   const genero = searchParams.get("genero");
   const formattedDate = new Date().toISOString().slice(0, 19).replace("T", " ");
-const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const fetchInscriptos = () => {
     setLoading(true);
