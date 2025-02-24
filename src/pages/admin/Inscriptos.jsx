@@ -4,7 +4,6 @@ export const Inscriptos = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [inscripciones, setInscripciones] = useState([]);
 
-    // Función para obtener las inscripciones desde la API
     const fetchIncripciones = async () => {
         try {
             const response = await fetch(`${apiUrl}/api/inscripciones`);
@@ -15,7 +14,6 @@ export const Inscriptos = () => {
         }
     };
 
-    // Función para actualizar el estado de "planilla"
     const handlePlanillaChange = async (id, planilla) => {
         try {
             const response = await fetch(`${apiUrl}/api/inscripciones/${id}`, {
@@ -23,7 +21,7 @@ export const Inscriptos = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ planilla: !planilla }), // Invertir el estado de planilla
+                body: JSON.stringify({ planilla: !planilla }),
             });
 
             if (response.ok) {
@@ -40,7 +38,7 @@ export const Inscriptos = () => {
     };
 
     useEffect(() => {
-        fetchIncripciones(); // Llamar a la API cuando el componente se monte
+        fetchIncripciones();
     }, []);
 
     return (
