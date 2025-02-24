@@ -1,10 +1,12 @@
 import { Helmet } from "react-helmet";
-import { Curriculum } from "../components/Curriculum";
-import { Noticias } from "../components/Noticias";
-import { Sponsors } from "../components/Sponsors";
+import { SponsorsClub } from "../components/SponsorsClub";
 import { Tienda } from "../components/Tienda";
-import { Whatsapp } from "../components/Whatsapp";
-import InstagramPosts from "../components/InstagramPosts";
+import { FormaParte } from "../components/FormaParte";
+import { InstagramPosts } from "../components/InstagramPosts";
+import { Especiales } from "../components/Especiales";
+import { LinksHeader } from "../components/LinksHeaders";
+import { Youtube } from "../components/Youtube";
+import { HeaderClub } from "../components/HeaderClub";
 
 export const Home = () => {
   return (
@@ -18,7 +20,14 @@ export const Home = () => {
         <meta property="og:image" content="./imagenes/club/publicidad1.jpg" />
         <meta property="og:url" content="https://www.socidadsportivadevoto.com.ar/" />
       </Helmet>
+      <HeaderClub />
+      <LinksHeader />
       <InstagramPosts />
+      <Tienda />
+      <Especiales />
+      <FormaParte />
+      <SponsorsClub />
+      <Youtube />
     </div>
   );
 };
