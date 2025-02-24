@@ -8,7 +8,6 @@ body {
   font-family: "Georama";
 }
 
-
 .bg-green-800 {
   background-color: #005128;
 }
@@ -35,3 +34,20 @@ body {
   display: inline-block;
   width: 1px;
 }
+
+.bg-green-800 {
+  background-color: #00a54f;
+}
+
+.text-green-800 {
+  color: #00a54f;
+}
+
+.bg-green-900 {
+  background-color: #00a54f;
+}
+
+/* video{
+  max-height: 400px;
+  object-position: cover;
+} */
