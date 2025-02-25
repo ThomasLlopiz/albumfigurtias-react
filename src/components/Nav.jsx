@@ -54,12 +54,12 @@ export const Nav = () => {
                     </Link>
                     <div id="equipoMenu"
                         className={`absolute ${isEquipoDropdownOpen ? 'block' : 'hidden'} mt-2 bg-white text-black rounded shadow-lg z-40 left-1/2 transform -translate-x-1/2`}>
-                        <Link to="./futbol" className="block px-4 py-2 hover:bg-gray-200">Fútbol</Link>
-                        <Link to="./basquet" className="block px-4 py-2 hover:bg-gray-200">Básquet</Link>
-                        <Link to="./voley" className="block px-4 py-2 hover:bg-gray-200">Vóley</Link>
-                        <Link to="./tenis" className="block px-4 py-2 hover:bg-gray-200">Tenis</Link>
+                        <Link to="futbol" className="block px-4 py-2 hover:bg-gray-200">Fútbol</Link>
+                        <Link to="basquet" className="block px-4 py-2 hover:bg-gray-200">Básquet</Link>
+                        <Link to="voley" className="block px-4 py-2 hover:bg-gray-200">Vóley</Link>
+                        <Link to="tenis" className="block px-4 py-2 hover:bg-gray-200">Tenis</Link>
                         <Link to="amateurs" className="block px-4 py-2 hover:bg-gray-200">Torneos Amateurs</Link>
-                        <Link to="./gim_adultos" className="block px-4 py-2 hover:bg-gray-200">Gim Adultos</Link>
+                        <Link to="gimadultos" className="block px-4 py-2 hover:bg-gray-200">Gim Adultos</Link>
                     </div>
                 </div>
 
@@ -70,8 +70,8 @@ export const Nav = () => {
                     </Link>
                     <div id="clubMenu"
                         className={`absolute ${isClubDropdownOpen ? 'block' : 'hidden'} mt-2 bg-white text-black rounded shadow-lg z-40 left-1/2 transform -translate-x-1/2`}>
-                        <Link to="./historia" className="block px-4 py-2 hover:bg-gray-200">Historia</Link>
-                        <Link to="./comision_directiva" className="block px-4 py-2 hover:bg-gray-200">Comisión Directiva</Link>
+                        <Link to="historia" className="block px-4 py-2 hover:bg-gray-200">Historia</Link>
+                        <Link to="comisiondirectiva" className="block px-4 py-2 hover:bg-gray-200">Comisión Directiva</Link>
                         <a target="_blank" href="./pdf/EstatutoSSD.pdf" className="block px-4 py-2 hover:bg-gray-200">Estatuto</a>
                         <a target="_blank" href="https://drive.google.com/file/d/1DvCUonGu-QEZvXqvNdLM4pdNODlU3zM2/view"
                             className="block px-4 py-2 hover:bg-gray-200">Reglamento</a>
