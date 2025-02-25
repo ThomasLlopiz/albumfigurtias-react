@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Curriculum = () => {
+export const Curriculums = () => {
   const [file, setFile] = useState(null);
 
   const handleFileChange = (event) => {
