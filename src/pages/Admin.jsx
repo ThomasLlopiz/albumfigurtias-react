@@ -16,7 +16,7 @@ export const Admin = () => {
   const navigate = useNavigate();
   const adminMenuItems = [
     // { to: "/cuotas", icon: faMoneyBillWave, text: "Cuotas" },
-    // { to: "/curriculums", icon: faFileAlt, text: "Curriculums" },
+    { to: "/curriculums", icon: faFileAlt, text: "Curriculums" },
     // { to: "/alumnos", icon: faUserGraduate, text: "Alumnos" },
     // { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
     // { to: "/fechas", icon: faCalendarAlt, text: "Fechas" },
