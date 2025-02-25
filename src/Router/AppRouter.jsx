@@ -3,7 +3,7 @@ import { Juegos } from "../pages/Album/Juegos";
 import { Album } from "../pages/Album/Album";
 
 import { Home } from "../pages/Home";
-import { Inscripcion } from "../pages/Inscripcion";
+import { Inscripcion } from "../pages/club/Inscripcion";
 import { Admin } from "../pages/Admin";
 import { Sesion } from "../pages/admin/Sesion";
 
