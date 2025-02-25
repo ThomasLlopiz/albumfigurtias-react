@@ -91,7 +91,7 @@ export const Experiencias = () => {
     };
 
     return (
-        <div className="max-w-7xl mx-auto p-6">
+        <div className="max-w-7xl mx-auto p-6 my-20">
             <h1 className="text-3xl font-bold mb-6">Experiencias Laborales</h1>
             {message.text && (
                 <div className={`mb-4 p-2 text-white ${message.type === 'success' ? 'bg-green-600' : 'bg-red-600'}`}>
