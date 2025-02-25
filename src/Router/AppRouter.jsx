@@ -3,11 +3,9 @@ import { Juegos } from "../pages/Album/Juegos";
 import { Album } from "../pages/Album/Album";
 
 import { Home } from "../pages/Home";
-
-import { Novedades } from "../pages/Novedades";
 import { Inscripcion } from "../pages/Inscripcion";
 import { Admin } from "../pages/Admin";
-import { Sesion } from "../pages/Sesion";
+import { Sesion } from "../pages/admin/Sesion";
 
 import { PrivateRoute, PrivateRouteForAdminOnly } from "../hooks/PrivateRoute";
 import { CrearDeportes } from "../pages/admin/CrearDeportes";
@@ -26,7 +24,6 @@ export const AppRouter = () => {
       <Route path="*" element={<Home />} />
       <Route path="/juegos" element={<Juegos />} />
       <Route path="/album" element={<Album />} />
-      <Route path="/novedades" element={<Novedades />} />
       <Route path="/inscribirme" element={<Inscripcion />} />
       <Route path="/sesion" element={<Sesion />} />
       <Route path="/asistencia" element={<PrivateRoute element={<Asistencia />} />} />
