@@ -7,14 +7,14 @@ export const Historia = () => {
     };
 
     return (
-        <section className="py-4 relative">
+        <section className="py-4 relative my-24">
             <div className="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
                 <div className="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
                     <div className="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
                         <div className="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
-                            <img className="rounded-xl object-cover" src="./images/nosotros.jpg" alt="about Us image" />
+                            <img className="rounded-xl object-cover" src="./imagenes/club/nosotros.jpg" alt="about Us image" />
                         </div>
-                        <img className="sm:ml-0 ml-auto rounded-xl object-cover" src="./images/nosotros2.jpg" alt="about Us image" />
+                        <img className="sm:ml-0 ml-auto rounded-xl object-cover" src="./imagenes/club/nosotros2.jpg" alt="about Us image" />
                     </div>
                     <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
                         <div className="w-full flex-col justify-center items-start gap-8 flex">

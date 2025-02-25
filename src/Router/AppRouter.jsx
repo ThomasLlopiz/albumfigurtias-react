@@ -9,6 +9,7 @@ import { Futbol } from "../pages/club/Futbol";
 import { GimAdultos } from "../pages/club/GimAdultos";
 import { Historia } from "../pages/club/Historia";
 import { ComisionDirectiva } from "../pages/club/ComisionDirectiva";
+import { TourVirtual } from "../pages/club/TourVirtual";
 
 import { Home } from "../pages/Home";
 import { Admin } from "../pages/Admin";
@@ -42,6 +43,7 @@ export const AppRouter = () => {
       <Route path="/gimadultos" element={<GimAdultos />} />
       <Route path="/historia" element={<Historia />} />
       <Route path="/comisiondirectiva" element={<ComisionDirectiva />} />
+      <Route path="/tourvirtual" element={<TourVirtual />} />
 
       <Route path="/usuarios" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
       <Route path="/cuotas" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />

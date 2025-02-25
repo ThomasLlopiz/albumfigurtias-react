@@ -1,6 +1,6 @@
 export const ComisionDirectiva = () => {
     return (
-        <div className="max-w-7xl mx-auto p-6">
+        <div className="max-w-7xl mx-auto p-6 my-24">
             <div className="px-4 mx-auto">
                 <div className="pb-16">
                     <h2 className="text-2xl font-semibold text-gray-800 text-center">Comisión Directiva</h2>

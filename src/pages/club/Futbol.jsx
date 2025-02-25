@@ -1,6 +1,6 @@
 export const Futbol = () => {
     return (
-        <section className="py-4 relative">
+        <section className="py-4 relative my-24">
             <div className="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
                 <div className="w-full justify-start items-center gap-12">
                     <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
