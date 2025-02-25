@@ -1,15 +1,16 @@
+import { Link } from 'react-router-dom';
 export const LinksHeader = () => {
     return (
         <div className="bg-white py-28 w-full">
             <div className="flex overflow-x-auto justify-start sm:justify-center space-x-16 sm:space-x-32 px-4 md:px-12">
-                <a
-                    href="./inscribirme.php"
+                <Link
+                    to="/inscribirme"
                     className="flex flex-col items-center text-green-800 hover:text-green-600 relative z-20"
                     aria-label="Ir a la página de inscripción"
                 >
                     <i className="fas fa-user-plus text-3xl"></i>
                     <span className="mt-3 text-sm font-semibold text-center">INSCRIBIRME</span>
-                </a>
+                </Link>
 
                 <a
                     href="./asociarme.php"
@@ -38,14 +39,14 @@ export const LinksHeader = () => {
                     <span className="mt-3 text-sm font-semibold text-center">ALBUM SSD</span>
                 </a>
 
-                <a
-                    href="./tour_virtual.php"
+                <Link
+                    to="/tourvirtual"
                     className="flex flex-col items-center text-green-800 hover:text-green-600 relative z-20"
                     aria-label="Ir a la página de tour virtual"
                 >
                     <i className="fas fa-route text-3xl"></i>
                     <span className="mt-3 text-sm font-semibold text-center">TOUR VIRTUAL</span>
-                </a>
+                </Link>
             </div>
         </div>
     );

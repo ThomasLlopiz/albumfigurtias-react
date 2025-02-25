@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
+
 export const TourVirtual = () => {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMasonryVisible, setIsMasonryVisible] = useState(true);
 
-    // Generamos un array de 29 imágenes (1 a 29)
     const imageCount = 29;
     const images = Array.from({ length: imageCount }, (_, i) => ({
-        src: `./assets/tour/${i + 1}.jpg`,
+        src: `./imagenes/club/tour/${i + 1}.jpg`,
         alt: `Imagen ${i + 1}`,
     }));
 
@@ -27,7 +28,6 @@ export const TourVirtual = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
 
-    // Manejo de teclas
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (!isLightboxOpen) return;
@@ -40,9 +40,54 @@ export const TourVirtual = () => {
         return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isLightboxOpen]);
 
+    const recalculateMasonry = () => {
+        setIsMasonryVisible(false);
+        setTimeout(() => {
+            setIsMasonryVisible(true);
+        }, 100);
+    };
+
+    useEffect(() => {
+        recalculateMasonry();
+    }, []);
+
     return (
         <>
-            <section className="py-4 relative my-24">
+            <style>
+                {`
+          .masonry {
+            column-count: 2;
+            column-gap: 16px;
+          }
+
+          @media (min-width: 768px) {
+            .masonry {
+              column-count: 3;
+            }
+          }
+
+          @media (min-width: 1024px) {
+            .masonry {
+              column-count: 4;
+            }
+          }
+
+          .masonry-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 16px;
+            break-inside: avoid;
+          }
+
+          .masonry-item img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+          }
+        `}
+            </style>
+
+            <section className="py-4 relative mt-24">
                 <div className="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
                     <h2 className="text-gray-900 text-4xl font-bold font-manrope leading-normal lg:text-start text-left">
                         Tour Virtual
@@ -50,19 +95,21 @@ export const TourVirtual = () => {
                     <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-left">
                         Conoce nuestras instalaciones.
                     </p>
-                    <div id="masonry-grid" className="masonry my-6">
-                        {images.map((image, index) => (
-                            <div key={index} className="masonry-item">
-                                <img
-                                    src={image.src}
-                                    alt={image.alt}
-                                    className="cursor-pointer open-lightbox"
-                                    onClick={() => openLightbox(index)}
-                                    loading="lazy"
-                                />
-                            </div>
-                        ))}
-                    </div>
+                    {isMasonryVisible && (
+                        <div id="masonry-grid" className="masonry my-6">
+                            {images.map((image, index) => (
+                                <div key={index} className="masonry-item">
+                                    <img
+                                        src={image.src}
+                                        alt={image.alt}
+                                        className="cursor-pointer open-lightbox"
+                                        onClick={() => openLightbox(index)}
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
