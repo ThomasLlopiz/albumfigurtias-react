@@ -1,161 +1,88 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 export const Curriculums = () => {
-  const [file, setFile] = useState(null);
+  const [postulantes, setPostulantes] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
+  useEffect(() => {
+    const obtenerDatos = async () => {
+      try {
+        const respuestaPostulantes = await fetch('http://localhost:8000/api/postulantes');
+        if (!respuestaPostulantes.ok) throw new Error('No se pudieron obtener los postulantes');
+        const datosPostulantes = await respuestaPostulantes.json();
 
-    if (selectedFile && selectedFile.type !== "application/pdf") {
-      alert("El archivo debe ser un PDF.");
-      setFile(null);
-      return;
-    }
+        const postulantesConExperiencias = await Promise.all(
+          datosPostulantes.data.map(async (postulante) => {
+            const respuestaExperiencias = await fetch(
+              `http://localhost:8000/api/experiences?dni=${postulante.dni}`
+            );
+            if (!respuestaExperiencias.ok) throw new Error('No se pudieron obtener las experiencias');
+            const datosExperiencias = await respuestaExperiencias.json();
+            return { ...postulante, experiences: datosExperiencias };
+          })
+        );
 
-    if (selectedFile && selectedFile.size > 200 * 1024) {
-      alert("El archivo no puede ser mayor de 200KB.");
-      setFile(null);
-      return;
-    }
+        setPostulantes(postulantesConExperiencias);
+        setCargando(false);
+      } catch (err) {
+        setError('Error al obtener los datos: ' + err.message);
+        setCargando(false);
+      }
+    };
 
-    setFile(selectedFile);
-  };
+    obtenerDatos();
+  }, []);
+
+  if (cargando) return <div>Cargando...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
-    <div className="mt-20 mb-20 flex flex-col items-center text-black">
-      <h1 className="text-xl font-semibold">CURRICULUM</h1>
-      <div className="flex justify-around gap-20 w-1/2">
-        <form className="mx-auto mt-10 w-1/2">
-          <div className="grid md:grid-cols-2 md:gap-6">
-            <div className="relative z-0 w-full mb-5 group">
-              <input
-                type="text"
-                name="floating_first_name"
-                id="floating_first_name"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                htmlFor="floating_first_name"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Nombre
-              </label>
-            </div>
-            <div className="relative z-0 w-full mb-5 group">
-              <input
-                type="text"
-                name="floating_last_name"
-                id="floating_last_name"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                htmlFor="floating_last_name"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Apellido
-              </label>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 md:gap-6">
-            <div className="relative z-0 w-full mb-5 group">
-              <input
-                type="text"
-                name="direccion"
-                id="floating_direccionn"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                htmlFor="floating_direccion"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Direccion
-              </label>
-            </div>
-            <div className="relative z-0 w-full mb-5 group">
-              <input
-                type="date"
-                name="floating_birthdate"
-                id="floating_birthdate"
-                className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-                required
-              />
-              <label
-                htmlFor="floating_birthdate"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Fecha de nacimiento
-              </label>
-            </div>
-          </div>
-
-          <div className="relative z-0 w-full mb-5 group">
-            <input
-              type="gmail"
-              name="floating_email"
-              id="floating_email"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-              placeholder=" "
-              required
-            />
-            <label
-              htmlFor="floating_email"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Correo electronico
-            </label>
-          </div>
-
-          <div className="relative z-0 w-full mb-5 group">
-            <input
-              type="tel"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              name="floating_phone"
-              id="floating_phone"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-              placeholder=" "
-              required
-            />
-            <label
-              htmlFor="floating_phone"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Telefono
-            </label>
-          </div>
-
-          <div className="relative z-0 w-full mb-5 group">
-            <input
-              type="file"
-              name="floating_file"
-              id="floating_file"
-              className="block mb-4 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-              placeholder=" "
-              onChange={handleFileChange}
-              accept=".pdf"
-            />
-            <label
-              htmlFor="floating_file"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Subir archivo PDF (máximo 200KB)
-            </label>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full text-white bg-green-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-full px-5 py-2.5 text-center dark:bg-green-800 dark:hover:bg-green-500 dark:focus:ring-green-300"
-          >
-            ENVIAR
-          </button>
-        </form>
-      </div>
+    <div className="my-20">
+      <h1 className="text-center text-3xl font-semibold mb-6">Currículums</h1>
+      {postulantes.length === 0 ? (
+        <p className="text-center">No se encontraron postulantes.</p>
+      ) : (
+        <div className="">
+          <table className="border-collapse border border-green-800 w-11/12 mx-auto rounded-lg">
+            <thead>
+              <tr className="bg-green-800 text-white">
+                <th className="px-6 py-3 border border-green-800 text-left font-normal">Nombre</th>
+                <th className="px-6 py-3 border border-green-800 text-left font-normal">DNI</th>
+                <th className="px-6 py-3 border border-green-800 text-left font-normal">Correo</th>
+                <th className="px-6 py-3 border border-green-800 text-left font-normal">Teléfono</th>
+                <th className="px-6 py-3 border border-green-800 text-left font-normal">Experiencias</th>
+              </tr>
+            </thead>
+            <tbody>
+              {postulantes.map((postulante) => (
+                <tr key={postulante.id} className="bg-white hover:bg-gray-50">
+                  <td className="px-6 py-4 border border-green-800">{postulante.nombre || 'No se proporcionó nombre'}</td>
+                  <td className="px-6 py-4 border border-green-800">{postulante.dni || 'N/A'}</td>
+                  <td className="px-6 py-4 border border-green-800">{postulante.mail || 'N/A'}</td>
+                  <td className="px-6 py-4 border border-green-800">{postulante.telefono || 'N/A'}</td>
+                  <td className="px-6 py-4 border border-green-800">
+                    {postulante.experiences.length > 0 ? (
+                      <ul className="list-none pl-0">
+                        {postulante.experiences.map((exp) => (
+                          <li key={exp.id} className="text-sm mb-2">
+                            <strong>{exp.empresa || 'Empresa desconocida'}</strong> - {exp.puesto || 'Puesto desconocido'}<br />
+                            <span>Desde: {exp.fecha_inicio || 'N/A'} Hasta: {exp.fecha_fin || 'N/A'}</span><br />
+                            <span>Motivo de finalización: {exp.motivo_fin || 'N/A'}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>No hay experiencias registradas.</p>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };
+
+
