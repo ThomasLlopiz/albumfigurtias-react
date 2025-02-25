@@ -10,13 +10,14 @@ import { GimAdultos } from "../pages/club/GimAdultos";
 import { Historia } from "../pages/club/Historia";
 import { ComisionDirectiva } from "../pages/club/ComisionDirectiva";
 import { TourVirtual } from "../pages/club/TourVirtual";
+import { Curriculum } from "../pages/club/Curriculum";
 
 import { Home } from "../pages/Home";
 import { Admin } from "../pages/Admin";
 
 import { CrearDeportes } from "../pages/admin/CrearDeportes";
 import { Usuarios } from "../pages/admin/Usuarios";
-import { Curriculum } from "../pages/admin/Curriculum";
+import { Curriculums } from "../pages/admin/Curriculums";
 import { Deportes } from "../pages/admin/Deportes";
 import { Asistencias } from "../pages/admin/Asistencias";
 import { Inscriptos } from "../pages/admin/Inscriptos";
@@ -44,12 +45,13 @@ export const AppRouter = () => {
       <Route path="/historia" element={<Historia />} />
       <Route path="/comisiondirectiva" element={<ComisionDirectiva />} />
       <Route path="/tourvirtual" element={<TourVirtual />} />
+      <Route path="/trabajaconnosotros" element={<Curriculum />} />
 
       <Route path="/usuarios" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
       <Route path="/cuotas" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
       <Route path="/alquileres" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
-      <Route path="/curriculums" element={<PrivateRouteForAdminOnly element={<Curriculum />} />} />
-      <Route path="/fechas" element={<PrivateRouteForAdminOnly element={<Curriculum />} />} />
+      <Route path="/curriculums" element={<PrivateRouteForAdminOnly element={<Curriculums />} />} />
+      <Route path="/fechas" element={<PrivateRouteForAdminOnly element={<Curriculums />} />} />
       <Route path="/crearDeportes" element={<PrivateRouteForAdminOnly element={<CrearDeportes />} />} />
       <Route path="/inscriptos" element={<PrivateRouteForAdminOnly element={<Inscriptos />} />} />
 
