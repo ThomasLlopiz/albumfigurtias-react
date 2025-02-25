@@ -58,7 +58,7 @@ export const Nav = () => {
                         <Link to="./basquet" className="block px-4 py-2 hover:bg-gray-200">Básquet</Link>
                         <Link to="./voley" className="block px-4 py-2 hover:bg-gray-200">Vóley</Link>
                         <Link to="./tenis" className="block px-4 py-2 hover:bg-gray-200">Tenis</Link>
-                        <Link to="./amateurs" className="block px-4 py-2 hover:bg-gray-200">Torneos Amateurs</Link>
+                        <Link to="amateurs" className="block px-4 py-2 hover:bg-gray-200">Torneos Amateurs</Link>
                         <Link to="./gim_adultos" className="block px-4 py-2 hover:bg-gray-200">Gim Adultos</Link>
                     </div>
                 </div>
