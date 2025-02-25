@@ -30,6 +30,9 @@ export const Curriculum = () => {
             const response = await fetch(
                 `http://localhost:8000/api/postulantes?dni=${dni}&genero=${genero}`
             );
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
             const result = await response.json();
             const data = result.data.find((p) => p.dni === dni && p.genero === genero);
             if (data) {
@@ -106,7 +109,7 @@ export const Curriculum = () => {
           }
         `}
             </style>
-            <div className="space-y-24">
+            <div className="my-20">
                 <div className="max-w-7xl mx-auto p-6">
                     {message.text && (
                         <div
