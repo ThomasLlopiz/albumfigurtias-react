@@ -1,12 +1,11 @@
 export const Sponsors = () => {
-  // Funciones para manejar los eventos de mouse
   const handleMouseOver = (e) => {
-    e.target.style.filter = "none"; // Elimina el filtro al pasar el ratón
+    e.target.style.filter = "none";
   };
 
   const handleMouseOut = (e) => {
     e.target.style.filter =
-      "brightness(0) saturate(100%) invert(25%) sepia(72%) saturate(512%) hue-rotate(102deg) brightness(84%) contrast(106%)"; // Restablece el filtro al salir
+      "brightness(0) saturate(100%) invert(25%) sepia(72%) saturate(512%) hue-rotate(102deg) brightness(84%) contrast(106%)";
   };
 
   return (
@@ -25,8 +24,8 @@ export const Sponsors = () => {
                 filter:
                   "brightness(0) saturate(100%) invert(25%) sepia(72%) saturate(512%) hue-rotate(102deg) brightness(84%) contrast(106%)",
               }}
-              onMouseOver={handleMouseOver} // Pasa la función
-              onMouseOut={handleMouseOut} // Pasa la función
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
             />
           </div>
           <div className="flex justify-center">
@@ -38,8 +37,8 @@ export const Sponsors = () => {
                 filter:
                   "brightness(0) saturate(100%) invert(25%) sepia(72%) saturate(512%) hue-rotate(102deg) brightness(84%) contrast(106%)",
               }}
-              onMouseOver={handleMouseOver} // Pasa la función
-              onMouseOut={handleMouseOut} // Pasa la función
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
             />
           </div>
           <div className="flex justify-center">
@@ -51,8 +50,8 @@ export const Sponsors = () => {
                 filter:
                   "brightness(0) saturate(100%) invert(25%) sepia(72%) saturate(512%) hue-rotate(102deg) brightness(84%) contrast(106%)",
               }}
-              onMouseOver={handleMouseOver} // Pasa la función
-              onMouseOut={handleMouseOut} // Pasa la función
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
             />
           </div>
           <div className="flex justify-center">
@@ -64,8 +63,8 @@ export const Sponsors = () => {
                 filter:
                   "brightness(0) saturate(100%) invert(25%) sepia(72%) saturate(512%) hue-rotate(102deg) brightness(84%) contrast(106%)",
               }}
-              onMouseOver={handleMouseOver} // Pasa la función
-              onMouseOut={handleMouseOut} // Pasa la función
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
             />
           </div>
         </div>

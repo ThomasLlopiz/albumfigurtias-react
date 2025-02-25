@@ -2,7 +2,6 @@
 export const Maps = () => {
   return (
     <div>
-      {" "}
       <div
         id="Comprar"
         className="title text-white mt-24 flex justify-center align-center sm:mt-56"

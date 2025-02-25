@@ -9,9 +9,7 @@
   --bg: var(--stripe-color);
   --maincolor: var(--bg);
 }
-body {
-  background-color: black;
-}
+
 
 /* /BACKGORUND VERDE/ */
 @keyframes smoothBg {

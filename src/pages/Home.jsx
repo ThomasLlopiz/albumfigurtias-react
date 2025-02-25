@@ -1,12 +1,12 @@
 import { Helmet } from "react-helmet";
-import { SponsorsClub } from "../components/SponsorsClub";
-import { Tienda } from "../components/Tienda";
-import { FormaParte } from "../components/FormaParte";
-import { InstagramPosts } from "../components/InstagramPosts";
-import { Especiales } from "../components/Especiales";
-import { LinksHeader } from "../components/LinksHeaders";
-import { Youtube } from "../components/Youtube";
-import { HeaderClub } from "../components/HeaderClub";
+import { SponsorsClub } from "../components/Club/SponsorsClub";
+import { Tienda } from "../components/Club/Tienda";
+import { FormaParte } from "../components/Club/FormaParte";
+import { InstagramPosts } from "../components/Club/InstagramPosts";
+import { Especiales } from "../components/Club/Especiales";
+import { LinksHeader } from "../components/Club/LinksHeaders";
+import { Youtube } from "../components/Club/Youtube";
+import { HeaderClub } from "../components/Club/HeaderClub";
 
 export const Home = () => {
   return (

@@ -1,11 +1,11 @@
-import "../Album.css";
+import "../../Album.css";
 import { useRef, useEffect, useState } from "react";
-import { Banner } from "../components/Banner";
-import { Deportes } from "../components/Deportes";
-import { Maps } from "../components/Maps";
-import { AlbumDesktop } from "../components/AlbumDesktop";
-import { AlbumMobile } from "../components/AlbumMobile";
-import imgData from "../utiltis/img.json";
+import { Banner } from "../../components/Album/Banner";
+import { Deportes } from "../../components/Album/Deportes";
+import { Maps } from "../../components/Album/Maps";
+import { AlbumDesktop } from "../../components/Album/AlbumDesktop";
+import { AlbumMobile } from "../../components/Album/AlbumMobile";
+import imgData from "../../utiltis/img.json";
 
 export const Album = () => {
   const carouselRef = useRef(null);

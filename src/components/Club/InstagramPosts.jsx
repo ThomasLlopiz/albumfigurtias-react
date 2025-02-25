@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import '../index.css';
+import '../../index.css';
 
 export const InstagramPosts = () => {
     const [posts, setPosts] = useState([]);

@@ -1,20 +1,23 @@
 import { Routes, Route } from "react-router-dom";
+import { Juegos } from "../pages/Album/Juegos";
+import { Album } from "../pages/Album/Album";
+
 import { Home } from "../pages/Home";
-import { Juegos } from "../pages/Juegos";
+
 import { Novedades } from "../pages/Novedades";
-import { Album } from "../pages/Album";
-import { Tienda } from "../pages/Tienda";
 import { Inscripcion } from "../pages/Inscripcion";
 import { Admin } from "../pages/Admin";
 import { Sesion } from "../pages/Sesion";
-import { Asistencia } from "../pages/admin/Asitencia";
-import { Usuarios } from "../pages/admin/Usuarios";
-import { Curriculum } from "../pages/admin/Curriculum";
+
 import { PrivateRoute, PrivateRouteForAdminOnly } from "../hooks/PrivateRoute";
 import { CrearDeportes } from "../pages/admin/CrearDeportes";
+import { Usuarios } from "../pages/admin/Usuarios";
+import { Curriculum } from "../pages/admin/Curriculum";
 import { Deportes } from "../pages/admin/Deportes";
 import { Asistencias } from "../pages/admin/Asistencias";
 import { Inscriptos } from "../pages/admin/Inscriptos";
+import { Asistencia } from "../pages/admin/Asitencia";
+
 
 export const AppRouter = () => {
   return (
@@ -24,7 +27,6 @@ export const AppRouter = () => {
       <Route path="/juegos" element={<Juegos />} />
       <Route path="/album" element={<Album />} />
       <Route path="/novedades" element={<Novedades />} />
-      <Route path="/tienda" element={<Tienda />} />
       <Route path="/inscribirme" element={<Inscripcion />} />
       <Route path="/sesion" element={<Sesion />} />
       <Route path="/asistencia" element={<PrivateRoute element={<Asistencia />} />} />

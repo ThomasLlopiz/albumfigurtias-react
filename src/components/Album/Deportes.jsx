@@ -1,4 +1,4 @@
-import { videos } from "../utiltis/img.json";
+import { videos } from "../../utiltis/img.json";
 export const Deportes = () => {
   return (
     <div>
