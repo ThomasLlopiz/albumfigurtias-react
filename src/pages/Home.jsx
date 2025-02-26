@@ -21,6 +21,7 @@ export const Home = () => {
         <meta property="og:url" content="https://www.socidadsportivadevoto.com.ar/" />
       </Helmet>
       <HeaderClub />
+      <LinksHeader />
       <InstagramPosts />
       <Tienda />
       <Especiales />
