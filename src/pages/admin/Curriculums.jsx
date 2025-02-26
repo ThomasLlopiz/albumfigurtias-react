@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 export const Curriculums = () => {
   const [postulantes, setPostulantes] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
   `${apiUrl}/api/asistencias/activas`
   useEffect(() => {
@@ -39,7 +42,19 @@ export const Curriculums = () => {
 
   return (
     <div className="my-20">
-      <h1 className="text-center text-3xl font-semibold mb-6">Currículums</h1>
+      <div className="flex items-center justify-around">
+        <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
+          Crear Deporte
+        </h1>
+        <div className="text-center">
+          <button
+            onClick={() => navigate("/admin")}
+            className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
+          >
+            Volver
+          </button>
+        </div>
+      </div>
       {postulantes.length === 0 ? (
         <p className="text-center">No se encontraron postulantes.</p>
       ) : (
