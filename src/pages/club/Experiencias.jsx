@@ -6,7 +6,6 @@ export const Experiencias = () => {
     const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
     const dni = queryParams.get('dni');
-
     const [experiences, setExperiences] = useState([]);
     const [formData, setFormData] = useState({
         dni: dni || '',
@@ -20,10 +19,11 @@ export const Experiencias = () => {
     });
     const [editingId, setEditingId] = useState(null);
     const [message, setMessage] = useState({ text: '', type: '' });
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     const fetchExperiences = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/experiences?dni=${dni}`);
+            const response = await fetch(`${apiUrl}/api/experiences?dni=${dni}`);
             const data = await response.json();
             setExperiences(data);
         } catch (error) {
@@ -45,13 +45,13 @@ export const Experiencias = () => {
         try {
             let response;
             if (editingId) {
-                response = await fetch(`http://localhost:8000/api/experiences/${editingId}`, {
+                response = await fetch(`${apiUrl}/api/experiences/${editingId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData),
                 });
             } else {
-                response = await fetch('http://localhost:8000/api/experiences', {
+                response = await fetch(`${apiUrl}/api/experiences`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData),
@@ -77,7 +77,7 @@ export const Experiencias = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/experiences/${id}`, {
+            const response = await fetch(`${apiUrl}/api/experiences/${id}`, {
                 method: 'DELETE',
             });
             const result = await response.json();

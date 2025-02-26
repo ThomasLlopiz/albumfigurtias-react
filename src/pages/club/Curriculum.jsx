@@ -23,12 +23,13 @@ export const Curriculum = () => {
     });
     const [isUpdate, setIsUpdate] = useState(false);
     const [message, setMessage] = useState({ text: '', type: '' });
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     const fetchPostulante = async (dni, genero) => {
         if (!dni || !genero) return;
         try {
             const response = await fetch(
-                `http://localhost:8000/api/postulantes?dni=${dni}&genero=${genero}`
+                `${apiUrl}/api/postulantes?dni=${dni}&genero=${genero}`
             );
             if (!response.ok) {
                 throw new Error(`Server error: ${response.status}`);
@@ -62,12 +63,12 @@ export const Curriculum = () => {
         try {
             let response;
             if (isUpdate) {
-                response = await fetch(`http://localhost:8000/api/postulantes/${formData.dni}`, {
+                response = await fetch(`${apiUrl}/api/postulantes/${formData.dni}`, {
                     method: 'PUT',
                     body: form,
                 });
             } else {
-                response = await fetch('http://localhost:8000/api/postulantes', {
+                response = await fetch(`${apiUrl}/api/postulantes`, {
                     method: 'POST',
                     body: form,
                 });

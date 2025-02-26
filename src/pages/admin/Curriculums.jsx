@@ -3,18 +3,19 @@ export const Curriculums = () => {
   const [postulantes, setPostulantes] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
-
+  const apiUrl = import.meta.env.VITE_API_URL;
+  `${apiUrl}/api/asistencias/activas`
   useEffect(() => {
     const obtenerDatos = async () => {
       try {
-        const respuestaPostulantes = await fetch('http://localhost:8000/api/postulantes');
+        const respuestaPostulantes = await fetch(`${apiUrl}/api/postulantes`);
         if (!respuestaPostulantes.ok) throw new Error('No se pudieron obtener los postulantes');
         const datosPostulantes = await respuestaPostulantes.json();
 
         const postulantesConExperiencias = await Promise.all(
           datosPostulantes.data.map(async (postulante) => {
             const respuestaExperiencias = await fetch(
-              `http://localhost:8000/api/experiences?dni=${postulante.dni}`
+              `${apiUrl}/api/experiences?dni=${postulante.dni}`
             );
             if (!respuestaExperiencias.ok) throw new Error('No se pudieron obtener las experiencias');
             const datosExperiencias = await respuestaExperiencias.json();
