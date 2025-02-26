@@ -79,11 +79,11 @@ export const Nav = () => {
                 </div>
 
                 <div>
-                    <Link to="./inscribirme" className="font-bold hover:underline" aria-label="Ir a la página de inscripción">INSCRIBIRME</Link>
+                    <Link to="inscribirme" className="font-bold hover:underline" aria-label="Ir a la página de inscripción">INSCRIBIRME</Link>
                 </div>
 
                 <div>
-                    <Link to="./tour_virtual" className="font-bold hover:underline">EL CLUB</Link>
+                    <Link to="tourvirtual" className="font-bold hover:underline">EL CLUB</Link>
                 </div>
             </div>
         </nav>
