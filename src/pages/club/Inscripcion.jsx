@@ -15,6 +15,8 @@ export const Inscripcion = () => {
     disciplina: [],
   });
 
+  const [successMessage, setSuccessMessage] = useState('');
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {
@@ -43,7 +45,7 @@ export const Inscripcion = () => {
 
     const dataToSend = {
       ...formData,
-      responsable: formData.responsable || '',
+      responsable: formData.responsable || 'Sin responsable',
     };
 
     try {
@@ -69,19 +71,46 @@ export const Inscripcion = () => {
 
         const newInscripcion = await response.json();
       }
+
+      // Set success message and clear form
+      setSuccessMessage('¡Registrado con éxito!');
+      setFormData({
+        nombre: '',
+        apellido: '',
+        genero: '',
+        dni: '',
+        direccion: '',
+        telefono: '',
+        fecha_nacimiento: '',
+        responsable: '',
+        planilla: false,
+        disciplina: [],
+      });
+
+      // Remove success message after 5 seconds
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 10000);
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
-
   return (
     <div className='text-black'>
+
       <form onSubmit={handleSubmit} className="max-w-7xl mx-auto p-6 space-y-6 mt-32">
         <div>
           <h2 className="text-2xl font-semibold text-gray-800">Datos Personales</h2>
           <p className="text-sm text-gray-600 mt-2">Completa tus datos e inscríbete a tu deporte favorito.</p>
         </div>
+
+        {/* Success Message */}
+        {successMessage && (
+          <div className="bg-green-500 text-white text-center p-3 rounded-md mb-4">
+            {successMessage}
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
