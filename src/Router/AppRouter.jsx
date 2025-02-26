@@ -5,6 +5,8 @@ import { Album } from "../pages/Album/Album";
 import { Inscripcion } from "../pages/club/Inscripcion";
 import { Amateurs } from "../pages/club/Amateurs";
 import { Basquet } from "../pages/club/Basquet";
+import { Tenis } from "../pages/club/Tenis";
+import { Voley } from "../pages/club/Voley";
 import { Futbol } from "../pages/club/Futbol";
 import { GimAdultos } from "../pages/club/GimAdultos";
 import { Historia } from "../pages/club/Historia";
@@ -12,6 +14,7 @@ import { ComisionDirectiva } from "../pages/club/ComisionDirectiva";
 import { TourVirtual } from "../pages/club/TourVirtual";
 import { Curriculum } from "../pages/club/Curriculum";
 import { Experiencias } from "../pages/club/Experiencias";
+import { Asociarme } from "../pages/club/Asociarme";
 
 import { Home } from "../pages/Home";
 import { Admin } from "../pages/Admin";
@@ -41,6 +44,8 @@ export const AppRouter = () => {
       <Route path="/inscribirme" element={<Inscripcion />} />
       <Route path="/amateurs" element={<Amateurs />} />
       <Route path="/basquet" element={<Basquet />} />
+      <Route path="/voley" element={<Voley />} />
+      <Route path="/tenis" element={<Tenis />} />
       <Route path="/futbol" element={<Futbol />} />
       <Route path="/gimadultos" element={<GimAdultos />} />
       <Route path="/historia" element={<Historia />} />
@@ -48,6 +53,7 @@ export const AppRouter = () => {
       <Route path="/tourvirtual" element={<TourVirtual />} />
       <Route path="/trabajaconnosotros" element={<Curriculum />} />
       <Route path="/experiencias" element={<Experiencias />} />
+      <Route path="/asociarme" element={<Asociarme />} />
 
       <Route path="/usuarios" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
       <Route path="/cuotas" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
