@@ -4,7 +4,7 @@ export const LinksHeader = () => {
         <div className="bg-white py-28 w-full">
             <div className="flex overflow-x-auto justify-start sm:justify-center space-x-16 sm:space-x-32 px-4 md:px-12">
                 <Link
-                    to="/inscribirme"
+                    to="inscribirme"
                     className="flex flex-col items-center text-green-800 hover:text-green-600 relative z-20"
                     aria-label="Ir a la página de inscripción"
                 >
@@ -12,14 +12,14 @@ export const LinksHeader = () => {
                     <span className="mt-3 text-sm font-semibold text-center">INSCRIBIRME</span>
                 </Link>
 
-                <a
-                    href="./asociarme.php"
+                <Link
+                    to="asoaciarme"
                     className="flex flex-col items-center text-green-800 hover:text-green-600 relative z-20"
-                    aria-label="Asociarme"
+                    aria-label="Ir a la página de inscripción"
                 >
                     <i className="fas fa-id-card text-3xl"></i>
                     <span className="mt-3 text-sm font-semibold text-center">ASOCIARME</span>
-                </a>
+                </Link>
 
                 <a
                     href="./album/juegos"
