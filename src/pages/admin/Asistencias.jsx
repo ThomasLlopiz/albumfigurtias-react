@@ -112,16 +112,13 @@ export const Asistencias = () => {
 
     const applyFilters = (filteredData) => {
         if (!filters.nombre && !filters.deporte && !filters.categoria && !filters.mes) {
-            console.log("Mostrando todos los datos porque no hay filtros.");
             return filteredData;
         }
 
         return filteredData.filter((item) => {
-            console.log("Item completo:", item);
             const alumno = item.alumno;
             const deporte = item.deporte;
             if (!alumno || !deporte) {
-                console.log("No se encontró alumno o deporte para este item", item);
                 return false;
             }
 
@@ -133,9 +130,6 @@ export const Asistencias = () => {
             const alumnoNombreCompleto = `${alumno.nombre} ${alumno.apellido}`.toLowerCase();
             const deporteNombre = deporte.deporte.toLowerCase();
             const deporteCategoria = deporte.categoria.toLowerCase();
-
-            console.log("Comparando mes:", item.monthYear, "con filtro de mes:", filters.mes);
-
             const matchesNombre = filters.nombre
                 ? alumnoNombreCompleto.includes(filters.nombre.toLowerCase())
                 : true;

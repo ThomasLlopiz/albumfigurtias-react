@@ -13,7 +13,7 @@ export const CrearDeportes = () => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
   const [generoSeleccionado, setGeneroSeleccionado] = useState("");
   const [profesoresSeleccionados, setProfesoresSeleccionados] = useState([]);
-const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetch(`${apiUrl}/api/usuarios?rol=profesor`)
@@ -42,7 +42,6 @@ const apiUrl = import.meta.env.VITE_API_URL;
       genero: generoSeleccionado,
       id_usuarios: profesoresSeleccionados,
     };
-    console.log("Datos a guardar:", nuevoDeporte);
 
     try {
       const response = await fetch(`${apiUrl}/api/deportes`, {

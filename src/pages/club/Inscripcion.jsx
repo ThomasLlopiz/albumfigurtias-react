@@ -72,7 +72,6 @@ export const Inscripcion = () => {
         const newInscripcion = await response.json();
       }
 
-      // Set success message and clear form
       setSuccessMessage('¡Registrado con éxito!');
       setFormData({
         nombre: '',
@@ -87,7 +86,6 @@ export const Inscripcion = () => {
         disciplina: [],
       });
 
-      // Remove success message after 5 seconds
       setTimeout(() => {
         setSuccessMessage('');
       }, 10000);
