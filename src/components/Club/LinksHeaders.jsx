@@ -13,7 +13,7 @@ export const LinksHeader = () => {
                 </Link>
 
                 <Link
-                    to="asoaciarme"
+                    to="asociarme"
                     className="flex flex-col items-center text-green-800 hover:text-green-600 relative z-20"
                     aria-label="Ir a la página de inscripción"
                 >
