@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from 'react';
 
-const API_KEY = 'AIzaSyCurKMfpNTO2cDqPnUBzwILHu9i3ziVEb0';
+const API_KEY = 'AIzaSyCurKMfpNTO2cDqPnUBzwILHu9i3ziVEb0'; // Verifica que esta clave sea válida
 const CHANNEL_ID = 'UCORkF7eXlKSfcCN4B4c869g';
 const API_URL = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&order=date&part=snippet&type=video&maxResults=12`;
 
 export const Youtube = () => {
   const [videos, setVideos] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [error, setError] = useState(null);
 
-  // Cargar videos al montar el componente
   useEffect(() => {
     const loadVideos = async () => {
       try {
         const response = await fetch(API_URL);
+
+        // Verifica si la respuesta fue exitosa
+        if (!response.ok) {
+          throw new Error('Error al cargar los videos: ' + response.statusText);
+        }
+
         const data = await response.json();
-        setVideos(data.items);
+
+        // Verifica si hay elementos en los datos
+        if (data.items && data.items.length > 0) {
+          setVideos(data.items);
+        } else {
+          setError('No se encontraron videos.');
+        }
       } catch (error) {
+        setError(error.message);
         console.error('Error al cargar los videos', error);
       }
     };
@@ -23,7 +36,6 @@ export const Youtube = () => {
     loadVideos();
   }, []);
 
-  // Configurar el carrusel
   useEffect(() => {
     if (videos.length > 0) {
       const interval = setInterval(() => {
@@ -33,7 +45,7 @@ export const Youtube = () => {
         });
       }, 2000);
 
-      return () => clearInterval(interval); // Limpieza al desmontar
+      return () => clearInterval(interval);
     }
   }, [videos]);
 
@@ -51,35 +63,43 @@ export const Youtube = () => {
         </a>
       </div>
 
+      {/* Si hay un error, muestra un mensaje */}
+      {error && (
+        <div className="text-red-600">
+          <p>{error}</p>
+        </div>
+      )}
+
+      {/* Solo renderiza los videos si están disponibles */}
       <div
         id="video-carousel"
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
       >
-        {videos.map((item) => {
-          const videoId = item.id.videoId;
-          const videoTitle = item.snippet.title;
-          const videoThumbnail = item.snippet.thumbnails.medium.url;
-          const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        {videos.length > 0 ? (
+          videos.map((item) => {
+            const videoId = item.id.videoId;
+            const videoTitle = item.snippet.title;
+            const videoThumbnail = item.snippet.thumbnails.medium.url;
+            const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
-          return (
-            <div
-              key={videoId}
-              className="video-card flex-shrink-0 w-1/3 px-2"
-            >
-              <a href={videoUrl} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={videoThumbnail}
-                  alt={videoTitle}
-                  className="w-full h-auto rounded-md"
-                />
-                <h3 className="text-sm mt-2">{videoTitle}</h3>
-              </a>
-            </div>
-          );
-        })}
+            return (
+              <div key={videoId} className="video-card flex-shrink-0 w-1/3 px-2">
+                <a href={videoUrl} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={videoThumbnail}
+                    alt={videoTitle}
+                    className="w-full h-auto rounded-md"
+                  />
+                  <h3 className="text-sm mt-2">{videoTitle}</h3>
+                </a>
+              </div>
+            );
+          })
+        ) : (
+          <div>No hay videos disponibles.</div>
+        )}
       </div>
     </div>
   );
 };
-
