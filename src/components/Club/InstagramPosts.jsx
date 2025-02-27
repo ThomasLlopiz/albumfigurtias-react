@@ -56,7 +56,7 @@ export const InstagramPosts = () => {
                         let mediaContent = '';
                         if (post.media_type === 'VIDEO') {
                             mediaContent = (
-                                <video controls className="w-full max-h-96 ">
+                                <video controls className="w-full lg:max-h-96 ">
                                     <source src={post.media_url} type="video/mp4" />
                                     Tu navegador no soporta la reproducción de videos.
                                 </video>
