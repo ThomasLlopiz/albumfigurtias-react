@@ -164,8 +164,8 @@ export const Asistencias = () => {
     }, []);
 
     return (
-        <div className="text-black text-center pt-32 pb-10 px-2">
-            <div className="flex items-center justify-between mb-3">
+        <div className="text-black text-center pt-32 pb-10 px-2 w-4/4">
+            <div className="flex items-center justify-between mb-3 lg:w-3/4 mx-auto">
                 <h1 className="text-2xl font-semibold">Asistencias por Alumno</h1>
                 <button
                     onClick={() => navigate("/admin")}
