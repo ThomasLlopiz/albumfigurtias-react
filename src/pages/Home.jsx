@@ -7,6 +7,8 @@ import { Especiales } from "../components/Club/Especiales";
 import { LinksHeader } from "../components/Club/LinksHeaders";
 import { Youtube } from "../components/Club/Youtube";
 import { HeaderClub } from "../components/Club/HeaderClub";
+import { Popup } from "../components/Club/Popup";
+import { BannerInscribite } from "../components/Club/bannerInscribite";
 
 export const Home = () => {
   return (
@@ -20,9 +22,11 @@ export const Home = () => {
         <meta property="og:image" content="./imagenes/club/publicidad1.jpg" />
         <meta property="og:url" content="https://www.socidadsportivadevoto.com.ar/" />
       </Helmet>
+      <Popup />
       <HeaderClub />
       <LinksHeader />
       <InstagramPosts />
+      <BannerInscribite />
       <Tienda />
       <Especiales />
       <FormaParte />
