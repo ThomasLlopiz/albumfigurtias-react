@@ -8,6 +8,17 @@ export const Youtube = () => {
   const [videos, setVideos] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [error, setError] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767); // Detecta si es móvil
+
+  // Función para manejar el cambio de tamaño de la pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const loadVideos = async () => {
@@ -41,13 +52,13 @@ export const Youtube = () => {
       const interval = setInterval(() => {
         setCurrentIndex((prevIndex) => {
           const totalVideos = videos.length;
-          return prevIndex < totalVideos - 3 ? prevIndex + 1 : 0;
+          return prevIndex < totalVideos - (isMobile ? 1 : 3) ? prevIndex + 1 : 0;
         });
       }, 2000);
 
       return () => clearInterval(interval);
     }
-  }, [videos]);
+  }, [videos, isMobile]); // Dependencia añadida: isMobile
 
   return (
     <div id="youtube-videos" className="relative overflow-hidden pb-20 max-w-7xl mx-auto text-black">
@@ -74,7 +85,9 @@ export const Youtube = () => {
       <div
         id="video-carousel"
         className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
+        style={{
+          transform: `translateX(-${currentIndex * (isMobile ? 100 : 33.33)}%)`,
+        }}
       >
         {videos.length > 0 ? (
           videos.map((item) => {
@@ -84,7 +97,14 @@ export const Youtube = () => {
             const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
             return (
-              <div key={videoId} className="video-card flex-shrink-0 w-1/3 px-2">
+              <div
+                key={videoId}
+                className="video-card flex-shrink-0"
+                style={{
+                  width: isMobile ? '100%' : '33.33%', // Ajusta el ancho basado en el dispositivo
+                  padding: '0 8px', // Añade un poco de espacio entre los videos
+                }}
+              >
                 <a href={videoUrl} target="_blank" rel="noopener noreferrer">
                   <img
                     src={videoThumbnail}
