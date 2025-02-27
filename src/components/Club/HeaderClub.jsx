@@ -39,12 +39,12 @@ export const HeaderClub = () => {
             <img
                 src="./imagenes/club/bandera.jpg"
                 alt="Banner"
-                className="w-full h-auto hidden xl:block"
+                className="w-full h-auto hidden lg:block"
             />
             <img
                 src="./imagenes/club/banderamobile.jpg"
                 alt="Banner"
-                className="w-full h-auto block xl:hidden"
+                className="w-full h-auto block lg:hidden"
             />
         </header>
     );
