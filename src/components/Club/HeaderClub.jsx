@@ -7,7 +7,7 @@ export const HeaderClub = () => {
     return (
         <header className="relative z-20">
             <div className="absolute w-full inset-0 mx-auto flex flex-col items-center justify-center text-white text-center">
-                <h1 className="text-7xl font-semibold">
+                <h1 className="text-5xl mt-10 xl:mt-0 xl:text-7xl font-semibold">
                     <Typewriter
                         onInit={(typewriter) => {
                             typewriter
@@ -39,7 +39,12 @@ export const HeaderClub = () => {
             <img
                 src="./imagenes/club/bandera.jpg"
                 alt="Banner"
-                className="w-full h-auto"
+                className="w-full h-auto hidden xl:block"
+            />
+            <img
+                src="./imagenes/club/banderamobile.jpg"
+                alt="Banner"
+                className="w-full h-auto block xl:hidden"
             />
         </header>
     );
