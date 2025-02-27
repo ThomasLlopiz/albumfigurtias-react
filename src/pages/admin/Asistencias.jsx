@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Asistencias = () => {
@@ -8,10 +8,10 @@ export const Asistencias = () => {
     const [groupedData, setGroupedData] = useState({});
     const [deportesData, setDeportesData] = useState({});
     const [filters, setFilters] = useState({
-        nombre: '',
-        deporte: '',
-        categoria: '',
-        mes: '',
+        nombre: "",
+        deporte: "",
+        categoria: "",
+        mes: "",
     });
     const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -30,7 +30,9 @@ export const Asistencias = () => {
     };
 
     const fetchAlumnosData = (asistencias) => {
-        const alumnoIds = [...new Set(asistencias.map((asistencia) => asistencia.id_alumno))];
+        const alumnoIds = [
+            ...new Set(asistencias.map((asistencia) => asistencia.id_alumno)),
+        ];
         Promise.all(
             alumnoIds.map((id) =>
                 fetch(`${apiUrl}/api/inscripciones/${id}`)
@@ -41,13 +43,17 @@ export const Asistencias = () => {
                             [id]: alumno,
                         }));
                     })
-                    .catch((error) => console.error(`Error al obtener el alumno con id ${id}:`, error))
+                    .catch((error) =>
+                        console.error(`Error al obtener el alumno con id ${id}:`, error)
+                    )
             )
         );
     };
 
     const fetchDeportesData = (asistencias) => {
-        const deporteIds = [...new Set(asistencias.map((asistencia) => asistencia.id_deporte))];
+        const deporteIds = [
+            ...new Set(asistencias.map((asistencia) => asistencia.id_deporte)),
+        ];
         Promise.all(
             deporteIds.map((id) =>
                 fetch(`${apiUrl}/api/deportes/${id}`)
@@ -58,7 +64,9 @@ export const Asistencias = () => {
                             [id]: deporte,
                         }));
                     })
-                    .catch((error) => console.error(`Error al obtener el deporte con id ${id}:`, error))
+                    .catch((error) =>
+                        console.error(`Error al obtener el deporte con id ${id}:`, error)
+                    )
             )
         );
     };
@@ -111,7 +119,12 @@ export const Asistencias = () => {
     };
 
     const applyFilters = (filteredData) => {
-        if (!filters.nombre && !filters.deporte && !filters.categoria && !filters.mes) {
+        if (
+            !filters.nombre &&
+            !filters.deporte &&
+            !filters.categoria &&
+            !filters.mes
+        ) {
             return filteredData;
         }
 
@@ -127,7 +140,8 @@ export const Asistencias = () => {
                 return false;
             }
 
-            const alumnoNombreCompleto = `${alumno.nombre} ${alumno.apellido}`.toLowerCase();
+            const alumnoNombreCompleto =
+                `${alumno.nombre} ${alumno.apellido}`.toLowerCase();
             const deporteNombre = deporte.deporte.toLowerCase();
             const deporteCategoria = deporte.categoria.toLowerCase();
             const matchesNombre = filters.nombre
@@ -150,12 +164,12 @@ export const Asistencias = () => {
     }, []);
 
     return (
-        <div className="text-black text-center py-32">
-            <div className='flex items-center justify-around'>
-                <h1 className="text-2xl font-semibold mb-8">Asistencias por Alumno</h1>
+        <div className="text-black text-center pt-32 pb-10 px-2">
+            <div className="flex items-center justify-between mb-3">
+                <h1 className="text-2xl font-semibold">Asistencias por Alumno</h1>
                 <button
                     onClick={() => navigate("/admin")}
-                    className="bg-green-600 hover:bg-green-800 text-white py-2 mb-3 px-6 rounded-lg font-bold transition duration-200"
+                    className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
                 >
                     Volver
                 </button>
@@ -239,10 +253,21 @@ export const Asistencias = () => {
                                     };
                                 })
                             ).map(({ alumnoId, alumno, asistencia, deporte, monthYear }) => (
-                                <tr key={alumnoId} className="hover:bg-gray-100 border-b-2 text-left">
-                                    <td className="pr-5 lg:pl-5 py-2">{alumno ? `${alumno.nombre} ${alumno.apellido}` : 'Cargando...'}</td>
-                                    <td className="pr-5 lg:pl-5 py-2">{deporte ? deporte.deporte : 'Cargando...'}</td>
-                                    <td className="pr-5 lg:pl-5 py-2">{deporte ? deporte.categoria : 'Cargando...'}</td>
+                                <tr
+                                    key={alumnoId}
+                                    className="hover:bg-gray-100 border-b-2 text-left"
+                                >
+                                    <td className="pr-5 lg:pl-5 py-2">
+                                        {alumno
+                                            ? `${alumno.nombre} ${alumno.apellido}`
+                                            : "Cargando..."}
+                                    </td>
+                                    <td className="pr-5 lg:pl-5 py-2">
+                                        {deporte ? deporte.deporte : "Cargando..."}
+                                    </td>
+                                    <td className="pr-5 lg:pl-5 py-2">
+                                        {deporte ? deporte.categoria : "Cargando..."}
+                                    </td>
                                     <td className="pr-5 lg:pl-5 py-2">{asistencia}</td>
                                     <td className="pr-5 lg:pl-5 py-2">{monthYear}</td>
                                 </tr>
@@ -253,5 +278,4 @@ export const Asistencias = () => {
             ))}
         </div>
     );
-
 };

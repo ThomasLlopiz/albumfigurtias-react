@@ -7,7 +7,7 @@ export const Curriculums = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
-  `${apiUrl}/api/asistencias/activas`
+
   useEffect(() => {
     const obtenerDatos = async () => {
       try {
@@ -41,8 +41,8 @@ export const Curriculums = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="my-20">
-      <div className="flex items-center justify-around">
+    <div className="my-20 px-2">
+      <div className="flex items-center justify-between ">
         <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
           Crear Deporte
         </h1>
@@ -58,8 +58,8 @@ export const Curriculums = () => {
       {postulantes.length === 0 ? (
         <p className="text-center">No se encontraron postulantes.</p>
       ) : (
-        <div className="">
-          <table className="border-collapse border border-green-800 w-11/12 mx-auto rounded-lg">
+        <div className="overflow-x-auto">
+          <table className="border-collapse border border-green-800 w-full mx-auto rounded-lg" style={{ minWidth: '800px' }}>
             <thead>
               <tr className="bg-green-800 text-white">
                 <th className="px-6 py-3 border border-green-800 text-left font-normal">Nombre</th>
@@ -100,5 +100,3 @@ export const Curriculums = () => {
     </div>
   );
 };
-
-

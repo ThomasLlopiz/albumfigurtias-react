@@ -39,15 +39,23 @@ export const Admin = () => {
   };
 
   return (
-    <div className="text-black px-0 my-32 max-w-7xl mx-auto lg:px-4 lg:py-12">
-      <div className="flex flex-col items-center justify-center gap-12">
+    <div className="text-black px-2 mt-32 lg:my-20 max-w-7xl mx-auto lg:px-4">
+      <div className="mt-8 flex justify-left lg:justify-center mb-4">
+        <button
+          onClick={handleLogout}
+          className="bg-red-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-red-700"
+        >
+          Desloguearse
+        </button>
+      </div>
+      <div className="flex md:flex-col items-center justify-between gap-4">
         {/* Admin Menu Items */}
-        <div className="flex items-center justify-center gap-12">
+        <div className="lg:flex flex-wrap items-center justify-between gap-4">
           {adminMenuItems.map(({ to, icon, text }) => (
             <Link
               key={to}
               to={to}
-              className="flex flex-col items-center justify-center mx-auto bg-green-700 text-white w-44 h-44 lg:w-48 lg:h-48 rounded-2xl shadow-lg hover:bg-green-800"
+              className="flex flex-col items-center mb-3 lg:mb-0 justify-center mx-auto bg-green-700 text-white w-44 h-44 lg:w-48 lg:h-48 rounded-2xl shadow-lg hover:bg-green-800"
             >
               <FontAwesomeIcon icon={icon} className="text-4xl" />
               <span className="mt-2 text-lg font-semibold text-center">{text}</span>
@@ -56,27 +64,18 @@ export const Admin = () => {
         </div>
 
         {/* Usuario Menu Items */}
-        <div className="flex items-center justify-center gap-12">
+        <div className="md:flex flex-wrap items-center justify-between gap-4">
           {usuarioMenuItems.map(({ to, icon, text }) => (
             <Link
               key={to}
               to={to}
-              className="flex flex-col items-center justify-center mx-auto bg-green-700 text-white w-44 h-44 lg:w-48 lg:h-48 rounded-2xl shadow-lg hover:bg-green-800"
+              className="flex flex-col items-center mb-3 lg:mb-0 justify-center mx-auto bg-green-700 text-white w-44 h-44 lg:w-48 lg:h-48 rounded-2xl shadow-lg hover:bg-green-800"
             >
               <FontAwesomeIcon icon={icon} className="text-4xl" />
               <span className="mt-2 text-lg font-semibold text-center">{text}</span>
             </Link>
           ))}
         </div>
-      </div>
-
-      <div className="mt-8 flex justify-center">
-        <button
-          onClick={handleLogout}
-          className="bg-red-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-red-700"
-        >
-          Desloguearse
-        </button>
       </div>
     </div>
   );

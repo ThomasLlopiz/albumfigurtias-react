@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export const Inscriptos = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [inscripciones, setInscripciones] = useState([]);
     const [filtroNombre, setFiltroNombre] = useState('');
     const [filtroDisciplina, setFiltroDisciplina] = useState('');
+    const navigate = useNavigate();
 
     const fetchIncripciones = async () => {
         try {
@@ -63,9 +65,14 @@ export const Inscriptos = () => {
 
     return (
         <div className="mx-auto p-6 mt-32 text-black">
-            <div>
+            <div className='flex justify-around items-center mb-10'>
                 <h2 className="text-3xl font-semibold text-black-800 mb-6 text-center">LISTADO DE INSCRIPCIONES</h2>
-
+                <button
+                    onClick={() => navigate("/admin")}
+                    className="bg-green-600 hover:bg-green-800 text-white py-1 px-6 rounded-lg font-bold transition duration-200"
+                >
+                    Volver
+                </button>
             </div>
 
             {/* Filtros */}

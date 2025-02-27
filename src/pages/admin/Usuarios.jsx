@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { faEye, faEyeSlash, faTrashCan, faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 export const Usuarios = () => {
+    const navigate = useNavigate();
     const [usuario, setUsuario] = useState("");
     const [contrasena, setContrasena] = useState("");
     const [contrasenaConfirmada, setContrasenaConfirmada] = useState("");
@@ -14,7 +16,7 @@ export const Usuarios = () => {
     const [mensajeConfirmacion, setMensajeConfirmacion] = useState("");
     const [usuarioEditando, setUsuarioEditando] = useState(null);
     const [mensajeAccion, setMensajeAccion] = useState("");
-  const apiUrl = import.meta.env.VITE_API_URL;
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     const fetchUsuarios = async () => {
         const response = await fetch(`${apiUrl}/api/usuarios`);
@@ -113,9 +115,9 @@ export const Usuarios = () => {
     };
 
     return (
-        <div className="mt-40 mb-32 text-black flex flex-col items-center justify-center gap-3">
-            <div>
-                <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
+        <div className="mt-32 mb-10 text-black flex flex-col items-center justify-center gap-3 lg:w-1/4 mx-auto p-2">
+            <div className="flex justify-between items-center w-full">
+                <h1 className="text-4xl font-semibold text-center text-green-700">
                     Usuarios
                 </h1>
                 <button
@@ -125,8 +127,8 @@ export const Usuarios = () => {
                     Volver
                 </button>
             </div>
-            <div className="flex md:gap-12 mx-auto justify-center items-center">
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-4/6 md:w-4/6">
+            <div className="flex flex-col mx-auto w-full justify-center items-center">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
                     {mensajeAccion && (
                         <div className="mt-4 text-green-600 font-semibold">
                             {mensajeAccion}
@@ -191,25 +193,25 @@ export const Usuarios = () => {
                     </button>
                 </form>
 
-                <div className="text-left">
+                <div className="text-left w-full">
                     {usuarios.length > 0 ? (
-                        <table className="mt-4 border-collapse w-72 text-left">
+                        <table className="mt-4 border-collapse w-full text-left">
                             <thead>
                                 <tr>
-                                    <th className="border-b-2 py-2 text-left px-5">Usuario</th>
-                                    <th className="border-b-2 py-2 text-left px-5">Rol</th>
-                                    <th className="border-b-2 py-2 text-left px-5">Acciones</th>
+                                    <th className="border-b-2 py-1 text-left">Usuario</th>
+                                    <th className="border-b-2 py-1 text-left">Rol</th>
+                                    <th className="border-b-2 py-1 text-left">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {usuarios.map((user) => (
                                     <tr key={user.id}>
-                                        <td className="border-b py-2 text-left px-5">{user.usuario}</td>
-                                        <td className="border-b py-2 text-left px-5">{user.rol}</td>
-                                        <td className="border-b py-2 text-left px-5">
+                                        <td className="border-b py-1 text-left">{user.usuario}</td>
+                                        <td className="border-b py-1 text-left">{user.rol}</td>
+                                        <td className="border-b py-1 ml-12 text-left">
                                             <button
                                                 onClick={() => editarUsuario(user)}
-                                                className="text-blue-500 mr-3"
+                                                className="text-blue-500 mr-4"
                                             >
                                                 <FontAwesomeIcon icon={faPen} />
                                             </button>

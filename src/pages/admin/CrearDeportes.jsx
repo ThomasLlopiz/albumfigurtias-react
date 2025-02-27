@@ -87,25 +87,22 @@ export const CrearDeportes = () => {
   };
 
   return (
-    <div className="min-h-screen text-black py-16">
-      <div className="flex items-center justify-around">
-        <h1 className="text-4xl font-semibold text-center text-green-700 px-1 py-12">
+    <div className="text-black pb-10 pt-32 px-2">
+      <div className="flex items-center justify-between">
+        <h1 className="text-4xl font-semibold text-center text-green-700">
           Crear Deporte
         </h1>
-        <div className="text-center">
-          <button
-            onClick={() => navigate("/admin")}
-            className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
-          >
-            Volver
-          </button>
-        </div>
+        <button
+          onClick={() => navigate("/admin")}
+          className="bg-green-600 hover:bg-green-800 text-white py-2 px-6 rounded-lg font-bold transition duration-200"
+        >
+          Volver
+        </button>
       </div>
 
-      <div className="space-y-4 text-gray-800 max-w-7xl mx-auto shadow-xl rounded-lg p-6">
+      <div className="space-y-4 text-gray-800 max-w-7xl mx-auto shadow-xl rounded-lg pt-2">
         {/* Select de Deportes */}
         <div>
-          <label className="block mb-1">Deporte</label>
           <select
             className="w-full p-2 border rounded"
             value={deporteSeleccionado}
@@ -122,7 +119,6 @@ export const CrearDeportes = () => {
 
         {/* Select de Categorías */}
         <div>
-          <label className="block mb-1">Categoría</label>
           <select
             className="w-full p-2 border rounded"
             value={categoriaSeleccionada}
@@ -139,7 +135,6 @@ export const CrearDeportes = () => {
 
         {/* Select de Géneros */}
         <div>
-          <label className="block mb-1">Género</label>
           <select
             className="w-full p-2 border rounded"
             value={generoSeleccionado}
@@ -156,7 +151,6 @@ export const CrearDeportes = () => {
 
         {/* Select de Profesores (Selección múltiple) */}
         <div>
-          <label className="block mb-1">Profesores</label>
           <select
             className="w-full p-2 border rounded"
             onChange={(e) => agregarProfesor(e.target.value)}
@@ -172,7 +166,7 @@ export const CrearDeportes = () => {
         </div>
 
         {/* Mostrar Profesores Seleccionados */}
-        <div className="mt-4">
+        <div>
           <label className="block mb-1">Profesores Seleccionados</label>
           <div className="flex flex-wrap gap-2">
             {profesoresSeleccionados.map((profesorId) => {
@@ -201,14 +195,13 @@ export const CrearDeportes = () => {
 
         {/* Botón para guardar el deporte */}
         <button
-          className="bg-green-800 text-white px-4 py-2 rounded mt-4"
+          className="bg-green-800 text-white px-4 py-2 rounded"
           onClick={guardarDeporte}
         >
           Guardar Deporte
         </button>
       </div>
 
-      {/* Botón para volver */}
 
     </div>
   );
