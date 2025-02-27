@@ -5,8 +5,7 @@ export const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isEquipoDropdownOpen, setIsEquipoDropdownOpen] = useState(false);
     const [isClubDropdownOpen, setIsClubDropdownOpen] = useState(false);
-    const [logo, setLogo] = useState('imagenes/general/ssdescudocolor.png');
-    const [logoAlt, setLogoAlt] = useState('Escudo Sociedad Sportiva Devoto');
+    const [isScrolled, setIsScrolled] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -29,16 +28,42 @@ export const Nav = () => {
         setIsClubDropdownOpen(false);
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 400) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <nav className="fixed top-0 left-0 right-0 w-full flex items-center justify-between px-6 md:px-32 sm:64 text-white mx-auto z-50 sm:py-0 py-2"
             style={{ backgroundColor: 'rgba(0, 165, 79, 0.8)' }}>
             <div>
-                <Link to="/">
-                    <img src={logo} alt={logoAlt}
-                        className={`h-24 absolute -bottom-16 sm:-bottom-9 ${logoAlt === 'Sportiva Devoto' ? 'logo-text' : ''}`} />
-                </Link>
-            </div>
+                {/* Mostrar el ícono solo cuando no hay scroll */}
+                {!isScrolled && (
+                    <Link to="/">
+                        <img src="./imagenes/general/favicon.png" alt="Escudo Sociedad Sportiva Devoto"
+                            className="h-24 absolute -bottom-16 sm:-bottom-9" />
+                    </Link>
+                )}
 
+                {/* Mostrar el texto solo cuando hay scroll */}
+                {isScrolled && (
+                    <Link to="/">
+                        <img src="./imagenes/general/ssdtexto.png" alt="Escudo Sociedad Sportiva Devoto"
+                            className="h-12 md:h-16 absolute -bottom-0 sm:-bottom-" />
+                    </Link>
+                )}
+            </div>
             <div id="logo" className="block md:hidden">
                 <button id="hamburger" className="text-white focus:outline-none" aria-label="Abrir menú" onClick={toggleMenu}>
                     <i className="fas fa-bars text-2xl"></i>
