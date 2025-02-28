@@ -14,6 +14,8 @@ import {
 
 export const Admin = () => {
   const navigate = useNavigate();
+  const userRole = localStorage.getItem("rol");
+
   const adminMenuItems = [
     // { to: "/cuotas", icon: faMoneyBillWave, text: "Cuotas" },
     { to: "/curriculums", icon: faFileAlt, text: "Curriculums" },
@@ -49,19 +51,21 @@ export const Admin = () => {
         </button>
       </div>
       <div className="flex md:flex-col items-center justify-between gap-4">
-        {/* Admin Menu Items */}
-        <div className="lg:flex flex-wrap items-center justify-between gap-4">
-          {adminMenuItems.map(({ to, icon, text }) => (
-            <Link
-              key={to}
-              to={to}
-              className="flex flex-col items-center mb-3 lg:mb-0 justify-center mx-auto bg-green-700 text-white w-44 h-44 lg:w-48 lg:h-48 rounded-2xl shadow-lg hover:bg-green-800"
-            >
-              <FontAwesomeIcon icon={icon} className="text-4xl" />
-              <span className="mt-2 text-lg font-semibold text-center">{text}</span>
-            </Link>
-          ))}
-        </div>
+        {/* Conditionally render admin menu items based on role */}
+        {userRole === "admin" && (
+          <div className="lg:flex flex-wrap items-center justify-between gap-4">
+            {adminMenuItems.map(({ to, icon, text }) => (
+              <Link
+                key={to}
+                to={to}
+                className="flex flex-col items-center mb-3 lg:mb-0 justify-center mx-auto bg-green-700 text-white w-44 h-44 lg:w-48 lg:h-48 rounded-2xl shadow-lg hover:bg-green-800"
+              >
+                <FontAwesomeIcon icon={icon} className="text-4xl" />
+                <span className="mt-2 text-lg font-semibold text-center">{text}</span>
+              </Link>
+            ))}
+          </div>
+        )}
 
         {/* Usuario Menu Items */}
         <div className="md:flex flex-wrap items-center justify-between gap-4">
