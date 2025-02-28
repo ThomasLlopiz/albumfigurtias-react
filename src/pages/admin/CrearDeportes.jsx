@@ -13,6 +13,11 @@ export const CrearDeportes = () => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
   const [generoSeleccionado, setGeneroSeleccionado] = useState("");
   const [profesoresSeleccionados, setProfesoresSeleccionados] = useState([]);
+  const [error, setError] = useState("");
+  const [exito, setExito] = useState("");
+  const [deportesGuardados, setDeportesGuardados] = useState([]);
+  const [modoEdicion, setModoEdicion] = useState(false);
+  const [deporteEditandoId, setDeporteEditandoId] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -23,6 +28,13 @@ export const CrearDeportes = () => {
         setProfesores(profesoresFiltrados);
       })
       .catch((error) => console.error("Error al obtener los profesores:", error));
+
+    fetch(`${apiUrl}/api/deportes`)
+      .then((res) => res.json())
+      .then((data) => {
+        setDeportesGuardados(data);
+      })
+      .catch((error) => console.error("Error al obtener los deportes:", error));
   }, []);
 
   const guardarDeporte = async () => {
@@ -32,48 +44,93 @@ export const CrearDeportes = () => {
       !generoSeleccionado ||
       profesoresSeleccionados.length === 0
     ) {
-      alert("Todos los campos son obligatorios.");
+      setError("Todos los campos son obligatorios.");
+      setExito("");
       return;
     }
 
-    const nuevoDeporte = {
-      deporte: deporteSeleccionado,
-      categoria: categoriaSeleccionada,
-      genero: generoSeleccionado,
-      id_usuarios: profesoresSeleccionados,
-    };
-
     try {
-      const response = await fetch(`${apiUrl}/api/deportes`, {
+      const nuevoDeporte = {
+        deporte: deporteSeleccionado,
+        categoria: categoriaSeleccionada,
+        genero: generoSeleccionado,
+        id_usuarios: profesoresSeleccionados,
+      };
+
+      const saveResponse = await fetch(`${apiUrl}/api/deportes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          deporte: deporteSeleccionado,
-          categoria: categoriaSeleccionada,
-          genero: generoSeleccionado,
-          id_usuarios: profesoresSeleccionados,
-        }),
+        body: JSON.stringify(nuevoDeporte),
       });
 
-      if (!response.ok) throw new Error("Error al guardar el deporte");
+      if (!saveResponse.ok) throw new Error("Error al guardar el deporte");
 
-      const data = await response.json();
-      alert("Deporte guardado con éxito");
+      setExito("Deporte guardado con éxito.");
+      setError("");
       setDeporteSeleccionado("");
       setCategoriaSeleccionada("");
       setGeneroSeleccionado("");
       setProfesoresSeleccionados([]);
+      const updatedDeportes = await fetch(`${apiUrl}/api/deportes`);
+      const updatedData = await updatedDeportes.json();
+      setDeportesGuardados(updatedData);
     } catch (error) {
       console.error("Error:", error);
-      alert("Hubo un problema al guardar el deporte");
+      setError("Hubo un problema al guardar el deporte.");
+      setExito("");
     }
   };
 
+  const actualizarDeporte = async () => {
+    if (
+      !deporteSeleccionado ||
+      !categoriaSeleccionada ||
+      !generoSeleccionado ||
+      profesoresSeleccionados.length === 0
+    ) {
+      setError("Todos los campos son obligatorios.");
+      setExito("");
+      return;
+    }
+
+    try {
+      const deporteActualizado = {
+        deporte: deporteSeleccionado,
+        categoria: categoriaSeleccionada,
+        genero: generoSeleccionado,
+        id_usuarios: profesoresSeleccionados,
+      };
+
+      const response = await fetch(`${apiUrl}/api/deportes/${deporteEditandoId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(deporteActualizado),
+      });
+
+      if (!response.ok) throw new Error("Error al actualizar el deporte");
+
+      setExito("Deporte actualizado con éxito.");
+      setError("");
+      cancelarEdicion();
+
+      const updatedDeportes = await fetch(`${apiUrl}/api/deportes`);
+      const updatedData = await updatedDeportes.json();
+      setDeportesGuardados(updatedData);
+    } catch (error) {
+      console.error("Error:", error);
+      setError("Hubo un problema al actualizar el deporte.");
+      setExito("");
+    }
+  };
 
   const eliminarProfesor = (id) => {
-    setProfesoresSeleccionados(profesoresSeleccionados.filter((profesorId) => profesorId !== id));
+    setProfesoresSeleccionados((prevState) =>
+      prevState.filter((profesorId) => profesorId.toString() !== id.toString())
+    );
   };
 
   const profesoresDisponibles = profesores.filter(
@@ -86,11 +143,40 @@ export const CrearDeportes = () => {
     }
   };
 
+  const editarDeporte = (deporte) => {
+    console.log("Editing deporte:", deporte);
+    console.log("deporte.id_usuarios:", deporte.id_usuarios);
+
+    const profesoresIds = deporte.id_usuarios
+      ? [deporte.id_usuarios]
+      : [];
+
+    setDeporteSeleccionado(deporte.deporte);
+    setCategoriaSeleccionada(deporte.categoria);
+    setGeneroSeleccionado(deporte.genero);
+    setProfesoresSeleccionados(profesoresIds);
+    setModoEdicion(true);
+    setDeporteEditandoId(deporte.id);
+  };
+
+  const cancelarEdicion = () => {
+    setModoEdicion(false);
+    setDeporteEditandoId(null);
+    setDeporteSeleccionado("");
+    setCategoriaSeleccionada("");
+    setGeneroSeleccionado("");
+    setProfesoresSeleccionados([]);
+  };
+
+  const profesoresAsociados = profesoresSeleccionados
+    .map((profesorId) => profesores.find((profesor) => profesor.id.toString() === profesorId.toString()))
+    .filter((profesor) => profesor !== undefined);
+
   return (
-    <div className="text-black pb-10 pt-32 px-2">
-      <div className="flex items-center justify-between">
-        <h1 className="text-4xl font-semibold text-center text-green-700">
-          Crear Deporte
+    <div className="text-black pb-10 pt-32 px-2 w-full mx-auto">
+      <div className="flex items-center justify-between w-11/12 px-2 mx-auto">
+        <h1 className="text-4xl font-semibold text-center text-green-700 ">
+          {modoEdicion ? "Editar Deporte" : "Crear Deporte"}
         </h1>
         <button
           onClick={() => navigate("/admin")}
@@ -101,12 +187,14 @@ export const CrearDeportes = () => {
       </div>
 
       <div className="space-y-4 text-gray-800 max-w-7xl mx-auto shadow-xl rounded-lg pt-2">
-        {/* Select de Deportes */}
+        {error && <div className="text-red-500">{error}</div>}
+        {exito && <div className="text-green-500">{exito}</div>}
         <div>
           <select
             className="w-full p-2 border rounded"
             value={deporteSeleccionado}
             onChange={(e) => setDeporteSeleccionado(e.target.value)}
+            required
           >
             <option value="">Selecciona un deporte</option>
             {deportes.map((deporte, index) => (
@@ -117,12 +205,12 @@ export const CrearDeportes = () => {
           </select>
         </div>
 
-        {/* Select de Categorías */}
         <div>
           <select
             className="w-full p-2 border rounded"
             value={categoriaSeleccionada}
             onChange={(e) => setCategoriaSeleccionada(e.target.value)}
+            required
           >
             <option value="">Selecciona una categoría</option>
             {categorias.map((categoria, index) => (
@@ -133,12 +221,12 @@ export const CrearDeportes = () => {
           </select>
         </div>
 
-        {/* Select de Géneros */}
         <div>
           <select
             className="w-full p-2 border rounded"
             value={generoSeleccionado}
             onChange={(e) => setGeneroSeleccionado(e.target.value)}
+            required
           >
             <option value="">Selecciona un género</option>
             {generos.map((genero, index) => (
@@ -149,7 +237,6 @@ export const CrearDeportes = () => {
           </select>
         </div>
 
-        {/* Select de Profesores (Selección múltiple) */}
         <div>
           <select
             className="w-full p-2 border rounded"
@@ -165,44 +252,61 @@ export const CrearDeportes = () => {
           </select>
         </div>
 
-        {/* Mostrar Profesores Seleccionados */}
         <div>
           <label className="block mb-1">Profesores Seleccionados</label>
           <div className="flex flex-wrap gap-2">
-            {profesoresSeleccionados.map((profesorId) => {
-              const profesor = profesores.find((p) => p.id.toString() === profesorId.toString());
-              if (!profesor) {
-                console.error(`Profesor con ID ${profesorId} no encontrado.`);
-                return null;
-              }
-              return (
-                <div
-                  key={profesorId}
-                  className="flex items-center bg-gray-200 rounded-full px-3 py-1"
+            {profesoresAsociados.map((profesor) => (
+              <div
+                key={profesor.id}
+                className="flex items-center bg-gray-200 rounded-full px-3 py-1"
+              >
+                <span>{profesor.usuario}</span>
+                <button
+                  onClick={() => eliminarProfesor(profesor.id)}
+                  className="ml-2 text-red-500 hover:text-red-700"
                 >
-                  <span>{profesor.usuario}</span>
-                  <button
-                    onClick={() => eliminarProfesor(profesorId)}
-                    className="ml-2 text-red-500 hover:text-red-700"
-                  >
-                    X
-                  </button>
-                </div>
-              );
-            })}
+                  X
+                </button>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Botón para guardar el deporte */}
         <button
           className="bg-green-800 text-white px-4 py-2 rounded"
-          onClick={guardarDeporte}
+          onClick={modoEdicion ? actualizarDeporte : guardarDeporte}
         >
-          Guardar Deporte
+          {modoEdicion ? "Actualizar Deporte" : "Guardar Deporte"}
         </button>
+
+        {modoEdicion && (
+          <button
+            className="bg-gray-500 text-white px-4 py-2 rounded ml-2"
+            onClick={cancelarEdicion}
+          >
+            Cancelar Edición
+          </button>
+        )}
+
+        <div className="mt-6">
+          <h2 className="text-2xl font-semibold text-gray-700">Deportes Existentes</h2>
+          <div className="space-y-4">
+            {deportesGuardados.map((deporte) => (
+              <div key={deporte.id} className="flex justify-between items-center p-4 bg-gray-100 rounded-lg shadow-md">
+                <div>
+                  <h3 className="text-xl font-semibold">{deporte.deporte} - {deporte.categoria} - {deporte.genero}</h3>
+                </div>
+                <button
+                  onClick={() => editarDeporte(deporte)}
+                  className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
+                >
+                  Editar
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-
-
     </div>
   );
 };
