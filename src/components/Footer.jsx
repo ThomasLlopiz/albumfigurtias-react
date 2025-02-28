@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <div className="">
@@ -10,14 +11,12 @@ export const Footer = () => {
                 aria-label="Ver reglamento"
                 className="text-lg hover:underline transition-transform duration-300 text-center md:text-left">NUESTRO
                 REGLAMENTO</a>
-              <a href="./tour_virtual.php" aria-label="Tour Virtual"
-                className="text-lg hover:underline transition-transform duration-300 text-center md:text-left">PREDIO
-                SSD</a>
+              <Link className="text-lg hover:underline transition-transform duration-300 text-center md:text-left" to="tourvirtual">PREDIO SSD</Link>
             </div>
 
             <div className="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
               <a href="./"><img src="imagenes/general/ssdescudocolor.png" alt="Logo" aria-label="Inicio"
-                className="w-32 hover:scale-110 transition-transform duration-300"/></a>
+                className="w-32 hover:scale-110 transition-transform duration-300" /></a>
             </div>
 
             <div className="w-full md:w-1/3 flex flex-col items-center">
