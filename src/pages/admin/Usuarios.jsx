@@ -41,34 +41,43 @@ export const Usuarios = () => {
             return;
         }
 
-        const response = await fetch(`${apiUrl}/api/usuarios`, {
-            method: "POST",
+        const method = usuarioEditando ? 'PUT' : 'POST'; // Determina si es una actualización
+        const url = usuarioEditando
+            ? `${apiUrl}/api/usuarios/${usuarioEditando.id}` // URL para actualización
+            : `${apiUrl}/api/usuarios`; // URL para creación
+
+        const body = JSON.stringify({
+            usuario,
+            contrasena,
+            rol,
+        });
+
+        const response = await fetch(url, {
+            method,
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                usuario,
-                contrasena,
-                rol,
-            }),
+            body,
         });
+
         const text = await response.text();
         try {
             const data = JSON.parse(text);
             if (response.ok) {
-                setMensajeAccion("Usuario creado con éxito");
-                fetchUsuarios();
+                setMensajeAccion(usuarioEditando ? "Usuario actualizado con éxito" : "Usuario creado con éxito");
+                fetchUsuarios(); // Actualiza la lista de usuarios
                 setUsuario("");
                 setContrasena("");
                 setContrasenaConfirmada("");
                 setRol("");
+                setUsuarioEditando(null); // Limpia el estado de edición
                 setTimeout(() => setMensajeAccion(""), 5000);
             } else {
                 alert(`Error: ${data.message}`);
             }
         } catch (error) {
             console.error("Error al parsear JSON:", error);
-            alert("Error al crear el usuario");
+            alert("Error al crear o actualizar el usuario");
         }
     };
 
