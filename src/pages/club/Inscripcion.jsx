@@ -16,6 +16,7 @@ export const Inscripcion = () => {
   });
 
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -42,13 +43,25 @@ export const Inscripcion = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.disciplina.length === 0) {
-      setSuccessMessage('¡Por favor, selecciona al menos un deporte!');
+
+    if (
+      !formData.nombre ||
+      !formData.apellido ||
+      !formData.dni ||
+      !formData.fecha_nacimiento ||
+      !formData.genero ||
+      !formData.direccion ||
+      !formData.telefono ||
+      formData.disciplina.length === 0
+    ) {
+      setErrorMessage('¡Debe seleccionar un deporte!');
       setTimeout(() => {
-        setSuccessMessage('');
+        setErrorMessage('');
       }, 5000);
       return;
     }
+
+    setErrorMessage(''); // Limpiar mensaje de error si todos los campos son válidos
 
     const dataToSend = {
       ...formData,
@@ -102,8 +115,7 @@ export const Inscripcion = () => {
   };
 
   return (
-    <div className='text-black'>
-
+    <div className="text-black">
       <form onSubmit={handleSubmit} className="max-w-7xl mx-auto p-6 space-y-6 mt-32">
         <div>
           <h2 className="text-2xl font-semibold text-gray-800">Datos Personales</h2>
@@ -114,6 +126,13 @@ export const Inscripcion = () => {
         {successMessage && (
           <div className="bg-green-500 text-white text-center p-3 rounded-md mb-4">
             {successMessage}
+          </div>
+        )}
+
+        {/* Error Message */}
+        {errorMessage && (
+          <div className="bg-red-500 text-white text-center p-3 rounded-md mb-4">
+            {errorMessage}
           </div>
         )}
 
