@@ -42,6 +42,13 @@ export const Inscripcion = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.disciplina.length === 0) {
+      setSuccessMessage('¡Por favor, selecciona al menos un deporte!');
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 5000);
+      return;
+    }
 
     const dataToSend = {
       ...formData,
