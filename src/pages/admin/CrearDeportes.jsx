@@ -140,6 +140,8 @@ export const CrearDeportes = () => {
   const agregarProfesor = (id) => {
     if (!profesoresSeleccionados.includes(id)) {
       setProfesoresSeleccionados((prevState) => [...prevState, id]);
+    } else {
+      setError("Este profesor ya está seleccionado.");
     }
   };
 
@@ -245,7 +247,11 @@ export const CrearDeportes = () => {
           >
             <option value="">Selecciona un profesor</option>
             {profesoresDisponibles.map((profesor) => (
-              <option key={profesor.id} value={profesor.id}>
+              <option
+                key={profesor.id}
+                value={profesor.id}
+                disabled={profesoresSeleccionados.includes(profesor.id)} // Deshabilitar si ya está seleccionado
+              >
                 {profesor.usuario}
               </option>
             ))}
