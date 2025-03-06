@@ -150,8 +150,8 @@ export const CrearDeportes = () => {
     console.log("deporte.id_usuarios:", deporte.id_usuarios);
 
     const profesoresIds = deporte.id_usuarios
-      ? [deporte.id_usuarios]
-      : [];
+      ? deporte.id_usuarios.split(",") // Aquí debes asegurarte de que se pueda dividir
+      : []; // Si es vacío o no existe, devolvemos un arreglo vacío.
 
     setDeporteSeleccionado(deporte.deporte);
     setCategoriaSeleccionada(deporte.categoria);

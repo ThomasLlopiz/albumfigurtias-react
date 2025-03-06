@@ -19,13 +19,18 @@ export const Deportes = () => {
   }, []);
 
   const handleDeporteClick = (deporte) => {
-    const idsPermitidos = deporte.id_usuarios.split(",");
-    if (idsPermitidos.includes(id.toString())) {
+    // Verifica si id_usuarios es una cadena, si no, convierte a cadena separada por comas
+    const idsPermitidos = Array.isArray(deporte.id_usuarios)
+      ? deporte.id_usuarios.join(",") // Convierte el arreglo de IDs a una cadena separada por comas
+      : deporte.id_usuarios; // Si ya es una cadena, mantenlo tal cual
+
+    if (idsPermitidos.split(",").includes(id.toString())) {
       navigate(
         `/asistencia?deporte=${deporte.deporte}&categoria=${deporte.categoria}&idDeporte=${deporte.id}&genero=${deporte.genero}`
       );
     }
   };
+
 
   const getIconForDeporte = (deporte) => {
     switch (deporte) {
