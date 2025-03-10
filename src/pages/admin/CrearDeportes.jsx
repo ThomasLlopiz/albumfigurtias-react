@@ -54,8 +54,9 @@ export const CrearDeportes = () => {
         deporte: deporteSeleccionado,
         categoria: categoriaSeleccionada,
         genero: generoSeleccionado,
-        id_usuarios: profesoresSeleccionados,
+        id_usuarios: profesoresSeleccionados.join(','),
       };
+
 
       const saveResponse = await fetch(`${apiUrl}/api/deportes`, {
         method: "POST",
@@ -149,10 +150,11 @@ export const CrearDeportes = () => {
     console.log("Editing deporte:", deporte);
     console.log("deporte.id_usuarios:", deporte.id_usuarios);
 
-    const profesoresIds = deporte.id_usuarios
-      ? deporte.id_usuarios.split(",") // Aquí debes asegurarte de que se pueda dividir
-      : []; // Si es vacío o no existe, devolvemos un arreglo vacío.
-
+    const profesoresIds = Array.isArray(deporte.id_usuarios)
+      ? deporte.id_usuarios
+      : deporte.id_usuarios
+        ? deporte.id_usuarios.split(",")
+        : [];
     setDeporteSeleccionado(deporte.deporte);
     setCategoriaSeleccionada(deporte.categoria);
     setGeneroSeleccionado(deporte.genero);
@@ -160,6 +162,7 @@ export const CrearDeportes = () => {
     setModoEdicion(true);
     setDeporteEditandoId(deporte.id);
   };
+
 
   const cancelarEdicion = () => {
     setModoEdicion(false);
@@ -250,7 +253,7 @@ export const CrearDeportes = () => {
               <option
                 key={profesor.id}
                 value={profesor.id}
-                disabled={profesoresSeleccionados.includes(profesor.id)} // Deshabilitar si ya está seleccionado
+                disabled={profesoresSeleccionados.includes(profesor.id)}
               >
                 {profesor.usuario}
               </option>
