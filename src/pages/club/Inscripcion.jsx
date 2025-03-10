@@ -292,6 +292,17 @@ export const Inscripcion = () => {
                 />
                 <span className="ml-1 mr-3">Voley</span>
               </label>
+              <label className="inline-flex items-center">
+                <input
+                  type="checkbox"
+                  name="disciplina"
+                  value="Padel"
+                  checked={formData.disciplina.includes('Padel')}
+                  onChange={handleChange}
+                  className="form-checkbox"
+                />
+                <span className="ml-1 mr-3">Padel</span>
+              </label>
             </div>
           </div>
         </div>

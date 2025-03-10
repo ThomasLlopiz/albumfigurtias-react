@@ -91,6 +91,7 @@ export const Inscriptos = () => {
                 >
                     <option value="">Todos los deportes</option>
                     <option value="voley">Voley</option>
+                    <option value="padel">Padel</option>
                     <option value="basquet">Básquet</option>
                     <option value="tenis">Tenis</option>
                     <option value="futbol">Fútbol</option>
