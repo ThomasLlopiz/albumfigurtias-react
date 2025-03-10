@@ -6,8 +6,13 @@ export const Inscriptos = () => {
     const [inscripciones, setInscripciones] = useState([]);
     const [filtroNombre, setFiltroNombre] = useState('');
     const [filtroDisciplina, setFiltroDisciplina] = useState('');
+    const [currentPage, setCurrentPage] = useState(1); // Página actual
+    const [editingInscripcion, setEditingInscripcion] = useState(null); // Inscripción en edición
+    const [isModalOpen, setIsModalOpen] = useState(false); // Estado del modal
+    const itemsPerPage = 12; // Número de elementos por página
     const navigate = useNavigate();
 
+    // Obtener las inscripciones
     const fetchIncripciones = async () => {
         try {
             const response = await fetch(`${apiUrl}/api/inscripciones`);
@@ -18,6 +23,7 @@ export const Inscriptos = () => {
         }
     };
 
+    // Cambiar el estado de la planilla
     const handlePlanillaChange = async (id, currentPlanilla) => {
         const newPlanilla = !currentPlanilla;
         setInscripciones(prevInscripciones =>
@@ -53,15 +59,82 @@ export const Inscriptos = () => {
         }
     };
 
+    // Abrir modal para editar
+    const openEditModal = (inscripcion) => {
+        setEditingInscripcion(inscripcion);
+        setIsModalOpen(true);
+    };
+
+    // Cerrar modal
+    const closeEditModal = () => {
+        setIsModalOpen(false);
+        setEditingInscripcion(null);
+    };
+
+    // Guardar cambios en la inscripción
+    const handleSaveChanges = async () => {
+        try {
+            const response = await fetch(`${apiUrl}/api/inscripciones/${editingInscripcion.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(editingInscripcion),
+            });
+
+            if (response.ok) {
+                setInscripciones(prevInscripciones =>
+                    prevInscripciones.map(inscripcion =>
+                        inscripcion.id === editingInscripcion.id ? editingInscripcion : inscripcion
+                    )
+                );
+                closeEditModal();
+            } else {
+                console.error('Error al actualizar la inscripción');
+            }
+        } catch (error) {
+            console.error('Error al guardar los cambios:', error);
+        }
+    };
+
+    // Manejar cambios en el modal
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setEditingInscripcion(prev => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
     useEffect(() => {
         fetchIncripciones();
     }, []);
 
+    // Filtrar inscripciones
     const inscripcionesFiltradas = inscripciones.filter(inscripcion => {
         const coincideNombre = inscripcion.nombre.toLowerCase().includes(filtroNombre.toLowerCase());
         const coincideDisciplina = filtroDisciplina === '' || inscripcion.disciplina.toLowerCase() === filtroDisciplina.toLowerCase();
         return coincideNombre && coincideDisciplina;
     });
+
+    // Lógica de paginación
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = inscripcionesFiltradas.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const nextPage = () => {
+        if (currentPage < Math.ceil(inscripcionesFiltradas.length / itemsPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const prevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
 
     return (
         <div className="mx-auto p-6 mt-32 text-black">
@@ -112,11 +185,13 @@ export const Inscriptos = () => {
                             <th className="px-4 py-2 text-left border-b">Fecha de Nacimiento</th>
                             <th className="px-4 py-2 text-left border-b">Responsable</th>
                             <th className="px-4 py-2 text-left border-b">Disciplina</th>
+                            <th className="px-4 py-2 text-left border-b">Número de Cuenta</th>
                             <th className="px-4 py-2 text-left border-b">Planilla</th>
+                            <th className="px-4 py-2 text-left border-b">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {inscripcionesFiltradas.map((inscripcion) => (
+                        {currentItems.map((inscripcion) => (
                             <tr key={inscripcion.id}>
                                 <td className="px-4 py-2 border-b border-green-600">{inscripcion.nombre}</td>
                                 <td className="px-4 py-2 border-b border-green-600">{inscripcion.apellido}</td>
@@ -127,6 +202,7 @@ export const Inscriptos = () => {
                                 <td className="px-4 py-2 border-b border-green-600">{inscripcion.fecha_nacimiento}</td>
                                 <td className="px-4 py-2 border-b border-green-600">{inscripcion.responsable || 'N/A'}</td>
                                 <td className="px-4 py-2 border-b border-green-600">{inscripcion.disciplina}</td>
+                                <td className="px-4 py-2 border-b border-green-600">{inscripcion.numero_cuenta || 'N/A'}</td>
                                 <td className="px-4 py-2 border-b border-green-600 text-center">
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input
@@ -140,11 +216,167 @@ export const Inscriptos = () => {
                                         ></div>
                                     </label>
                                 </td>
+                                <td className="px-4 py-2 border-b border-green-600">
+                                    <button
+                                        onClick={() => openEditModal(inscripcion)}
+                                        className="bg-blue-600 hover:bg-blue-800 text-white py-1 px-4 rounded-lg font-bold transition duration-200"
+                                    >
+                                        Editar
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
+
+            {/* Paginación */}
+            <div className="flex justify-center mt-6">
+                <button
+                    onClick={prevPage}
+                    disabled={currentPage === 1}
+                    className="bg-green-600 hover:bg-green-800 text-white py-1 px-4 rounded-lg font-bold transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                >
+                    Anterior
+                </button>
+                <span className="mx-4 text-lg font-semibold">
+                    Página {currentPage} de {Math.ceil(inscripcionesFiltradas.length / itemsPerPage)}
+                </span>
+                <button
+                    onClick={nextPage}
+                    disabled={currentPage === Math.ceil(inscripcionesFiltradas.length / itemsPerPage)}
+                    className="bg-green-600 hover:bg-green-800 text-white py-1 px-4 rounded-lg font-bold transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                >
+                    Siguiente
+                </button>
+            </div>
+
+            {/* Modal de edición */}
+            {isModalOpen && editingInscripcion && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white p-6 rounded-lg w-1/3">
+                        <h2 className="text-2xl font-bold mb-4">Editar Inscripción</h2>
+                        <form>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Nombre</label>
+                                <input
+                                    type="text"
+                                    name="nombre"
+                                    value={editingInscripcion.nombre}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Apellido</label>
+                                <input
+                                    type="text"
+                                    name="apellido"
+                                    value={editingInscripcion.apellido}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Género</label>
+                                <input
+                                    type="text"
+                                    name="genero"
+                                    value={editingInscripcion.genero}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">DNI</label>
+                                <input
+                                    type="number"
+                                    name="dni"
+                                    value={editingInscripcion.dni}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Dirección</label>
+                                <input
+                                    type="text"
+                                    name="direccion"
+                                    value={editingInscripcion.direccion}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Teléfono</label>
+                                <input
+                                    type="number"
+                                    name="telefono"
+                                    value={editingInscripcion.telefono}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+                                <input
+                                    type="date"
+                                    name="fecha_nacimiento"
+                                    value={editingInscripcion.fecha_nacimiento}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Responsable</label>
+                                <input
+                                    type="text"
+                                    name="responsable"
+                                    value={editingInscripcion.responsable || ''}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Disciplina</label>
+                                <input
+                                    type="text"
+                                    name="disciplina"
+                                    value={editingInscripcion.disciplina}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium text-gray-700">Número de Cuenta</label>
+                                <input
+                                    type="number"
+                                    name="numero_cuenta"
+                                    value={editingInscripcion.numero_cuenta || ''}
+                                    onChange={handleInputChange}
+                                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                                />
+                            </div>
+                            <div className="flex justify-end gap-4">
+                                <button
+                                    type="button"
+                                    onClick={closeEditModal}
+                                    className="bg-gray-600 hover:bg-gray-800 text-white py-1 px-4 rounded-lg font-bold transition duration-200"
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={handleSaveChanges}
+                                    className="bg-green-600 hover:bg-green-800 text-white py-1 px-4 rounded-lg font-bold transition duration-200"
+                                >
+                                    Guardar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
