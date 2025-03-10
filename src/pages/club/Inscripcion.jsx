@@ -34,7 +34,7 @@ export const Inscripcion = () => {
           });
         }
       } else {
-        setFormData({ ...formData, [name]: checked || value });
+        setFormData({ ...formData, [name]: checked });
       }
     } else {
       setFormData({ ...formData, [name]: value });
@@ -44,6 +44,7 @@ export const Inscripcion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validar campos obligatorios
     if (
       !formData.nombre ||
       !formData.apellido ||
@@ -54,7 +55,7 @@ export const Inscripcion = () => {
       !formData.telefono ||
       formData.disciplina.length === 0
     ) {
-      setErrorMessage('¡Debe seleccionar un deporte!');
+      setErrorMessage('¡Debe seleccionar un deporte y completar todos los campos obligatorios!');
       setTimeout(() => {
         setErrorMessage('');
       }, 5000);
@@ -84,12 +85,17 @@ export const Inscripcion = () => {
         });
 
         if (!response.ok) {
-          const errorText = await response.text();
-          console.error("Error en la respuesta del servidor:", errorText);
-          throw new Error(`Error al crear inscripción para disciplina ${disciplina}`);
+          const errorData = await response.json();
+          if (response.status === 409) {
+            setErrorMessage(`Ya existe una inscripción con el DNI ${formData.dni} para la disciplina ${disciplina}.`);
+          } else {
+            setErrorMessage('Error al crear la inscripción. Inténtelo de nuevo.');
+          }
+          setTimeout(() => {
+            setErrorMessage('');
+          }, 5000);
+          return;
         }
-
-        const newInscripcion = await response.json();
       }
 
       setSuccessMessage('¡Registrado con éxito!');
@@ -111,6 +117,10 @@ export const Inscripcion = () => {
       }, 10000);
     } catch (error) {
       console.error('Error:', error);
+      setErrorMessage('Error al conectar con el servidor. Inténtelo de nuevo.');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 5000);
     }
   };
 
