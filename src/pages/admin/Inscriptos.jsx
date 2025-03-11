@@ -6,13 +6,12 @@ export const Inscriptos = () => {
     const [inscripciones, setInscripciones] = useState([]);
     const [filtroNombre, setFiltroNombre] = useState('');
     const [filtroDisciplina, setFiltroDisciplina] = useState('');
-    const [currentPage, setCurrentPage] = useState(1); // Página actual
-    const [editingInscripcion, setEditingInscripcion] = useState(null); // Inscripción en edición
-    const [isModalOpen, setIsModalOpen] = useState(false); // Estado del modal
-    const itemsPerPage = 12; // Número de elementos por página
+    const [currentPage, setCurrentPage] = useState(1);
+    const [editingInscripcion, setEditingInscripcion] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const itemsPerPage = 12;
     const navigate = useNavigate();
 
-    // Obtener las inscripciones
     const fetchIncripciones = async () => {
         try {
             const response = await fetch(`${apiUrl}/api/inscripciones`);
@@ -23,7 +22,6 @@ export const Inscriptos = () => {
         }
     };
 
-    // Cambiar el estado de la planilla
     const handlePlanillaChange = async (id, currentPlanilla) => {
         const newPlanilla = !currentPlanilla;
         setInscripciones(prevInscripciones =>
@@ -59,19 +57,16 @@ export const Inscriptos = () => {
         }
     };
 
-    // Abrir modal para editar
     const openEditModal = (inscripcion) => {
         setEditingInscripcion(inscripcion);
         setIsModalOpen(true);
     };
 
-    // Cerrar modal
     const closeEditModal = () => {
         setIsModalOpen(false);
         setEditingInscripcion(null);
     };
 
-    // Guardar cambios en la inscripción
     const handleSaveChanges = async () => {
         try {
             const response = await fetch(`${apiUrl}/api/inscripciones/${editingInscripcion.id}`, {
@@ -97,7 +92,6 @@ export const Inscriptos = () => {
         }
     };
 
-    // Manejar cambios en el modal
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEditingInscripcion(prev => ({
@@ -110,14 +104,12 @@ export const Inscriptos = () => {
         fetchIncripciones();
     }, []);
 
-    // Filtrar inscripciones
     const inscripcionesFiltradas = inscripciones.filter(inscripcion => {
         const coincideNombre = inscripcion.nombre.toLowerCase().includes(filtroNombre.toLowerCase());
         const coincideDisciplina = filtroDisciplina === '' || inscripcion.disciplina.toLowerCase() === filtroDisciplina.toLowerCase();
         return coincideNombre && coincideDisciplina;
     });
 
-    // Lógica de paginación
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = inscripcionesFiltradas.slice(indexOfFirstItem, indexOfLastItem);
