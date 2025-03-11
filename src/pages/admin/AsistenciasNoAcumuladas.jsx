@@ -14,6 +14,10 @@ export const AsistenciasNoAcumuladas = () => {
     });
     const apiUrl = import.meta.env.VITE_API_URL;
 
+    // Paginación
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10; // Establece el número de elementos por página
+
     // Obtener todas las asistencias (activas e inactivas)
     const fetchAsistencias = () => {
         fetch(`${apiUrl}/api/asistencias`)
@@ -178,6 +182,23 @@ export const AsistenciasNoAcumuladas = () => {
         fetchAsistencias();
     }, []);
 
+    // Lógica de paginación
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = applyFilters(data).slice(indexOfFirstItem, indexOfLastItem);
+
+    const nextPage = () => {
+        if (currentPage < Math.ceil(applyFilters(data).length / itemsPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const prevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
     return (
         <div className="text-black text-center pt-32 pb-10 px-2 w-4/4">
             <div className="flex items-center justify-between mb-3 lg:w-3/4 mx-auto">
@@ -233,60 +254,83 @@ export const AsistenciasNoAcumuladas = () => {
                 </div>
             </div>
 
-            {/* Tabla de asistencias */}
-            <table className="mx-auto w-full lg:w-3/4">
-                <thead className="border-b-2">
-                    <tr>
-                        <th className="py-2 md:px-5 text-left">Alumno</th>
-                        <th className="py-2 md:px-5 text-left">Deporte</th>
-                        <th className="py-2 md:px-5 text-left">Categoría</th>
-                        <th className="py-2 md:px-5 text-left">Fecha</th>
-                        <th className="py-2 md:px-5 text-left">Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {applyFilters(data).map((asistencia) => {
-                        const alumno = alumnosData[asistencia.id_alumno];
-                        const deporte = deportesData[asistencia.id_deporte];
-                        const fecha = new Date(asistencia.fecha).toLocaleDateString();
+            {/* Contenedor de la tabla con scroll horizontal */}
+            <div className="overflow-x-auto">
+                <table className="min-w-full table-auto border-collapse border border-green-600 whitespace-nowrap">
+                    <thead className="border-b-2">
+                        <tr>
+                            <th className="py-2 px-5 text-left">Alumno</th>
+                            <th className="py-2 px-5 text-left">Deporte</th>
+                            <th className="py-2 px-5 text-left">Categoría</th>
+                            <th className="py-2 px-5 text-left">Fecha</th>
+                            <th className="py-2 px-5 text-left">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {currentItems.map((asistencia) => {
+                            const alumno = alumnosData[asistencia.id_alumno];
+                            const deporte = deportesData[asistencia.id_deporte];
+                            const fecha = new Date(asistencia.fecha).toLocaleDateString();
 
-                        return (
-                            <tr
-                                key={asistencia.id}
-                                className="hover:bg-gray-100 border-b-2 text-left"
-                            >
-                                <td className="pr-5 lg:pl-5 py-2">
-                                    {alumno
-                                        ? `${alumno.nombre} ${alumno.apellido}`
-                                        : "Cargando..."}
-                                </td>
-                                <td className="pr-5 lg:pl-5 py-2">
-                                    {deporte ? deporte.deporte : "Cargando..."}
-                                </td>
-                                <td className="pr-5 lg:pl-5 py-2">
-                                    {deporte ? deporte.categoria : "Cargando..."}
-                                </td>
-                                <td className="pr-5 lg:pl-5 py-2">{fecha}</td>
-                                <td className="pr-5 lg:pl-5 py-2 text-center">
-                                    <label className="relative inline-flex items-center cursor-pointer">
-                                        <input
-                                            type="checkbox"
-                                            checked={asistencia.estado}
-                                            onChange={() =>
-                                                handleEstadoChange(asistencia.id, asistencia.estado)
-                                            }
-                                            className="sr-only peer"
-                                        />
-                                        <div
-                                            className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all ${asistencia.estado ? 'bg-green-600' : 'bg-red-600'}`}
-                                        ></div>
-                                    </label>
-                                </td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+                            return (
+                                <tr
+                                    key={asistencia.id}
+                                    className="hover:bg-gray-100 border-b-2 text-left"
+                                >
+                                    <td className="px-5 lg:pl-5 py-2">
+                                        {alumno
+                                            ? `${alumno.nombre} ${alumno.apellido}`
+                                            : "Cargando..."}
+                                    </td>
+                                    <td className="px-5 lg:pl-5 py-2">
+                                        {deporte ? deporte.deporte : "Cargando..."}
+                                    </td>
+                                    <td className="px-5 lg:pl-5 py-2">
+                                        {deporte ? deporte.categoria : "Cargando..."}
+                                    </td>
+                                    <td className="px-5 lg:pl-5 py-2">{fecha}</td>
+                                    <td className="px-5 lg:pl-5 py-2 text-center">
+                                        <label className="relative inline-flex items-center cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={asistencia.estado}
+                                                onChange={() =>
+                                                    handleEstadoChange(asistencia.id, asistencia.estado)
+                                                }
+                                                className="sr-only peer"
+                                            />
+                                            <div
+                                                className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all ${asistencia.estado ? 'bg-green-600' : 'bg-red-600'}`}
+                                            ></div>
+                                        </label>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
+
+            {/* Paginación */}
+            <div className="flex justify-center mt-6">
+                <button
+                    onClick={prevPage}
+                    disabled={currentPage === 1}
+                    className="bg-green-600 hover:bg-green-800 text-white py-1 px-4 rounded-lg font-bold transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                >
+                    Anterior
+                </button>
+                <span className="mx-4 text-lg font-semibold">
+                    Página {currentPage} de {Math.ceil(applyFilters(data).length / itemsPerPage)}
+                </span>
+                <button
+                    onClick={nextPage}
+                    disabled={currentPage === Math.ceil(applyFilters(data).length / itemsPerPage)}
+                    className="bg-green-600 hover:bg-green-800 text-white py-1 px-4 rounded-lg font-bold transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                >
+                    Siguiente
+                </button>
+            </div>
         </div>
     );
 };
