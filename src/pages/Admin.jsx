@@ -17,7 +17,7 @@ export const Admin = () => {
   const userRole = localStorage.getItem("rol");
 
   const adminMenuItems = [
-    // { to: "/cuotas", icon: faMoneyBillWave, text: "Cuotas" },
+    { to: "/cuotas", icon: faMoneyBillWave, text: "Cuotas" },
     { to: "/curriculums", icon: faFileAlt, text: "Curriculums" },
     // { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
     // { to: "/fechas", icon: faCalendarAlt, text: "Fechas" },
