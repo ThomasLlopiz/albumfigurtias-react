@@ -29,6 +29,8 @@ import { Asistencia } from "../pages/admin/Asitencia";
 import { Sesion } from "../pages/admin/Sesion";
 
 import { PrivateRoute, PrivateRouteForAdminOnly } from "../hooks/PrivateRoute";
+import { AsistenciasNoAcumuladas } from "../pages/admin/AsistenciasNoAcumuladas";
+import { PrePageAsistencias } from "../pages/admin/PrePageAsistencias";
 
 
 export const AppRouter = () => {
@@ -67,6 +69,8 @@ export const AppRouter = () => {
       <Route path="/deportes" element={<PrivateRoute element={<Deportes />} />} />
       <Route path="/asistencias" element={<PrivateRoute element={<Asistencias />} />} />
       <Route path="/asistencia" element={<PrivateRoute element={<Asistencia />} />} />
+      <Route path="/asistenciasNoAcumuladas" element={<PrivateRoute element={<AsistenciasNoAcumuladas />} />} />
+      <Route path="/prePageAsistencias" element={<PrivateRoute element={<PrePageAsistencias />} />} />
     </Routes>
   );
 };
