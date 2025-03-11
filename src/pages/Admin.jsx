@@ -19,7 +19,6 @@ export const Admin = () => {
   const adminMenuItems = [
     // { to: "/cuotas", icon: faMoneyBillWave, text: "Cuotas" },
     { to: "/curriculums", icon: faFileAlt, text: "Curriculums" },
-    // { to: "/alumnos", icon: faUserGraduate, text: "Alumnos" },
     // { to: "/alquileres", icon: faBuilding, text: "Alquileres" },
     // { to: "/fechas", icon: faCalendarAlt, text: "Fechas" },
     { to: "/inscriptos", icon: faUser, text: "Inscriptos" },
@@ -29,7 +28,7 @@ export const Admin = () => {
 
   const usuarioMenuItems = [
     { to: "/deportes", icon: faDumbbell, text: "Deportes" },
-    { to: "/asistencias", icon: faCheckCircle, text: "Asistencias" },
+    { to: "/prePageAsistencias", icon: faCheckCircle, text: "Asistencias" },
   ];
 
   const handleLogout = () => {
