@@ -31,6 +31,7 @@ import { Sesion } from "../pages/admin/Sesion";
 import { PrivateRoute, PrivateRouteForAdminOnly } from "../hooks/PrivateRoute";
 import { AsistenciasNoAcumuladas } from "../pages/admin/AsistenciasNoAcumuladas";
 import { PrePageAsistencias } from "../pages/admin/PrePageAsistencias";
+import { Cuotas } from "../pages/admin/Cuotas";
 
 
 export const AppRouter = () => {
@@ -58,8 +59,7 @@ export const AppRouter = () => {
       <Route path="/asociarme" element={<Asociarme />} />
 
       <Route path="/usuarios" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
-      <Route path="/cuotas" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
-      <Route path="/alquileres" element={<PrivateRouteForAdminOnly element={<Usuarios />} />} />
+      <Route path="/cuotas" element={<PrivateRouteForAdminOnly element={<Cuotas />} />} />
       <Route path="/curriculums" element={<PrivateRouteForAdminOnly element={<Curriculums />} />} />
       <Route path="/fechas" element={<PrivateRouteForAdminOnly element={<Curriculums />} />} />
       <Route path="/crearDeportes" element={<PrivateRouteForAdminOnly element={<CrearDeportes />} />} />
