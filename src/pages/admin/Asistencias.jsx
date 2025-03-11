@@ -225,18 +225,18 @@ export const Asistencias = () => {
             </div>
 
             {Object.keys(groupedData).map((monthYear) => (
-                <div key={monthYear} className="mb-8">
-                    <table className="mx-auto w-full lg:w-3/4">
+                <div key={monthYear} className="mb-8 overflow-x-auto">
+                    <table className="min-w-full table-auto border-collapse border border-green-600 whitespace-nowrap">
                         <thead className="border-b-2">
                             <tr>
-                                <th className="py-2 md:px-5 text-left">Alumno</th>
-                                <th className="py-2 md:px-5 text-left">Deporte</th>
-                                <th className="py-2 md:px-5 text-left">Categoría</th>
-                                <th className="py-2 md:px-5 text-left">Asistencias</th>
-                                <th className="py-2 md:px-5 text-left">Mes</th>
+                                <th className="py-2 px-5 text-left">Alumno</th>
+                                <th className="py-2 px-5 text-left">Deporte</th>
+                                <th className="py-2 px-5 text-left">Categoría</th>
+                                <th className="py-2 px-5 text-left">Asistencias</th>
+                                <th className="py-2 px-5 text-left">Mes</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="text-center">
                             {applyFilters(
                                 Object.keys(groupedData[monthYear]).map((alumnoId) => {
                                     const alumno = alumnosData[alumnoId];
@@ -257,19 +257,19 @@ export const Asistencias = () => {
                                     key={alumnoId}
                                     className="hover:bg-gray-100 border-b-2 text-left"
                                 >
-                                    <td className="pr-5 lg:pl-5 py-2">
+                                    <td className="px-5 lg:pl-5 py-2">
                                         {alumno
                                             ? `${alumno.nombre} ${alumno.apellido}`
                                             : "Cargando..."}
                                     </td>
-                                    <td className="pr-5 lg:pl-5 py-2">
+                                    <td className="px-5 lg:pl-5 py-2">
                                         {deporte ? deporte.deporte : "Cargando..."}
                                     </td>
-                                    <td className="pr-5 lg:pl-5 py-2">
+                                    <td className="px-5 lg:pl-5 py-2">
                                         {deporte ? deporte.categoria : "Cargando..."}
                                     </td>
-                                    <td className="pr-5 lg:pl-5 py-2">{asistencia}</td>
-                                    <td className="pr-5 lg:pl-5 py-2">{monthYear}</td>
+                                    <td className="px-5 lg:pl-5 py-2">{asistencia}</td>
+                                    <td className="px-5 lg:pl-5 py-2">{monthYear}</td>
                                 </tr>
                             ))}
                         </tbody>
