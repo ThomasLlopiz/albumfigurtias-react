@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import * as XLSX from 'xlsx';
 
 export const Inscriptos = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -11,6 +12,15 @@ export const Inscriptos = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const itemsPerPage = 12;
     const navigate = useNavigate();
+
+    const exportToExcel = () => {
+        const ws = XLSX.utils.json_to_sheet(inscripcionesFiltradas);
+
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Inscripciones");
+
+        XLSX.writeFile(wb, "inscripciones.xlsx");
+    };
 
     const fetchIncripciones = async () => {
         try {
@@ -132,12 +142,20 @@ export const Inscriptos = () => {
         <div className="mx-auto p-6 mt-32 text-black">
             <div className='flex justify-around items-center mb-10'>
                 <h2 className="text-3xl font-semibold text-black-800 mb-6 text-center">LISTADO DE INSCRIPCIONES</h2>
-                <button
-                    onClick={() => navigate("/admin")}
-                    className="bg-green-600 hover:bg-green-800 text-white py-1 px-6 rounded-lg font-bold transition duration-200"
-                >
-                    Volver
-                </button>
+                <div className="flex gap-4">
+                    <button
+                        onClick={() => navigate("/admin")}
+                        className="bg-green-600 hover:bg-green-800 text-white py-1 px-6 rounded-lg font-bold transition duration-200"
+                    >
+                        Volver
+                    </button>
+                    <button
+                        onClick={exportToExcel}
+                        className="bg-blue-600 hover:bg-blue-800 text-white py-1 px-6 rounded-lg font-bold transition duration-200"
+                    >
+                        Exportar a Excel
+                    </button>
+                </div>
             </div>
 
             {/* Filtros */}
