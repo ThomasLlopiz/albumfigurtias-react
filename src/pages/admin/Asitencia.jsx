@@ -117,7 +117,7 @@ export const Asistencia = () => {
       });
   };
 
-  const marcarAsistio = (inscripcion) => {
+  const marcarAsistio = async (inscripcion) => {
     const nuevaListaInscriptos = [
       ...inscriptosGuardados,
       { ...inscripcion, estado: "asistió" },
@@ -128,37 +128,67 @@ export const Asistencia = () => {
     setInscriptos((prevInscriptos) =>
       prevInscriptos.filter((asistencia) => asistencia.id !== inscripcion.id)
     );
+
     const requestData = {
       id_alumno: inscripcion.id,
       id_deporte: idDeporte,
       fecha: formattedDate,
       estado: true,
     };
-    fetch(`${apiUrl}/api/asistencias`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => {
-        if (response.status >= 200 && response.status < 300) {
-          return response.json();
-        } else {
-          return response.text().then((text) => {
-            throw new Error(`Error ${response.status}: ${text}`);
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Error al registrar la asistencia en el backend:", error);
+
+    try {
+      // Registrar la asistencia
+      const asistenciaResponse = await fetch(`${apiUrl}/api/asistencias`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       });
+
+      if (!asistenciaResponse.ok) {
+        throw new Error("Error al registrar la asistencia");
+      }
+
+      // Concatenar el nombre y apellido del inscrito
+      const nombreCompleto = `${inscripcion.nombre} ${inscripcion.apellido}`;
+
+      const cuotaData = {
+        numero_cuenta: inscripcion.numero_cuenta || null,
+        documento: inscripcion.dni,
+        direccion: inscripcion.direccion,
+        deporte: deporte,
+        fecha: formattedDate,
+        nombre: nombreCompleto,  // Concatenar nombre y apellido aquí
+      };
+
+      console.log("Datos de la cuota a enviar:", cuotaData);
+
+      // Registrar la cuota
+      const cuotaResponse = await fetch(`${apiUrl}/api/cuotas`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cuotaData),
+      });
+
+      if (!cuotaResponse.ok) {
+        throw new Error("Error al registrar la cuota");
+      }
+
+      console.log("Asistencia y cuota registradas con éxito");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+
 
   const reiniciarAsistencia = () => {
     localStorage.removeItem("inscriptos");
     setInscriptosGuardados([]);
   };
+
   useEffect(() => {
     if (prevInscriptosGuardados.current?.length > 0 && inscriptosGuardados.length === 0) {
       fetchInscriptos();
