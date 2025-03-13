@@ -137,7 +137,6 @@ export const Asistencia = () => {
     };
 
     try {
-      // Registrar la asistencia
       const asistenciaResponse = await fetch(`${apiUrl}/api/asistencias`, {
         method: "POST",
         headers: {
@@ -150,7 +149,6 @@ export const Asistencia = () => {
         throw new Error("Error al registrar la asistencia");
       }
 
-      // Concatenar el nombre y apellido del inscrito
       const nombreCompleto = `${inscripcion.nombre} ${inscripcion.apellido}`;
 
       const cuotaData = {
@@ -159,12 +157,11 @@ export const Asistencia = () => {
         direccion: inscripcion.direccion,
         deporte: deporte,
         fecha: formattedDate,
-        nombre: nombreCompleto,  // Concatenar nombre y apellido aquí
+        nombre: nombreCompleto,
       };
 
       console.log("Datos de la cuota a enviar:", cuotaData);
 
-      // Registrar la cuota
       const cuotaResponse = await fetch(`${apiUrl}/api/cuotas`, {
         method: "POST",
         headers: {
