@@ -177,12 +177,10 @@ export const AsistenciasNoAcumuladas = () => {
         }
     };
 
-    // Cargar las asistencias al montar el componente
     useEffect(() => {
         fetchAsistencias();
     }, []);
 
-    // Lógica de paginación
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = applyFilters(data).slice(indexOfFirstItem, indexOfLastItem);
